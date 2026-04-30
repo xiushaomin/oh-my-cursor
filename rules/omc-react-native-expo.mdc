@@ -1,0 +1,16 @@
+---
+description: React Native and Expo app rule for typed components, navigation, native capabilities, assets, secure storage, offline behavior, and delivery discipline.
+globs: ["**/app.json", "**/app.config.js", "**/app.config.ts", "**/metro.config.js", "**/metro.config.cjs", "**/App.tsx", "**/app/**/*.tsx", "**/src/**/*.tsx", "**/components/**/*.tsx", "**/*.native.ts", "**/*.native.tsx"]
+alwaysApply: false
+---
+
+# react native expo
+
+- Prefer functional components with hooks and explicit TypeScript contracts.
+- Use Expo and React Native platform capabilities intentionally instead of re-implementing platform features without a clear reason.
+- Keep navigation structure explicit and consistent with the project's chosen routing model.
+- Treat asset loading, secure storage, offline behavior, OTA delivery, and device capabilities as product-critical concerns.
+- Keep mobile UI state, network state, and error state explicit rather than implicit in ad hoc component logic.
+- Avoid large multi-purpose screens when smaller reusable components and hooks make the behavior clearer.
+- Optimize lists, images, and interaction-heavy screens deliberately, but stay aligned with the current app architecture.
+- Design with accessibility, safe-area handling, localization, and testability in mind from the start.

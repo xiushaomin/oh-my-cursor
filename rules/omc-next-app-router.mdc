@@ -1,0 +1,13 @@
+---
+description: Next.js App Router rule for server-first rendering, route file responsibilities, route handlers, and client/server boundary discipline.
+globs: ["app/**/*.ts", "app/**/*.tsx", "src/app/**/*.ts", "src/app/**/*.tsx", "next.config.*"]
+alwaysApply: false
+---
+
+# next app router
+
+- Prefer Server Components by default. Use Client Components only when browser APIs, interaction, or client-owned state require them.
+- Respect App Router file roles. Keep `layout`, `page`, `loading`, `error`, and route handlers aligned with their intended responsibilities.
+- Keep client/server boundaries explicit. Do not move data fetching client-side without a clear product or platform reason.
+- Keep routing and rendering structure legible. Prefer App Router conventions over custom layout patterns when they solve the problem.
+- Model streaming, loading, and error states intentionally when route-level data can be slow or fail.

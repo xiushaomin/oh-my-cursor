@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1",
+  "productVersion": "0.1.0",
+  "lanes": [
+    {
+      "workflowId": "omc-review",
+      "title": "Review Check Lane",
+      "minimumSections": [
+        "findings",
+        "severity",
+        "suggested_tests",
+        "residual_risks"
+      ],
+      "verificationPrompts": [
+        "Call out exact files or evidence for each finding.",
+        "Separate verified issues from suspected gaps.",
+        "Name the smallest useful follow-up test."
+      ]
+    },
+    {
+      "workflowId": "omc-debug",
+      "title": "Debug Check Lane",
+      "minimumSections": [
+        "symptom",
+        "root_cause",
+        "fix",
+        "verification",
+        "follow_ups"
+      ],
+      "verificationPrompts": [
+        "State the repro or best available evidence.",
+        "Name what changed and how the repro was rechecked.",
+        "List remaining uncertainty if full repro was not possible."
+      ]
+    },
+    {
+      "workflowId": "omc-release-checklist",
+      "title": "Release Check Lane",
+      "minimumSections": [
+        "scope",
+        "required_checks",
+        "release_blockers",
+        "rollout_plan",
+        "rollback_plan"
+      ],
+      "verificationPrompts": [
+        "Separate blockers from follow-ups.",
+        "Include rollout owner or monitoring expectation when known.",
+        "Name rollback trigger or decision point."
+      ]
+    },
+    {
+      "workflowId": "omc-migration-checklist",
+      "title": "Migration Check Lane",
+      "minimumSections": [
+        "current_state",
+        "target_state",
+        "steps",
+        "verification",
+        "rollback",
+        "risks"
+      ],
+      "verificationPrompts": [
+        "Add a verification step for each risky transition.",
+        "Explain compatibility window and coexistence assumptions.",
+        "Call out rollback point before irreversible steps."
+      ]
+    }
+  ]
+}

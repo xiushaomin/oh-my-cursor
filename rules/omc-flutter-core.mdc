@@ -1,0 +1,15 @@
+---
+description: Flutter app rule for widget composition, state boundaries, Material 3 alignment, localization, performance, accessibility, and testing.
+globs: ["**/pubspec.yaml", "**/lib/**/*.dart", "**/test/**/*.dart", "**/integration_test/**/*.dart"]
+alwaysApply: false
+---
+
+# flutter core
+
+- Keep widgets small, focused, and easy to reason about. Break oversized screens into reusable UI pieces and clear state boundaries.
+- Prefer explicit state-management boundaries and dependency wiring over implicit cross-feature coupling.
+- Respect Material 3 and platform idioms together, following the existing app design language.
+- Keep navigation, validation, loading, error, and empty states explicit in the UI flow.
+- Design for localization, accessibility, testing, and performance from the start rather than treating them as follow-up work.
+- Use null safety deliberately and keep asynchronous flows, side effects, and state updates easy to trace.
+- Make business logic testable outside the widget tree and use widget or integration tests on critical flows where practical.

@@ -1,0 +1,15 @@
+---
+description: Frontend core rule for React and TypeScript UI work: component reuse, explicit props, design-system consistency, accessibility, and disciplined client data state.
+globs: ["**/*.tsx", "**/*.jsx", "**/components/**/*.ts", "**/components/**/*.tsx", "**/src/**/*.tsx", "**/src/**/*.jsx"]
+alwaysApply: false
+---
+
+# frontend core
+
+- Reuse shared components before creating new ones. Extend existing primitives instead of introducing near-duplicate UI.
+- Keep components small, purpose-specific, and explicitly typed. Avoid vague prop bags and mixed rendering/data responsibilities.
+- Follow the existing design system first. Reuse shared tokens, spacing, typography, and component conventions before inventing new patterns.
+- Treat Tailwind and component libraries as system tools. Use them to reinforce consistency, not to create one-off styling islands.
+- Encapsulate remote data logic in dedicated hooks or clear data modules. Do not scatter fetch and mutation logic through arbitrary components.
+- Use stable query keys, explicit invalidation, and explicit loading, empty, error, and success states when client-side caching is involved.
+- Prefer readability, accessibility, and product consistency over cleverness or visual novelty.

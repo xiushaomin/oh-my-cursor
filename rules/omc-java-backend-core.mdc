@@ -1,0 +1,17 @@
+---
+description: Java backend rule for Spring-style server code: controller/service/repository boundaries, DTOs, validation, JPA query shape, and transactions.
+globs: ["**/src/main/java/**/*.java", "**/src/test/java/**/*.java", "**/pom.xml", "**/application.yml", "**/application.yaml", "**/application.properties"]
+alwaysApply: false
+---
+
+# java backend core
+
+- Keep layer boundaries clear: controllers own HTTP translation, services own business logic and orchestration, repositories own persistence access.
+- Do not leak repository access directly into controllers unless the repository is the explicit subject of the task and the design already allows it.
+- Prefer request and response DTOs across API boundaries. Keep persistence entities focused on persistence modeling rather than response shaping.
+- Validate inbound data close to the boundary and keep failure behavior explicit, predictable, and observable.
+- Be deliberate about relationship loading and query shaping. Watch for N+1 risks and accidental over-fetching.
+- Keep repository methods intention-revealing, narrow in scope, and aligned with aggregate access patterns.
+- Put multi-step write workflows behind explicit transactional boundaries. Avoid mixing persistence details, validation, and orchestration into oversized service methods.
+- Prefer explicit not-found and invalid-state handling over null-driven control flow.
+- Match the project's existing dependency injection, exception handling, and response conventions unless the task is specifically to improve them.

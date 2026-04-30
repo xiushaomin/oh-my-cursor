@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1",
+  "productVersion": "0.1.0",
+  "defaults": {
+    "maxRuleIds": 2,
+    "maxPackIds": 2,
+    "routerAgentLimit": 3
+  },
+  "profiles": [
+    {
+      "id": "planning",
+      "agentIds": [
+        "pm-planner",
+        "question-asker"
+      ],
+      "include": {
+        "workflowSummary": true,
+        "workflowDeliverables": true,
+        "packRules": false,
+        "checkLane": false
+      },
+      "focus": "Clarify scope, constraints, and next steps with the smallest useful question set.",
+      "outputHints": [
+        "goals",
+        "milestones",
+        "open_questions",
+        "risks"
+      ]
+    },
+    {
+      "id": "research",
+      "agentIds": [
+        "repo-researcher",
+        "debug-investigator"
+      ],
+      "include": {
+        "workflowSummary": true,
+        "workflowDeliverables": true,
+        "packRules": true,
+        "checkLane": true
+      },
+      "focus": "Read narrowly, cite concrete files, and return evidence-backed findings only.",
+      "outputHints": [
+        "findings",
+        "files_of_interest",
+        "evidence",
+        "next_steps"
+      ]
+    },
+    {
+      "id": "implementation",
+      "agentIds": [
+        "frontend-engineer",
+        "java-backend-engineer",
+        "ios-engineer",
+        "android-engineer",
+        "flutter-engineer",
+        "react-native-engineer"
+      ],
+      "include": {
+        "workflowSummary": true,
+        "workflowDeliverables": true,
+        "packRules": true,
+        "checkLane": true
+      },
+      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "outputHints": [
+        "status",
+        "files_changed",
+        "checks_run",
+        "risks"
+      ]
+    },
+    {
+      "id": "review",
+      "agentIds": [
+        "frontend-qa-reviewer",
+        "backend-qa-reviewer",
+        "mobile-qa-reviewer",
+        "architecture-reviewer",
+        "migration-reviewer",
+        "test-writer"
+      ],
+      "include": {
+        "workflowSummary": true,
+        "workflowDeliverables": true,
+        "packRules": true,
+        "checkLane": true
+      },
+      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "outputHints": [
+        "findings",
+        "severity",
+        "verification",
+        "handoffs"
+      ]
+    },
+    {
+      "id": "documentation",
+      "agentIds": [
+        "docs-maintainer",
+        "release-notes-writer"
+      ],
+      "include": {
+        "workflowSummary": true,
+        "workflowDeliverables": true,
+        "packRules": false,
+        "checkLane": true
+      },
+      "focus": "Turn technical changes into concise reviewer-ready or user-facing artifacts.",
+      "outputHints": [
+        "summary",
+        "verification",
+        "risks",
+        "handoffs"
+      ]
+    }
+  ]
+}
