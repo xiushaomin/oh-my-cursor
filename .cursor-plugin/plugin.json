@@ -1,0 +1,11 @@
+{
+  "name": "oh-my-cursor",
+  "version": "0.1.0",
+  "description": "Cursor-native workflows, skills, subagents, hooks, and rules for app teams.",
+  "author": { "name": "oh-my-cursor" },
+  "license": "MIT",
+  "rules": "rules",
+  "skills": "skills",
+  "agents": "agents",
+  "hooks": "hooks/hooks.json"
+}

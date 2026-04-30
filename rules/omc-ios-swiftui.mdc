@@ -1,0 +1,17 @@
+---
+description: iOS rule for Swift and SwiftUI app code: view composition, state ownership, @MainActor, structured concurrency, cancellation, and actor isolation.
+globs: ["**/ios/**/*.swift", "**/*.xcodeproj/**", "**/*.xcworkspace/**", "**/Package.swift"]
+alwaysApply: false
+---
+
+# ios swiftui
+
+- Prefer native SwiftUI building blocks and platform-consistent interaction patterns before introducing custom UI systems.
+- Keep views composable and focused. Move orchestration, networking, persistence, and nontrivial transformation logic out of view bodies.
+- Use explicit state ownership. Keep long-lived observable state in dedicated models or view models and keep views as clear render surfaces.
+- Mark UI-bound state and mutations with `@MainActor` where appropriate. Do not casually update UI-observed state from background execution contexts.
+- Treat Swift concurrency as a design constraint: prefer structured concurrency, preserve cancellation, and avoid detached work unless it is clearly justified.
+- Be deliberate about task lifetime. Tie asynchronous work to view or feature lifetime and cancel work that is no longer relevant.
+- Keep actor and isolation boundaries understandable. Do not silence concurrency warnings by weakening isolation without explaining the tradeoff.
+- Prefer small reusable views, clear navigation structure, accessibility-aware controls, and platform-consistent interaction feedback.
+- Keep project structure legible across app entry, shared UI, models, services, utilities, and tests, but adapt to the repository that already exists.

@@ -1,0 +1,1536 @@
+{
+  "schemaVersion": "1",
+  "productVersion": "0.1.0",
+  "capabilities": [
+    {
+      "id": "skill.omc-brainstorm",
+      "title": "Brainstorm skill",
+      "description": "Ideation and option exploration before planning.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-brainstorm"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-brainstorm/SKILL.md",
+        "targetPath": "skills/omc-brainstorm/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Brainstorm workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-plan",
+      "title": "Plan skill",
+      "description": "Structured planning and decomposition.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-plan"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-plan/SKILL.md",
+        "targetPath": "skills/omc-plan/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Plan workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-work",
+      "title": "Work skill",
+      "description": "Guided step-by-step execution.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-work"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-work/SKILL.md",
+        "targetPath": "skills/omc-work/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Guided work workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-orchestrator",
+      "title": "Orchestrator skill",
+      "description": "Multi-phase orchestration with subagents.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-orchestrator/SKILL.md",
+        "targetPath": "skills/omc-orchestrator/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Orchestrate workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-review",
+      "title": "Review skill",
+      "description": "Quality and security review workflows.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-review"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-review/SKILL.md",
+        "targetPath": "skills/omc-review/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Review workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-debug",
+      "title": "Debug skill",
+      "description": "Root-cause debugging workflows.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-debug"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-debug/SKILL.md",
+        "targetPath": "skills/omc-debug/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Debug workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-scm",
+      "title": "SCM skill",
+      "description": "Git and handoff workflows.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-scm"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-scm/SKILL.md",
+        "targetPath": "skills/omc-scm/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "SCM workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-architecture",
+      "title": "Architecture skill",
+      "description": "Architecture and tradeoff workflows.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-architecture"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-architecture/SKILL.md",
+        "targetPath": "skills/omc-architecture/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Architecture workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-frontend",
+      "title": "Frontend domain skill",
+      "description": "Web frontend implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-frontend"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-frontend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-frontend/SKILL.md",
+        "targetPath": "skills/omc-frontend/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "Frontend pack primary skill."
+      }
+    },
+    {
+      "id": "skill.omc-java-backend",
+      "title": "Java backend domain skill",
+      "description": "Java backend implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-java-backend"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-java-backend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-java-backend/SKILL.md",
+        "targetPath": "skills/omc-java-backend/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "Java backend pack primary skill."
+      }
+    },
+    {
+      "id": "skill.omc-ios",
+      "title": "iOS domain skill",
+      "description": "iOS implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-ios"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-ios"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-ios/SKILL.md",
+        "targetPath": "skills/omc-ios/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "iOS pack primary skill."
+      }
+    },
+    {
+      "id": "skill.omc-android",
+      "title": "Android domain skill",
+      "description": "Android implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-android"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-android"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-android/SKILL.md",
+        "targetPath": "skills/omc-android/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "Android pack primary skill."
+      }
+    },
+    {
+      "id": "skill.omc-flutter",
+      "title": "Flutter domain skill",
+      "description": "Flutter implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-flutter"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-flutter"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-flutter/SKILL.md",
+        "targetPath": "skills/omc-flutter/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "Flutter pack primary skill."
+      }
+    },
+    {
+      "id": "skill.omc-react-native",
+      "title": "React Native domain skill",
+      "description": "React Native implementation expertise.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-react-native"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-react-native/SKILL.md",
+        "targetPath": "skills/omc-react-native/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "domain",
+        "summary": "React Native pack primary skill."
+      }
+    },
+    {
+      "id": "agent.pm-planner",
+      "title": "PM planner subagent",
+      "description": "Planning and task decomposition.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-plan"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/pm-planner.md",
+        "targetPath": "agents/pm-planner.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Planning specialist."
+      }
+    },
+    {
+      "id": "agent.architecture-reviewer",
+      "title": "Architecture reviewer subagent",
+      "description": "Architecture tradeoffs and boundaries.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review",
+          "omc-plan",
+          "omc-architecture"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/architecture-reviewer.md",
+        "targetPath": "agents/architecture-reviewer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Architecture specialist."
+      }
+    },
+    {
+      "id": "agent.debug-investigator",
+      "title": "Debug investigator subagent",
+      "description": "Root-cause investigation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-debug",
+          "omc-incident-report"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/debug-investigator.md",
+        "targetPath": "agents/debug-investigator.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Debugging specialist."
+      }
+    },
+    {
+      "id": "agent.frontend-engineer",
+      "title": "Frontend engineer subagent",
+      "description": "Web frontend implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-frontend"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-frontend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/frontend-engineer.md",
+        "targetPath": "agents/frontend-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Frontend implementer."
+      }
+    },
+    {
+      "id": "agent.frontend-qa-reviewer",
+      "title": "Frontend QA reviewer subagent",
+      "description": "Frontend-focused QA review.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-frontend"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review"
+        ],
+        "packIds": [
+          "omc-frontend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/frontend-qa-reviewer.md",
+        "targetPath": "agents/frontend-qa-reviewer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Frontend QA."
+      }
+    },
+    {
+      "id": "agent.java-backend-engineer",
+      "title": "Java backend engineer subagent",
+      "description": "Java backend implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-java-backend"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-java-backend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/java-backend-engineer.md",
+        "targetPath": "agents/java-backend-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Java backend implementer."
+      }
+    },
+    {
+      "id": "agent.backend-qa-reviewer",
+      "title": "Backend QA reviewer subagent",
+      "description": "Backend-focused QA review.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-java-backend"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review"
+        ],
+        "packIds": [
+          "omc-java-backend"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/backend-qa-reviewer.md",
+        "targetPath": "agents/backend-qa-reviewer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Backend QA."
+      }
+    },
+    {
+      "id": "agent.ios-engineer",
+      "title": "iOS engineer subagent",
+      "description": "iOS implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-ios"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-ios"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/ios-engineer.md",
+        "targetPath": "agents/ios-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "iOS implementer."
+      }
+    },
+    {
+      "id": "agent.android-engineer",
+      "title": "Android engineer subagent",
+      "description": "Android implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-android"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-android"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/android-engineer.md",
+        "targetPath": "agents/android-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Android implementer."
+      }
+    },
+    {
+      "id": "agent.flutter-engineer",
+      "title": "Flutter engineer subagent",
+      "description": "Flutter implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-flutter"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-flutter"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/flutter-engineer.md",
+        "targetPath": "agents/flutter-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Flutter implementer."
+      }
+    },
+    {
+      "id": "agent.react-native-engineer",
+      "title": "React Native engineer subagent",
+      "description": "React Native implementation.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-react-native"
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate"
+        ],
+        "packIds": [
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/react-native-engineer.md",
+        "targetPath": "agents/react-native-engineer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "React Native implementer."
+      }
+    },
+    {
+      "id": "agent.mobile-qa-reviewer",
+      "title": "Mobile QA reviewer subagent",
+      "description": "Mobile-focused QA review.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review"
+        ],
+        "packIds": [
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/mobile-qa-reviewer.md",
+        "targetPath": "agents/mobile-qa-reviewer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Mobile QA."
+      }
+    },
+    {
+      "id": "hook.omc-router",
+      "title": "OHC prompt router hook",
+      "description": "Routes prompts to workflows via metadata.",
+      "status": "active",
+      "type": "hook",
+      "surface": "cursor-hook",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "hooks/omc-router.mjs",
+        "targetPath": "hooks/omc-router.mjs",
+        "managed": true
+      },
+      "explain": {
+        "category": "hook",
+        "summary": "beforeSubmitPrompt router."
+      }
+    },
+    {
+      "id": "hook.omc-persistent",
+      "title": "OHC persistent stop hook",
+      "description": "Handles persistent workflow stop confirmation.",
+      "status": "active",
+      "type": "hook",
+      "surface": "cursor-hook",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "hooks/omc-persistent.mjs",
+        "targetPath": "hooks/omc-persistent.mjs",
+        "managed": true
+      },
+      "explain": {
+        "category": "hook",
+        "summary": "stop hook for persistent workflows."
+      }
+    },
+    {
+      "id": "hook.omc-session",
+      "title": "OHC session context hook",
+      "description": "Injects lightweight session context from packs metadata.",
+      "status": "active",
+      "type": "hook",
+      "surface": "cursor-hook",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "hooks/omc-session.mjs",
+        "targetPath": "hooks/omc-session.mjs",
+        "managed": true
+      },
+      "explain": {
+        "category": "hook",
+        "summary": "sessionStart context hint."
+      }
+    },
+    {
+      "id": "rule.common-core",
+      "title": "Common core rule",
+      "description": "Shared engineering guidance for clarification, simplicity, surgical changes, delegation discipline, and verification.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": [
+          "frontend-engineer",
+          "frontend-qa-reviewer",
+          "java-backend-engineer",
+          "backend-qa-reviewer",
+          "ios-engineer",
+          "android-engineer",
+          "flutter-engineer",
+          "react-native-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-common.mdc",
+        "targetPath": "rules/omc-common.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Shared baseline rule for simplicity, clarity, delegation discipline, and verification."
+      }
+    },
+    {
+      "id": "rule.frontend-core",
+      "title": "Frontend core rule",
+      "description": "Frontend standards for reuse, UI consistency, accessibility, and client data state.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-frontend"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-frontend"
+        ],
+        "agentIds": [
+          "frontend-engineer",
+          "frontend-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-frontend-core.mdc",
+        "targetPath": "rules/omc-frontend-core.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Frontend pack baseline rule."
+      }
+    },
+    {
+      "id": "rule.next-app-router",
+      "title": "Next.js App Router rule",
+      "description": "Next.js App Router standards for server-first rendering, route files, route handlers, and client/server boundaries.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-frontend"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-frontend"
+        ],
+        "agentIds": [
+          "frontend-engineer",
+          "frontend-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-next-app-router.mdc",
+        "targetPath": "rules/omc-next-app-router.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Next.js App Router specialized rule."
+      }
+    },
+    {
+      "id": "rule.java-backend-core",
+      "title": "Java backend core rule",
+      "description": "Backend standards for service boundaries, DTO use, JPA correctness, and transactions.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-java-backend"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-java-backend"
+        ],
+        "agentIds": [
+          "java-backend-engineer",
+          "backend-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-java-backend-core.mdc",
+        "targetPath": "rules/omc-java-backend-core.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Java backend pack baseline rule."
+      }
+    },
+    {
+      "id": "rule.mobile-core",
+      "title": "Mobile core rule",
+      "description": "Shared mobile standards for architecture fit, state flow, release risk, and testability.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": [
+          "ios-engineer",
+          "android-engineer",
+          "flutter-engineer",
+          "react-native-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-mobile-core.mdc",
+        "targetPath": "rules/omc-mobile-core.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Shared mobile baseline rule."
+      }
+    },
+    {
+      "id": "rule.ios-swiftui",
+      "title": "iOS SwiftUI rule",
+      "description": "iOS standards for SwiftUI composition and Swift concurrency discipline.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-ios"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-ios"
+        ],
+        "agentIds": [
+          "ios-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-ios-swiftui.mdc",
+        "targetPath": "rules/omc-ios-swiftui.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "iOS platform-specialized rule."
+      }
+    },
+    {
+      "id": "rule.android-compose",
+      "title": "Android Compose rule",
+      "description": "Android standards for Kotlin, Compose, Material 3, Flow, and ViewModel state flow.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-android"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-android"
+        ],
+        "agentIds": [
+          "android-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-android-compose.mdc",
+        "targetPath": "rules/omc-android-compose.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Android platform-specialized rule."
+      }
+    },
+    {
+      "id": "rule.react-native-expo",
+      "title": "React Native Expo rule",
+      "description": "React Native and Expo standards for typed components, platform capabilities, navigation, and mobile delivery concerns.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-react-native"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-react-native"
+        ],
+        "agentIds": [
+          "react-native-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-react-native-expo.mdc",
+        "targetPath": "rules/omc-react-native-expo.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "React Native platform-specialized rule."
+      }
+    },
+    {
+      "id": "rule.flutter-core",
+      "title": "Flutter core rule",
+      "description": "Flutter standards for widget composition, state boundaries, Material 3 alignment, and testable feature structure.",
+      "status": "active",
+      "type": "rule",
+      "surface": "cursor-rule",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": "omc-flutter"
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [
+          "omc-flutter"
+        ],
+        "agentIds": [
+          "flutter-engineer",
+          "mobile-qa-reviewer"
+        ]
+      },
+      "install": {
+        "sourcePath": "rules/omc-flutter-core.mdc",
+        "targetPath": "rules/omc-flutter-core.mdc",
+        "managed": true
+      },
+      "explain": {
+        "category": "rule",
+        "summary": "Flutter platform-specialized rule."
+      }
+    },
+    {
+      "id": "agent.test-writer",
+      "title": "Test writer subagent",
+      "description": "Focused test additions and verification planning.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review",
+          "omc-debug",
+          "omc-test-plan",
+          "omc-release-checklist",
+          "omc-migration-checklist"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/test-writer.md",
+        "targetPath": "agents/test-writer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Focused test additions and verification planning."
+      }
+    },
+    {
+      "id": "agent.release-notes-writer",
+      "title": "Release notes writer subagent",
+      "description": "PR summaries, release notes, and handoff wording.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-scm",
+          "omc-pr-summary",
+          "omc-release-checklist"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/release-notes-writer.md",
+        "targetPath": "agents/release-notes-writer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "PR summaries, release notes, and handoff wording."
+      }
+    },
+    {
+      "id": "agent.migration-reviewer",
+      "title": "Migration reviewer subagent",
+      "description": "Migration, compatibility, rollout, and rollback review.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-review",
+          "omc-architecture",
+          "omc-release-checklist",
+          "omc-migration-checklist"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/migration-reviewer.md",
+        "targetPath": "agents/migration-reviewer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Migration, compatibility, rollout, and rollback review."
+      }
+    },
+    {
+      "id": "agent.docs-maintainer",
+      "title": "Docs maintainer subagent",
+      "description": "README, docs, migration docs, and user guidance updates.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-debug",
+          "omc-scm",
+          "omc-pr-summary",
+          "omc-incident-report"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/docs-maintainer.md",
+        "targetPath": "agents/docs-maintainer.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "README, docs, migration docs, and user guidance updates."
+      }
+    },
+    {
+      "id": "agent.repo-researcher",
+      "title": "Repo researcher subagent",
+      "description": "Read-only repository mapping and evidence gathering.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/repo-researcher.md",
+        "targetPath": "agents/repo-researcher.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Read-only repository mapping and evidence gathering."
+      }
+    },
+    {
+      "id": "agent.question-asker",
+      "title": "Question asker subagent",
+      "description": "Minimal clarifying questions and default assumptions.",
+      "status": "active",
+      "type": "agent",
+      "surface": "cursor-agent",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-plan"
+        ],
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "agents/question-asker.md",
+        "targetPath": "agents/question-asker.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "subagent",
+        "summary": "Minimal clarifying questions and default assumptions."
+      }
+    },
+    {
+      "id": "skill.omc-test-plan",
+      "title": "Test plan skill",
+      "description": "Test planning and coverage workflow.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-test-plan"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-test-plan/SKILL.md",
+        "targetPath": "skills/omc-test-plan/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "delivery",
+        "summary": "Test planning and coverage workflow."
+      }
+    },
+    {
+      "id": "skill.omc-pr-summary",
+      "title": "PR summary skill",
+      "description": "Reviewer-ready PR summary workflow.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-pr-summary"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-pr-summary/SKILL.md",
+        "targetPath": "skills/omc-pr-summary/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "delivery",
+        "summary": "Reviewer-ready PR summary workflow."
+      }
+    },
+    {
+      "id": "skill.omc-release-checklist",
+      "title": "Release checklist skill",
+      "description": "Release readiness workflow.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-release-checklist"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-release-checklist/SKILL.md",
+        "targetPath": "skills/omc-release-checklist/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "delivery",
+        "summary": "Release readiness workflow."
+      }
+    },
+    {
+      "id": "skill.omc-incident-report",
+      "title": "Incident report skill",
+      "description": "Incident/debug report workflow.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-incident-report"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-incident-report/SKILL.md",
+        "targetPath": "skills/omc-incident-report/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "delivery",
+        "summary": "Incident/debug report workflow."
+      }
+    },
+    {
+      "id": "skill.omc-migration-checklist",
+      "title": "Migration checklist skill",
+      "description": "Migration and rollback planning workflow.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-migration-checklist"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-migration-checklist/SKILL.md",
+        "targetPath": "skills/omc-migration-checklist/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "delivery",
+        "summary": "Migration and rollback planning workflow."
+      }
+    },
+    {
+      "id": "hook.omc-governance",
+      "title": "OHC governance hook",
+      "description": "Conservative shell, MCP, file read, and file edit governance/audit hook.",
+      "status": "active",
+      "type": "hook",
+      "surface": "cursor-hook",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "hooks/omc-governance.mjs",
+        "targetPath": "hooks/omc-governance.mjs",
+        "managed": true
+      },
+      "explain": {
+        "category": "hook",
+        "summary": "before/after governance for shell, MCP, reads, and edits."
+      }
+    }
+  ]
+}

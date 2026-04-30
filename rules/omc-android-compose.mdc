@@ -1,0 +1,16 @@
+---
+description: Android app rule for Kotlin and Jetpack Compose: ViewModel-owned state, Material 3, coroutines, Flow, recomposition, and UI testability.
+globs: ["**/AndroidManifest.xml", "**/app/src/main/**/*.kt", "**/app/src/test/**/*.kt", "**/app/src/androidTest/**/*.kt", "**/android/**/*.kt"]
+alwaysApply: false
+---
+
+# android compose
+
+- Prefer unidirectional data flow with ViewModel-owned UI state.
+- Use Kotlin coroutines and Flow intentionally for async work and state propagation when the project already follows that model.
+- Respect Material 3 and the existing design system before inventing custom interaction patterns.
+- Hoist state thoughtfully and keep composables focused, testable, and free of unrelated orchestration logic.
+- Manage recomposition intentionally. Avoid unnecessary state churn, unstable parameters, and work in composition that belongs elsewhere.
+- Keep loading, error, and empty states explicit in the UI.
+- Favor Hilt or the repository's existing dependency injection pattern instead of ad hoc wiring.
+- Write ViewModel and use-case logic so it can be tested without the UI layer, and use Compose UI tests on critical user flows where practical.

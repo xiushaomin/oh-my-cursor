@@ -1,0 +1,18 @@
+---
+description: Shared baseline rule for all oh-my-cursor packs: clarify intent, prefer simple solutions, keep changes surgical, delegate narrowly, and verify with evidence.
+globs: []
+alwaysApply: true
+---
+
+# common
+
+- Start by clarifying the task, constraints, and success criteria before proposing broad implementation.
+- Prefer the simplest solution that satisfies the request; do not add layers, abstractions, or dependencies without clear need.
+- Keep changes surgical and local. Reuse existing patterns before introducing new ones.
+- Break work into concrete, reviewable steps when the task is multi-stage or ambiguous.
+- Turn vague requests into explicit deliverables, assumptions, risks, and verification targets.
+- Prefer evidence over guesswork: inspect the repo, read the relevant files, and verify before claiming completion.
+- If a task is better handled by a focused specialist or subagent, delegate narrowly with clear ownership and a concrete done condition.
+- Avoid opportunistic refactors unless they directly reduce risk or are required for the requested change.
+- Preserve user intent and existing behavior unless the task explicitly asks for behavior changes.
+- Report what changed, how it was verified, and what remains uncertain when verification is incomplete.

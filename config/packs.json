@@ -1,0 +1,571 @@
+{
+  "schemaVersion": "1",
+  "productVersion": "0.1.0",
+  "packs": [
+    {
+      "id": "omc-frontend",
+      "title": "Frontend",
+      "description": "React, Next.js, TypeScript, and modern web UI delivery.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-frontend",
+      "stack": {
+        "platforms": [
+          "web"
+        ],
+        "frameworks": [
+          "react",
+          "next.js"
+        ],
+        "languages": [
+          "typescript",
+          "javascript"
+        ],
+        "signals": [
+          "package.json:react",
+          "next.config.",
+          "vite.config."
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-plan",
+          "omc-work"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "frontend-engineer",
+          "frontend-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.frontend-core",
+          "rule.next-app-router"
+        ]
+      },
+      "qualityFocus": [
+        "accessibility",
+        "performance",
+        "testing",
+        "design-systems"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "package.json:react",
+          "package.json:next",
+          "next.config.*",
+          "vite.config.*"
+        ],
+        "fileGlobs": [
+          "**/components/**/*.tsx",
+          "**/src/**/*.tsx",
+          "**/app/**/*.tsx"
+        ],
+        "keywords": [
+          "react",
+          "next",
+          "tailwind",
+          "frontend",
+          "ui"
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "Web UI work",
+          "Component systems"
+        ],
+        "whenNotToUse": [
+          "Pure mobile native without web UI"
+        ],
+        "relatedPackIds": [
+          "omc-react-native"
+        ]
+      }
+    },
+    {
+      "id": "omc-java-backend",
+      "title": "Java backend",
+      "description": "Spring-style services, APIs, validation, and backend review.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-java-backend",
+      "stack": {
+        "platforms": [
+          "server"
+        ],
+        "frameworks": [
+          "spring boot"
+        ],
+        "languages": [
+          "java",
+          "kotlin"
+        ],
+        "signals": [
+          "**/pom.xml",
+          "**/src/main/java/**/*.java",
+          "**/application.yml",
+          "**/application.yaml",
+          "**/application.properties"
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-plan",
+          "omc-review"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "java-backend-engineer",
+          "backend-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.java-backend-core"
+        ]
+      },
+      "qualityFocus": [
+        "api-contracts",
+        "validation",
+        "security",
+        "testing"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "**/pom.xml",
+          "**/src/main/java/**/*.java",
+          "**/application.yml",
+          "**/application.yaml",
+          "**/application.properties"
+        ],
+        "fileGlobs": [
+          "**/src/main/java/**/*.java",
+          "**/src/test/java/**/*.java"
+        ],
+        "keywords": [
+          "spring",
+          "rest",
+          "api",
+          "java",
+          "backend"
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "Service and API work in Java ecosystem"
+        ],
+        "whenNotToUse": [
+          "Pure frontend-only repos"
+        ],
+        "relatedPackIds": []
+      }
+    },
+    {
+      "id": "omc-ios",
+      "title": "iOS",
+      "description": "Swift, SwiftUI, UIKit, and Apple platform delivery.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-ios",
+      "stack": {
+        "platforms": [
+          "ios"
+        ],
+        "frameworks": [
+          "swiftui",
+          "uikit"
+        ],
+        "languages": [
+          "swift"
+        ],
+        "signals": [
+          "**/*.xcodeproj/",
+          "**/Package.swift",
+          "**/Podfile",
+          "**/ios/**/*.swift"
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-work",
+          "omc-debug"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "ios-engineer",
+          "mobile-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.mobile-core",
+          "rule.ios-swiftui"
+        ]
+      },
+      "qualityFocus": [
+        "platform-correctness",
+        "lifecycle",
+        "testing"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "**/*.xcodeproj/",
+          "**/Package.swift",
+          "**/Podfile",
+          "**/ios/**/*.swift"
+        ],
+        "fileGlobs": [
+          "**/ios/**/*.swift",
+          "**/Sources/**/*.swift"
+        ],
+        "keywords": [
+          "swift",
+          "swiftui",
+          "uikit",
+          "ios",
+          "xcode"
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "Apple platform app work"
+        ],
+        "whenNotToUse": [
+          "Android-only repos"
+        ],
+        "relatedPackIds": [
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      }
+    },
+    {
+      "id": "omc-android",
+      "title": "Android",
+      "description": "Kotlin, Jetpack Compose, and Android architecture.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-android",
+      "stack": {
+        "platforms": [
+          "android"
+        ],
+        "frameworks": [
+          "jetpack compose"
+        ],
+        "languages": [
+          "kotlin",
+          "java"
+        ],
+        "signals": [
+          "**/AndroidManifest.xml",
+          "**/app/src/main/**/*.kt",
+          "**/settings.gradle",
+          "**/settings.gradle.kts"
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-work",
+          "omc-debug"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "android-engineer",
+          "mobile-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.mobile-core",
+          "rule.android-compose"
+        ]
+      },
+      "qualityFocus": [
+        "lifecycle",
+        "concurrency",
+        "testing"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "**/AndroidManifest.xml",
+          "**/app/src/main/**/*.kt",
+          "**/settings.gradle",
+          "**/settings.gradle.kts"
+        ],
+        "fileGlobs": [
+          "**/app/src/main/**/*.kt",
+          "**/app/src/androidTest/**/*.kt",
+          "**/android/**/*.kt"
+        ],
+        "keywords": [
+          "android",
+          "compose",
+          "kotlin"
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "Android app work"
+        ],
+        "whenNotToUse": [
+          "iOS-only repos"
+        ],
+        "relatedPackIds": [
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      }
+    },
+    {
+      "id": "omc-flutter",
+      "title": "Flutter",
+      "description": "Flutter and Dart cross-platform UI.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-flutter",
+      "stack": {
+        "platforms": [
+          "ios",
+          "android",
+          "web",
+          "desktop"
+        ],
+        "frameworks": [
+          "flutter"
+        ],
+        "languages": [
+          "dart"
+        ],
+        "signals": [
+          "**/pubspec.yaml",
+          "**/lib/**/*.dart"
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-work",
+          "omc-review"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "flutter-engineer",
+          "mobile-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.mobile-core",
+          "rule.flutter-core"
+        ]
+      },
+      "qualityFocus": [
+        "widget-architecture",
+        "state-management",
+        "testing"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "**/pubspec.yaml",
+          "**/lib/**/*.dart"
+        ],
+        "fileGlobs": [
+          "**/lib/**/*.dart",
+          "**/test/**/*.dart",
+          "**/integration_test/**/*.dart"
+        ],
+        "keywords": [
+          "flutter",
+          "dart"
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "Flutter app work"
+        ],
+        "whenNotToUse": [
+          "Pure native single-platform without Flutter"
+        ],
+        "relatedPackIds": [
+          "omc-react-native"
+        ]
+      }
+    },
+    {
+      "id": "omc-react-native",
+      "title": "React Native",
+      "description": "React Native and Expo apps with native boundary awareness.",
+      "status": "active",
+      "kind": "pack",
+      "primarySkillId": "omc-react-native",
+      "stack": {
+        "platforms": [
+          "ios",
+          "android"
+        ],
+        "frameworks": [
+          "react native",
+          "expo"
+        ],
+        "languages": [
+          "typescript",
+          "javascript"
+        ],
+        "signals": [
+          "package.json:react-native",
+          "package.json:expo",
+          "**/app.json",
+          "**/metro.config.js"
+        ]
+      },
+      "compatibility": {
+        "workflowIds": [
+          "omc-orchestrate",
+          "omc-brainstorm",
+          "omc-work",
+          "omc-review",
+          "omc-debug",
+          "omc-plan",
+          "omc-architecture",
+          "omc-scm",
+          "omc-test-plan",
+          "omc-pr-summary",
+          "omc-release-checklist",
+          "omc-incident-report",
+          "omc-migration-checklist"
+        ],
+        "defaultWorkflowIds": [
+          "omc-work",
+          "omc-debug"
+        ]
+      },
+      "assets": {
+        "agentIds": [
+          "react-native-engineer",
+          "mobile-qa-reviewer"
+        ],
+        "ruleIds": [
+          "rule.common-core",
+          "rule.mobile-core",
+          "rule.react-native-expo"
+        ]
+      },
+      "qualityFocus": [
+        "bridge-boundaries",
+        "performance",
+        "testing"
+      ],
+      "packHeuristics": {
+        "repoSignals": [
+          "package.json:react-native",
+          "package.json:expo",
+          "**/app.json",
+          "**/metro.config.js",
+          "**/app.config.ts",
+          "**/app.config.js"
+        ],
+        "fileGlobs": [
+          "**/App.tsx",
+          "**/*.native.tsx",
+          "**/*.native.ts",
+          "**/metro.config.js"
+        ],
+        "keywords": [
+          "react native",
+          "expo",
+          "metro",
+          "rn "
+        ]
+      },
+      "explain": {
+        "whenToUse": [
+          "RN / Expo mobile work"
+        ],
+        "whenNotToUse": [
+          "Pure web SPA without RN"
+        ],
+        "relatedPackIds": [
+          "omc-frontend",
+          "omc-ios",
+          "omc-android"
+        ]
+      }
+    }
+  ]
+}

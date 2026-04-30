@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      { "command": "node ./hooks/omc-router.mjs" }
+    ],
+    "beforeShellExecution": [
+      { "command": "node ./hooks/omc-governance.mjs beforeShellExecution" }
+    ],
+    "afterShellExecution": [
+      { "command": "node ./hooks/omc-governance.mjs afterShellExecution" }
+    ],
+    "beforeMCPExecution": [
+      { "command": "node ./hooks/omc-governance.mjs beforeMCPExecution" }
+    ],
+    "afterMCPExecution": [
+      { "command": "node ./hooks/omc-governance.mjs afterMCPExecution" }
+    ],
+    "beforeReadFile": [
+      { "command": "node ./hooks/omc-governance.mjs beforeReadFile" }
+    ],
+    "afterFileEdit": [
+      { "command": "node ./hooks/omc-governance.mjs afterFileEdit" }
+    ],
+    "stop": [
+      { "command": "node ./hooks/omc-persistent.mjs" }
+    ],
+    "sessionStart": [
+      { "command": "node ./hooks/omc-session.mjs" }
+    ]
+  }
+}

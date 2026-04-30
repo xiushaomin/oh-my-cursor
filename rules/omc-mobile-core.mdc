@@ -1,0 +1,16 @@
+---
+description: Shared mobile rule for app work: architecture fit, explicit state flow, permissions/lifecycle risk, performance, accessibility, and testability.
+globs: ["**/*.xcodeproj/**", "**/*.xcworkspace/**", "**/AndroidManifest.xml", "**/app.json", "**/app.config.js", "**/app.config.ts", "**/pubspec.yaml", "**/ios/**/*.swift", "**/android/**/*.kt", "**/lib/**/*.dart"]
+alwaysApply: false
+---
+
+# mobile core
+
+- Adapt to the existing project architecture before proposing a new one. Prefer consistency with the current codebase over enforcing an idealized folder tree.
+- Keep state flow explicit and predictable. Model loading, empty, error, offline, and retry states as first-class product states.
+- Use platform-appropriate navigation patterns instead of improvising custom routing behavior.
+- Treat permissions, lifecycle, background execution, storage, networking transitions, and crash risk as correctness concerns, not polish concerns.
+- Optimize for responsiveness and avoid unnecessary rerenders, recompositions, rebuilds, or cross-thread work on UI-critical paths.
+- Consider accessibility, device diversity, interaction ergonomics, and localization part of the feature, not follow-up work.
+- Favor testable boundaries: business logic should be unit-testable, and critical flows should have targeted UI or integration coverage where practical.
+- Keep shared mobile guidance principle-based. Let platform-specific rules handle framework details.

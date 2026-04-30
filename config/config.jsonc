@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1",
+  "productVersion": "0.1.0",
+  "enabled": true,
+  "workflows": {
+    "enabled": true,
+    "defaultWorkflowId": null,
+    "persistentEnabled": true,
+    "stopConfirmWindowMsOverride": null,
+    "autoActivationEnabled": true,
+    "disabledWorkflowIds": []
+  },
+  "packs": {
+    "autoDetectionEnabled": true,
+    "preferredPackIds": [],
+    "disabledPackIds": [],
+    "defaultPackId": null
+  },
+  "routing": {
+    "preferExplicitInvocation": false,
+    "fallbackToDefaultWorkflow": true,
+    "maxSuggestedPacks": 3
+  },
+  "hooks": {
+    "routerEnabled": true,
+    "sessionEnabled": true,
+    "persistentEnabled": true,
+    "guardEnabled": true
+  },
+  "safety": {
+    "destructiveShellGuard": true,
+    "destructiveGitGuard": true,
+    "mcpGuardEnabled": true
+  },
+  "telemetry": {
+    "localLogsEnabled": true
+  }
+}
