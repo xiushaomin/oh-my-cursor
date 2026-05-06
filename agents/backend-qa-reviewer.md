@@ -1,6 +1,6 @@
 ---
 name: backend-qa-reviewer
-description: Use for QA review of backend changes — API contracts, data integrity, security, and observability.
+description: Use proactively when reviewing backend changes that may affect API contracts, data integrity, security, or observability.
 model: gpt-5.3-codex
 readonly: true
 is_background: true

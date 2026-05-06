@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "productVersion": "0.1.0",
-  "generatedAt": "2026-04-30T09:25:54.775Z",
+  "generatedAt": "2026-05-06T08:27:22.251Z",
   "workflows": [
     {
       "id": "omc-orchestrate",
@@ -44,7 +44,12 @@
       ],
       "agentIds": [
         "pm-planner",
+        "repo-researcher",
+        "question-asker",
         "architecture-reviewer",
+        "test-writer",
+        "docs-maintainer",
+        "migration-reviewer",
         "frontend-engineer",
         "java-backend-engineer",
         "ios-engineer",
@@ -54,12 +59,7 @@
         "frontend-qa-reviewer",
         "backend-qa-reviewer",
         "mobile-qa-reviewer",
-        "repo-researcher",
-        "question-asker",
-        "test-writer",
-        "docs-maintainer",
-        "release-notes-writer",
-        "migration-reviewer"
+        "release-notes-writer"
       ],
       "agents": [
         {
@@ -67,8 +67,28 @@
           "title": "PM planner subagent"
         },
         {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        },
+        {
+          "id": "question-asker",
+          "title": "Question asker subagent"
+        },
+        {
           "id": "architecture-reviewer",
           "title": "Architecture reviewer subagent"
+        },
+        {
+          "id": "test-writer",
+          "title": "Test writer subagent"
+        },
+        {
+          "id": "docs-maintainer",
+          "title": "Docs maintainer subagent"
+        },
+        {
+          "id": "migration-reviewer",
+          "title": "Migration reviewer subagent"
         },
         {
           "id": "frontend-engineer",
@@ -107,28 +127,8 @@
           "title": "Mobile QA reviewer subagent"
         },
         {
-          "id": "repo-researcher",
-          "title": "Repo researcher subagent"
-        },
-        {
-          "id": "question-asker",
-          "title": "Question asker subagent"
-        },
-        {
-          "id": "test-writer",
-          "title": "Test writer subagent"
-        },
-        {
-          "id": "docs-maintainer",
-          "title": "Docs maintainer subagent"
-        },
-        {
           "id": "release-notes-writer",
           "title": "Release notes writer subagent"
-        },
-        {
-          "id": "migration-reviewer",
-          "title": "Migration reviewer subagent"
         }
       ],
       "ruleIds": [

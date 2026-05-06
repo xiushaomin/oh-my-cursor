@@ -25,6 +25,7 @@
       "routing": {
         "keywords": [
           "orchestrate",
+          "orchestrator",
           "parallel",
           "run in parallel",
           "do everything",
@@ -33,6 +34,7 @@
         ],
         "phrases": [],
         "manualInvocations": [
+          "/omc-orchestrate",
           "/omc-orchestrator"
         ],
         "preferExplicitInvocation": false
@@ -58,7 +60,12 @@
       "subagents": {
         "recommended": [
           "pm-planner",
+          "repo-researcher",
+          "question-asker",
           "architecture-reviewer",
+          "test-writer",
+          "docs-maintainer",
+          "migration-reviewer",
           "frontend-engineer",
           "java-backend-engineer",
           "ios-engineer",
@@ -68,12 +75,7 @@
           "frontend-qa-reviewer",
           "backend-qa-reviewer",
           "mobile-qa-reviewer",
-          "repo-researcher",
-          "question-asker",
-          "test-writer",
-          "docs-maintainer",
-          "release-notes-writer",
-          "migration-reviewer"
+          "release-notes-writer"
         ],
         "forbidden": []
       },

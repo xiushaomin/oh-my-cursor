@@ -1,6 +1,5 @@
 ---
-description: Shared baseline rule for all oh-my-cursor packs: clarify intent, prefer simple solutions, keep changes surgical, delegate narrowly, and verify with evidence.
-globs: []
+description: "Shared baseline rule for all oh-my-cursor packs: clarify intent, prefer simple solutions, keep changes surgical, delegate narrowly, and verify with evidence."
 alwaysApply: true
 ---
 

@@ -156,6 +156,23 @@ Key files:
 - `config/check-lanes.json`
 - `config/config.jsonc`
 
+## Cursor-native best practices
+
+The design target is to amplify Cursor's native primitives, not compete with them.
+
+- Keep `rules/` concise and composable, like strong project rules rather than mini runtimes.
+- Keep `skills/` for multi-step workflows that need ordered protocols or handoffs.
+- Keep `agents/` narrowly scoped, with descriptions that clearly say when delegation should happen.
+- Keep `hooks/` responsible for lifecycle control, guardrails, and telemetry, because Cursor already gives hooks the right event boundaries for that job.
+
+When a behavior could live in multiple places, prefer the most native layer first:
+
+1. `rules/` for durable coding guidance
+2. `skills/` for reusable workflows
+3. `agents/` for focused delegated work
+4. `hooks/` for event-driven control and enforcement
+5. `config/` only as the metadata glue that keeps the above coherent
+
 ## Model routing
 
 Model choice is role-based, not uniform.
@@ -200,3 +217,11 @@ node scripts/verify-plugin.mjs
 ```
 
 These checks matter because the product is mostly metadata plus runtime glue. Small path or schema drift can quietly break the plugin.
+
+Add the behavior suite too:
+
+```bash
+node --test tests/*.test.mjs
+```
+
+Those tests lock the router, governance, persistent stop flow, and pack detection so best-practice cleanup work stays reversible.

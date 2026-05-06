@@ -1,6 +1,6 @@
 ---
 name: debug-investigator
-description: Use for systematic debugging — trace failures, form hypotheses, and narrow root cause.
+description: Use proactively when a repro, stack trace, flaky test, or ambiguous failure needs systematic root-cause narrowing.
 model: gpt-5.5-medium
 readonly: true
 is_background: true

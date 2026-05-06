@@ -1,6 +1,6 @@
 ---
 name: question-asker
-description: Use when a task has hidden ambiguity and needs the smallest useful clarifying question before implementation.
+description: Use proactively when hidden ambiguity could change implementation, cost, or user-visible behavior and 1-3 precise questions can unblock progress.
 model: kimi-k2.5
 readonly: true
 is_background: true

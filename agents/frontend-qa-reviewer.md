@@ -1,6 +1,6 @@
 ---
 name: frontend-qa-reviewer
-description: Use for QA review of web/UI changes — UX, a11y, performance, and frontend test gaps.
+description: Use proactively when reviewing web or UI changes for UX, accessibility, performance, and frontend test gaps.
 model: grok-4-20
 readonly: true
 is_background: true

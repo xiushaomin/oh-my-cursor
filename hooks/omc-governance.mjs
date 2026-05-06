@@ -59,6 +59,39 @@ function mcpName(input) {
   );
 }
 
+function mcpPayloadText(input) {
+  return pickString(
+    input.tool_input,
+    input.toolInput,
+    input.args?.tool_input,
+    input.args?.toolInput,
+  );
+}
+
+function toolName(input) {
+  return pickString(
+    input.tool_name,
+    input.toolName,
+    input.tool,
+    input.name,
+    input.args?.tool,
+    input.tool_input?.tool,
+    input.toolInput?.tool,
+  );
+}
+
+function subagentName(input) {
+  return pickString(
+    input.subagent_name,
+    input.subagentName,
+    input.agent_name,
+    input.agentName,
+    input.task_name,
+    input.taskName,
+    input.name,
+  );
+}
+
 function filePath(input) {
   return pickString(
     input.path,
@@ -118,11 +151,31 @@ function riskyShellReason(command) {
 }
 
 function riskyMcpReason(name, input) {
-  const text = JSON.stringify({ name, input }).toLowerCase();
-  if (/(install|add|create|write|delete|remove).*(mcp|server)/.test(text)) {
+  const normalizedName = String(name).trim().toLowerCase();
+  const payload = String(mcpPayloadText(input)).toLowerCase();
+  const configText = JSON.stringify({
+    server: input.server ?? input.serverName ?? input.server_name ?? "",
+    transport: input.transport ?? input.args?.transport ?? "",
+    configPath: input.path ?? input.filePath ?? input.file ?? "",
+    command: input.command ?? input.args?.command ?? "",
+    action: input.action ?? input.args?.action ?? "",
+  }).toLowerCase();
+
+  if (
+    /\b(?:install|uninstall|register|configure|provision)\b/.test(normalizedName) ||
+    /\b(?:create|add|delete|remove|update|write)\b.*\b(?:server|servers|mcp[_-]?server|mcp[_-]?config)\b/.test(normalizedName)
+  ) {
     return "MCP installation or server mutation should be explicit";
   }
-  if (/(token|secret|password|api[_-]?key)/.test(text)) {
+
+  if (
+    /\b(?:server|servers|mcp[_-]?server|mcp[_-]?config)\b/.test(configText) &&
+    /\b(?:create|add|delete|remove|update|write|install|register|configure|provision)\b/.test(configText)
+  ) {
+    return "MCP installation or server mutation should be explicit";
+  }
+
+  if (/(token|secret|password|api[_-]?key)/.test(`${normalizedName} ${payload} ${configText}`)) {
     return "MCP call appears to include secret material";
   }
   return "";
@@ -177,6 +230,20 @@ function main() {
     return;
   }
 
+  if (event === "preToolUse" || event === "postToolUse" || event === "postToolUseFailure") {
+    const tool = toolName(input);
+    audit(projectDir, { ...record, tool, decision: "observe" });
+    process.stdout.write(event === "preToolUse" ? permission("allow", "[OHC GOVERNANCE] Tool use allowed.") : empty());
+    return;
+  }
+
+  if (event === "subagentStart" || event === "subagentStop") {
+    const subagent = subagentName(input);
+    audit(projectDir, { ...record, subagent, decision: "observe" });
+    process.stdout.write(empty());
+    return;
+  }
+
   if (event === "afterFileEdit") {
     const path = filePath(input);
     audit(projectDir, { ...record, path, decision: "observe", sensitive: isSensitivePath(path) });
@@ -185,6 +252,12 @@ function main() {
   }
 
   if (event === "afterShellExecution" || event === "afterMCPExecution") {
+    audit(projectDir, { ...record, decision: "observe" });
+    process.stdout.write(empty());
+    return;
+  }
+
+  if (event === "sessionEnd") {
     audit(projectDir, { ...record, decision: "observe" });
     process.stdout.write(empty());
     return;

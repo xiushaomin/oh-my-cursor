@@ -1,6 +1,16 @@
 ---
-description: Shared mobile rule for app work: architecture fit, explicit state flow, permissions/lifecycle risk, performance, accessibility, and testability.
-globs: ["**/*.xcodeproj/**", "**/*.xcworkspace/**", "**/AndroidManifest.xml", "**/app.json", "**/app.config.js", "**/app.config.ts", "**/pubspec.yaml", "**/ios/**/*.swift", "**/android/**/*.kt", "**/lib/**/*.dart"]
+description: "Shared mobile rule for app work: architecture fit, explicit state flow, permissions/lifecycle risk, performance, accessibility, and testability."
+globs:
+  - "**/*.xcodeproj/**"
+  - "**/*.xcworkspace/**"
+  - "**/AndroidManifest.xml"
+  - "**/app.json"
+  - "**/app.config.js"
+  - "**/app.config.ts"
+  - "**/pubspec.yaml"
+  - "**/ios/**/*.swift"
+  - "**/android/**/*.kt"
+  - "**/lib/**/*.dart"
 alwaysApply: false
 ---
 

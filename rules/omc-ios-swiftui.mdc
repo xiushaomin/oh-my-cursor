@@ -1,6 +1,10 @@
 ---
-description: iOS rule for Swift and SwiftUI app code: view composition, state ownership, @MainActor, structured concurrency, cancellation, and actor isolation.
-globs: ["**/ios/**/*.swift", "**/*.xcodeproj/**", "**/*.xcworkspace/**", "**/Package.swift"]
+description: "iOS rule for Swift and SwiftUI app code: view composition, state ownership, @MainActor, structured concurrency, cancellation, and actor isolation."
+globs:
+  - "**/ios/**/*.swift"
+  - "**/*.xcodeproj/**"
+  - "**/*.xcworkspace/**"
+  - "**/Package.swift"
 alwaysApply: false
 ---
 

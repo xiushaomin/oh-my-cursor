@@ -1,6 +1,10 @@
 ---
-description: Flutter app rule for widget composition, state boundaries, Material 3 alignment, localization, performance, accessibility, and testing.
-globs: ["**/pubspec.yaml", "**/lib/**/*.dart", "**/test/**/*.dart", "**/integration_test/**/*.dart"]
+description: "Flutter app rule for widget composition, state boundaries, Material 3 alignment, localization, performance, accessibility, and testing."
+globs:
+  - "**/pubspec.yaml"
+  - "**/lib/**/*.dart"
+  - "**/test/**/*.dart"
+  - "**/integration_test/**/*.dart"
 alwaysApply: false
 ---
 

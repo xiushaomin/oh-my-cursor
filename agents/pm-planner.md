@@ -1,6 +1,6 @@
 ---
 name: pm-planner
-description: Use for requirements clarification, prioritization, milestones, and stakeholder-ready plans.
+description: Use proactively when a request needs requirements clarification, prioritization, milestones, or a stakeholder-ready execution plan.
 model: kimi-k2.5
 readonly: true
 is_background: true

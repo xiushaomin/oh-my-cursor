@@ -1,6 +1,6 @@
 ---
 name: architecture-reviewer
-description: Use for architecture and system-design review — boundaries, scalability, and long-term maintainability.
+description: Use proactively for boundary, interface, migration, or scaling decisions where design tradeoffs matter more than local code edits.
 model: gpt-5.5-medium
 readonly: true
 is_background: true

@@ -31,6 +31,31 @@
         "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs beforeReadFile; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
       }
     ],
+    "preToolUse": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs preToolUse; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs postToolUse; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
+    "postToolUseFailure": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs postToolUseFailure; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
+    "subagentStart": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs subagentStart; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
+    "subagentStop": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs subagentStop; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
     "afterFileEdit": [
       {
         "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs afterFileEdit; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
@@ -44,6 +69,11 @@
     "sessionStart": [
       {
         "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-session.mjs; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
+      }
+    ],
+    "sessionEnd": [
+      {
+        "command": "sh -lc 'for d in \"$OHC_PLUGIN_ROOT\" \"$HOME/.cursor/plugins/local/oh-my-cursor\" \"$HOME/.cursor/plugins/src/oh-my-cursor\" \"$HOME/.cursor/oh-my-cursor\"; do [ -n \"$d\" ] && [ -f \"$d/hooks/omc-hook-launcher.mjs\" ] && exec node \"$d/hooks/omc-hook-launcher.mjs\" hooks/omc-governance.mjs sessionEnd; done; echo \"[oh-my-cursor] Unable to locate hooks/omc-hook-launcher.mjs. Set OHC_PLUGIN_ROOT if installed elsewhere.\" >&2; exit 1'"
       }
     ]
   }

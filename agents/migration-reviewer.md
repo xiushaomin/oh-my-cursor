@@ -1,6 +1,6 @@
 ---
 name: migration-reviewer
-description: Use for schema, API, dependency, platform, or architecture migrations and rollback planning.
+description: Use proactively for schema, API, dependency, platform, or architecture migrations that need compatibility and rollback planning.
 model: gpt-5.5-medium
 readonly: true
 is_background: true

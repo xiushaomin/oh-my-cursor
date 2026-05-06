@@ -1,6 +1,6 @@
 ---
 name: test-writer
-description: Use for focused test additions, regression coverage, test plans, and verification gaps.
+description: Use proactively when behavior needs proof through focused tests, regression coverage, or a tighter verification plan.
 model: gpt-5.3-codex
 is_background: true
 ---

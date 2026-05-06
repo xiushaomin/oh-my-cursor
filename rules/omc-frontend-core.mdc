@@ -1,6 +1,12 @@
 ---
-description: Frontend core rule for React and TypeScript UI work: component reuse, explicit props, design-system consistency, accessibility, and disciplined client data state.
-globs: ["**/*.tsx", "**/*.jsx", "**/components/**/*.ts", "**/components/**/*.tsx", "**/src/**/*.tsx", "**/src/**/*.jsx"]
+description: "Frontend core rule for React and TypeScript UI work: component reuse, explicit props, design-system consistency, accessibility, and disciplined client data state."
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/components/**/*.ts"
+  - "**/components/**/*.tsx"
+  - "**/src/**/*.tsx"
+  - "**/src/**/*.jsx"
 alwaysApply: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: repo-researcher
-description: Use for read-only repository mapping, locating conventions, finding examples, and summarizing implementation context.
+description: Use proactively for read-only repository mapping, convention lookup, example hunting, and implementation-context gathering.
 model: gemini-3.1-pro
 readonly: true
 is_background: true

@@ -33,6 +33,8 @@ curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/instal
 curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/update.sh | bash
 ```
 
+The update script treats the remote branch as the source of truth. It resets the installed checkout to `origin/main`, so local commits and tracked edits inside the installed plugin checkout are discarded during update.
+
 ### Uninstall
 
 ```bash
@@ -61,6 +63,7 @@ Use explicit workflows:
 ```text
 /omc-plan design a release checklist for this repo
 /omc-work help me implement this step by step
+/omc-orchestrator split this across planning, implementation, and review
 /omc-review review the current changes for bugs and security
 /omc-debug investigate why this hook is not firing
 ```
@@ -76,16 +79,16 @@ Debug this failing workflow
 
 ## Core workflows
 
-| Workflow | Best for |
-| --- | --- |
-| `omc-brainstorm` | exploring options before committing |
-| `omc-plan` | turning an idea into an execution plan |
-| `omc-work` | guided step-by-step collaboration |
-| `omc-orchestrate` | multi-lane work with subagent delegation |
-| `omc-review` | code quality, security, and completeness review |
-| `omc-debug` | root-cause investigation |
-| `omc-scm` | git hygiene and handoff tasks |
-| `omc-architecture` | boundaries, tradeoffs, and design review |
+| Workflow | Command | Best for |
+| --- | --- | --- |
+| `omc-brainstorm` | `/omc-brainstorm` | exploring options before committing |
+| `omc-plan` | `/omc-plan` | turning an idea into an execution plan |
+| `omc-work` | `/omc-work` | guided step-by-step collaboration |
+| `omc-orchestrate` | `/omc-orchestrator` or `/omc-orchestrate` | multi-lane work with subagent delegation |
+| `omc-review` | `/omc-review` | code quality, security, and completeness review |
+| `omc-debug` | `/omc-debug` | root-cause investigation |
+| `omc-scm` | `/omc-scm` | git hygiene and handoff tasks |
+| `omc-architecture` | `/omc-architecture` | boundaries, tradeoffs, and design review |
 
 The repo also includes helpers for test planning, PR summaries, release checklists, incident reports, and migration checklists.
 
@@ -135,6 +138,18 @@ This is intentional: UI-heavy work, backend coding, planning, and deep review do
 
 That means a request like "review this React feature" can naturally pick up the review workflow, the frontend pack, and the right specialist helpers without you stitching them together manually.
 
+## Cursor-native mapping
+
+`oh-my-cursor` stays closest to Cursor's native customization model when each layer has one job:
+
+- `rules/` holds durable, composable guidance that should stay short and stack-aware
+- `skills/` holds multi-step workflows that are more detailed than rules
+- `agents/` holds a small set of focused subagents with explicit delegation triggers
+- `hooks/` handles routing, governance, telemetry, and session lifecycle glue
+- `config/` compiles metadata so the runtime stays predictable
+
+This mirrors Cursor's current guidance for Rules, Skills, Subagents, and Hooks: keep rules focused, keep subagents specific, and use hooks for lifecycle control instead of stuffing more instructions into prompts.
+
 ## Repo structure
 
 | Path | Purpose |
@@ -159,6 +174,7 @@ After editing workflow, pack, capability, or subagent metadata, run:
 node scripts/build-guidance-index.mjs
 node scripts/verify-guidance-index.mjs
 node scripts/verify-plugin.mjs
+node --test tests/*.test.mjs
 ```
 
 ## License

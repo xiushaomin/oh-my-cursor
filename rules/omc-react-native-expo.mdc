@@ -1,6 +1,17 @@
 ---
-description: React Native and Expo app rule for typed components, navigation, native capabilities, assets, secure storage, offline behavior, and delivery discipline.
-globs: ["**/app.json", "**/app.config.js", "**/app.config.ts", "**/metro.config.js", "**/metro.config.cjs", "**/App.tsx", "**/app/**/*.tsx", "**/src/**/*.tsx", "**/components/**/*.tsx", "**/*.native.ts", "**/*.native.tsx"]
+description: "React Native and Expo app rule for typed components, navigation, native capabilities, assets, secure storage, offline behavior, and delivery discipline."
+globs:
+  - "**/app.json"
+  - "**/app.config.js"
+  - "**/app.config.ts"
+  - "**/metro.config.js"
+  - "**/metro.config.cjs"
+  - "**/App.tsx"
+  - "**/app/**/*.tsx"
+  - "**/src/**/*.tsx"
+  - "**/components/**/*.tsx"
+  - "**/*.native.ts"
+  - "**/*.native.tsx"
 alwaysApply: false
 ---
 

@@ -29,8 +29,14 @@ fi
 
 say "Updating repository at $INSTALL_DIR"
 git -C "$INSTALL_DIR" fetch --all --prune
-git -C "$INSTALL_DIR" checkout "$BRANCH"
-git -C "$INSTALL_DIR" pull --ff-only origin "$BRANCH"
+if git -C "$INSTALL_DIR" show-ref --verify --quiet "refs/heads/$BRANCH"; then
+  git -C "$INSTALL_DIR" checkout "$BRANCH"
+else
+  git -C "$INSTALL_DIR" checkout -b "$BRANCH" "origin/$BRANCH"
+fi
+say "Resetting $BRANCH to origin/$BRANCH (local commits and tracked edits will be discarded)"
+git -C "$INSTALL_DIR" reset --hard "origin/$BRANCH"
+git -C "$INSTALL_DIR" clean -fd
 mkdir -p "$LOCAL_DIR_ROOT"
 rm -rf "$LOCAL_DIR"
 mkdir -p "$LOCAL_DIR"

@@ -1,6 +1,6 @@
 ---
 name: docs-maintainer
-description: Use for README/docs updates, user guidance, migration docs, and keeping documentation aligned with behavior.
+description: Use proactively when behavior, setup, or workflow changes require README, migration, or handoff documentation updates.
 model: kimi-k2.5
 is_background: true
 ---

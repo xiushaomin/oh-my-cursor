@@ -1,6 +1,6 @@
 ---
 name: release-notes-writer
-description: Use for release notes, PR summaries, changelog entries, and stakeholder-ready change narratives.
+description: Use proactively when completed work needs concise release notes, PR summaries, changelog entries, or stakeholder-ready handoff language.
 model: kimi-k2.5
 is_background: true
 ---

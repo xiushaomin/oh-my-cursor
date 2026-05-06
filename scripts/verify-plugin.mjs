@@ -79,10 +79,16 @@ function verifyHooks() {
   const hooks = hooksDoc.hooks ?? {};
   const required = [
     "beforeSubmitPrompt",
+    "preToolUse",
+    "postToolUse",
+    "postToolUseFailure",
+    "subagentStart",
+    "subagentStop",
     "beforeShellExecution",
     "beforeMCPExecution",
     "beforeReadFile",
     "sessionStart",
+    "sessionEnd",
     "stop",
   ];
   for (const name of required) {

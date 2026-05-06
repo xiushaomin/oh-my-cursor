@@ -1,6 +1,6 @@
 ---
 name: mobile-qa-reviewer
-description: Use for QA review of mobile (iOS/Android/Flutter) changes — correctness, edge cases, and release risk.
+description: Use proactively when reviewing iOS, Android, Flutter, or React Native changes for correctness, platform edge cases, and release risk.
 model: claude-4.6-sonnet-medium-thinking
 readonly: true
 is_background: true

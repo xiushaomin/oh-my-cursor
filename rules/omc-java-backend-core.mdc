@@ -1,6 +1,12 @@
 ---
-description: Java backend rule for Spring-style server code: controller/service/repository boundaries, DTOs, validation, JPA query shape, and transactions.
-globs: ["**/src/main/java/**/*.java", "**/src/test/java/**/*.java", "**/pom.xml", "**/application.yml", "**/application.yaml", "**/application.properties"]
+description: "Java backend rule for Spring-style server code: controller/service/repository boundaries, DTOs, validation, JPA query shape, and transactions."
+globs:
+  - "**/src/main/java/**/*.java"
+  - "**/src/test/java/**/*.java"
+  - "**/pom.xml"
+  - "**/application.yml"
+  - "**/application.yaml"
+  - "**/application.properties"
 alwaysApply: false
 ---
 

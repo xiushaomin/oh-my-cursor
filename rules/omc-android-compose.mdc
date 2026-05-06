@@ -1,6 +1,11 @@
 ---
-description: Android app rule for Kotlin and Jetpack Compose: ViewModel-owned state, Material 3, coroutines, Flow, recomposition, and UI testability.
-globs: ["**/AndroidManifest.xml", "**/app/src/main/**/*.kt", "**/app/src/test/**/*.kt", "**/app/src/androidTest/**/*.kt", "**/android/**/*.kt"]
+description: "Apply this rule for Android app work in Kotlin and Jetpack Compose, especially when editing composables, ViewModels, Android manifests, Flow or coroutine-driven UI state, and Android test code."
+globs:
+  - "**/AndroidManifest.xml"
+  - "**/app/src/main/**/*.kt"
+  - "**/app/src/test/**/*.kt"
+  - "**/app/src/androidTest/**/*.kt"
+  - "**/android/**/*.kt"
 alwaysApply: false
 ---
 

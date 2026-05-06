@@ -1,6 +1,6 @@
 ---
 name: frontend-engineer
-description: Use for React/Next/TypeScript UI, client data flow, styling, and frontend tests.
+description: Use proactively when implementing React/Next/TypeScript UI, client data flow, styling, or frontend tests.
 model: gemini-3.1-pro
 is_background: true
 ---
