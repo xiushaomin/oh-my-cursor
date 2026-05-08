@@ -1,35 +1,68 @@
 ---
 name: omc-architecture
-description: Architecture and tradeoff workflow for app teams. Use for boundaries, module design, API contracts, migration paths, and cross-domain technical decisions.
+description: Architecture and tradeoff workflow for boundaries, module design, API contracts, migration paths, and cross-domain technical decisions that are expensive to reverse.
 metadata:
   category: workflow
 ---
 
 # omc-architecture
 
-## Goal
-- Make technical direction explicit: boundaries, constraints, tradeoffs, risks, and verification.
+## Overview
+
+Use this skill when the hard part of the task is choosing the shape of the system rather than writing the code. Good architecture work makes constraints, rejected alternatives, and migration consequences explicit.
 
 ## When to use
-- Cross-module or cross-platform design decisions.
-- API, data, state, navigation, build, or migration architecture.
-- The change could be expensive to reverse.
 
-## When NOT to use
-- Small implementation tasks with obvious local patterns -> do inline or use `/omc-work`.
-- Pure brainstorming before constraints are known -> `/omc-brainstorm`.
+- Cross-module, cross-platform, or cross-service design decisions
+- API or contract changes with compatibility impact
+- Migration, boundary, state, routing, or data-flow decisions
+- Work that would be expensive to reverse after implementation
 
-## Protocol
-1. **Context**: identify affected systems, current patterns, and constraints.
-2. **Forces**: list what the design must optimize for and what it can sacrifice.
-3. **Options**: compare 2-3 viable approaches.
-4. **Decision**: recommend one approach with explicit rejected alternatives.
-5. **Execution shape**: define milestones, migration strategy, and verification.
+## When not to use
 
-## Guardrails
-- Prefer existing repo boundaries and platform conventions.
-- Avoid new abstractions unless they remove real complexity.
-- Call out irreversible or high-blast-radius decisions clearly.
+- A small local implementation task with obvious existing patterns
+- Early ideation where breadth matters more than design commitment
 
-## Output contract
-- `context`, `constraints`, `options`, `decision`, `rejected`, `migration_plan`, `verification`.
+## Workflow
+
+1. Map the current shape.
+   Identify existing boundaries, ownership, and constraints in the repo.
+
+2. State the forces.
+   Name what the design must optimize for and what it can afford to trade away.
+
+3. Compare real options.
+   Evaluate 2-3 viable approaches, not strawmen.
+
+4. Make the decision.
+   Recommend one path and name the rejected alternatives and why they lose.
+
+5. Define execution shape.
+   Describe migration steps, compatibility concerns, and verification checkpoints.
+
+## Common rationalizations
+
+| Rationalization | Reality |
+| --- | --- |
+| "There's an obvious best design." | If it affects multiple surfaces, the tradeoffs should still be written down. |
+| "We'll decide the migration later." | Migration cost is part of the architecture choice. |
+| "The existing repo shape is messy, so we'll replace it wholesale." | Consistency with the current system often beats theoretical purity. |
+| "We only need one option to keep momentum." | Without alternatives, the decision record is weak and easy to revisit badly. |
+
+## Red flags
+
+- Constraints are implicit
+- Rejected alternatives are missing
+- The decision optimizes one concern while hiding the cost to another
+- Migration or compatibility work is hand-waved
+- The proposed design depends on new abstractions that solve no current problem
+
+## Verification
+
+Before concluding the architecture step, confirm:
+
+- [ ] Current constraints and boundaries are explicit
+- [ ] Multiple viable options were considered
+- [ ] The chosen option has a clear why
+- [ ] Rejected options are named
+- [ ] Migration and verification shape are defined

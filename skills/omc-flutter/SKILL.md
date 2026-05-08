@@ -1,22 +1,37 @@
 ---
 name: omc-flutter
-description: Flutter/Dart — widgets, state, platform channels, and cross-platform constraints.
+description: Flutter domain skill for Dart widgets, state boundaries, platform bridges, rendering performance, and cross-platform mobile delivery.
 metadata:
   category: pack
 ---
 
 # omc-flutter
 
-## Goal
-- Ship Flutter changes with minimal rebuild/jank, correct state, and safe platform bridges.
+## Overview
+
+Use this pack skill when the work lives in Flutter UI, Dart state-management surfaces, or platform-bridge boundaries.
+
+## When to use
+
+- Widget tree or screen-level changes
+- State-management or async UI flow work
+- Platform channel or plugin-boundary changes
+- Flutter test or launch-surface validation
+
+## When not to use
+
+- Native iOS or Android work without Flutter surfaces
+- Web-only frontend work
 
 ## Focus
-- Widget composition, state management aligned with the repo, and platform bridges.
-- Performance: rebuild scope, jank, and plugin boundaries.
 
-## Verify (minimum)
-- `flutter analyze` + tests if repo has them.
-- App launches; critical flow smoke on at least one platform.
+- Keep widgets small and state boundaries clear
+- Respect the repo's chosen state-management shape
+- Watch rebuild scope, jank, and plugin boundaries
+- Keep loading, error, and empty states explicit
 
-## Delegation
-- Implementation: `flutter-engineer` subagent.
+## Minimum verification
+
+- Run `flutter analyze` or the repo's equivalent when available
+- Run tests if the repo supports them
+- Confirm the critical flow launches on at least one target platform

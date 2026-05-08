@@ -1,37 +1,37 @@
 ---
 name: omc-react-native
-description: React Native and Expo implementation — navigation, native modules, performance, and JS/native boundaries. Use when the user works on RN/Expo apps, Metro, or cross-platform mobile UI with React Native.
+description: React Native and Expo domain skill for navigation, JS and native boundaries, device capabilities, mobile UI state, and cross-platform verification.
 metadata:
   category: pack
 ---
 
 # omc-react-native
 
-## Goal
-- Ship RN/Expo changes without breaking JS/native boundaries; verify on target platforms.
+## Overview
+
+Use this pack skill when the work spans React Native or Expo screens, navigation, JS/native boundaries, Metro surfaces, or device-capability behavior.
 
 ## When to use
-- React Native or Expo feature work, refactors, or debugging.
-- Issues involving native modules, bridges, or platform-specific behavior.
+
+- React Native or Expo feature work
+- Screen, navigation, or state-flow changes
+- Native-module or bridge-sensitive behavior
+- Cross-platform mobile smoke validation
 
 ## When not to use
-- Pure web-only frontend — prefer `/omc-frontend`.
-- Pure native iOS/Android without RN — prefer `/omc-ios` or `/omc-android`.
 
-## Core flow
-1. **Clarify** — app shell (Expo vs bare), navigation, state library, and target platforms.
-2. **Plan** — list impacted native + JS surfaces and test strategy.
-3. **Implement** — keep changes scoped; respect JS/native boundaries.
-4. **Verify** — run relevant RN tests or manual checks; call out simulator/device gaps.
+- Pure web frontend work
+- Pure native iOS or Android work without React Native
 
-## Verify (minimum)
-- Metro build starts; app launches.
-- iOS + Android smoke (simulator ok; note if device not tested).
-- If native module touched: verify both platforms or explicitly mark risk.
+## Focus
 
-## Cursor-native rules
-- Prefer `/react-native-engineer` and `/mobile-qa-reviewer` for heavy implementation and mobile QA.
-- Prefer **Skills + Subagents** inside Cursor; do not rely on external CLIs as the primary runtime.
+- Keep JS and native responsibilities explicit
+- Stay aligned with the repo's routing and state patterns
+- Treat asset loading, secure storage, offline behavior, and device capability use as product-critical
+- Keep interaction, error, and network state visible in the UI
 
-## Output contract
-- `status`, `files_changed`, `checks_run`, `risks`, `handoffs`.
+## Minimum verification
+
+- Confirm the app launches and the affected flow runs
+- Validate the main path on both iOS and Android when the change crosses shared mobile behavior
+- Explicitly name simulator or device coverage gaps

@@ -1,20 +1,79 @@
 # oh-my-cursor
 
-`oh-my-cursor` is a Cursor plugin for product teams.
+`oh-my-cursor` is a Cursor plugin for app teams that want stronger execution discipline without fighting Cursor's native model.
 
-It adds reusable workflows, focused subagents, stack-aware guidance, and lightweight hooks to make Cursor more structured, more consistent, and easier to scale across real engineering work.
+It combines:
 
-It is designed for teams building web, backend, and mobile apps with stacks like Java, iOS, Android, Flutter, and React Native.
+- `rules/` for durable stack-aware guidance
+- `skills/` for multi-step workflows with explicit verification
+- `agents/` for narrow specialist delegation
+- `hooks/` for lightweight routing, persistence, and safety guardrails
+
+The goal is not to replace Cursor with a custom runtime. The goal is to make Cursor behave more like a disciplined senior engineering teammate across planning, implementation, debugging, review, and release work.
+
+## Design principles
+
+- Stay Cursor-native. Prefer project rules, skills, focused agents, and hooks over one giant prompt.
+- Keep layers sharp. Rules hold durable guidance, skills hold workflows, agents hold perspectives, hooks hold event-driven control.
+- Favor evidence. Read the repo, inspect the relevant files, and verify changes before claiming completion.
+- Keep changes reviewable. Prefer small diffs, explicit assumptions, and narrow delegation.
+- Make quality habitual. Planning, testing, review, rollout, and rollback should be first-class concerns, not afterthoughts.
 
 ## What you get
 
-- `skills/` for reusable entrypoints like planning, implementation, review, and debugging
-- `agents/` for focused specialists across engineering, QA, docs, migration, and release work
-- `hooks/` for routing and guardrails that stay mostly out of your way
-- `rules/` for optional durable engineering guidance
-- `config/` for workflow, pack, capability, and guidance metadata
+- Core workflow skills for planning, execution, orchestration, review, debugging, architecture, and SCM handoff
+- Domain packs for frontend, Java backend, iOS, Android, Flutter, and React Native work
+- Stack-aware rules that attach lightweight, reusable guidance close to the relevant files
+- Focused specialist agents for implementation, QA, debugging, planning, documentation, and migration work
+- Hooks for intent routing, persistent workflow behavior, and conservative shell/MCP/file guardrails
 
-## Quick start
+## Workflow set
+
+Core workflows:
+
+- `omc-brainstorm`
+- `omc-plan`
+- `omc-work`
+- `omc-orchestrate`
+- `omc-review`
+- `omc-debug`
+- `omc-scm`
+- `omc-architecture`
+
+Delivery helpers:
+
+- `omc-test-plan`
+- `omc-pr-summary`
+- `omc-release-checklist`
+- `omc-incident-report`
+- `omc-migration-checklist`
+
+The plugin supports both explicit skill invocation and natural-language routing. The important abstraction is the workflow, not a custom command layer.
+
+Current domain packs:
+
+- `omc-frontend`
+- `omc-java-backend`
+- `omc-ios`
+- `omc-android`
+- `omc-flutter`
+- `omc-react-native`
+
+## Repository structure
+
+| Path | Purpose |
+| --- | --- |
+| `.cursor-plugin/plugin.json` | Cursor plugin manifest |
+| `skills/` | workflow and domain skill entrypoints |
+| `agents/` | focused subagent definitions |
+| `hooks/` | routing, persistence, and governance hooks |
+| `rules/` | durable stack-aware rules |
+| `config/` | workflow, pack, capability, and guidance metadata |
+| `references/` | on-demand checklists and support material for skills |
+| `docs/` | maintainer-facing product and orchestration guidance |
+| `scripts/` | build and verification utilities |
+
+## Install
 
 ### Requirements
 
@@ -41,13 +100,7 @@ The update script treats the remote branch as the source of truth. It resets the
 curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/uninstall.sh | bash
 ```
 
-You can also paste that command directly to your AI assistant and ask it to install `oh-my-cursor` for you.
-
-Restart Cursor, or run `Developer: Reload Window`.
-
 ### Manual install
-
-Clone the repo and copy it into Cursor's local plugin directory.
 
 ```bash
 git clone https://github.com/xiushaomin/oh-my-cursor.git
@@ -56,117 +109,17 @@ mkdir -p ~/.cursor/plugins/local/oh-my-cursor
 rsync -a --delete --exclude '.git' ./ ~/.cursor/plugins/local/oh-my-cursor/
 ```
 
-## How to use it
+Restart Cursor, or run `Developer: Reload Window`.
 
-Use explicit workflows:
+## How to use it well
 
-```text
-/omc-plan design a release checklist for this repo
-/omc-work help me implement this step by step
-/omc-orchestrator split this across planning, implementation, and review
-/omc-review review the current changes for bugs and security
-/omc-debug investigate why this hook is not firing
-```
+- Ask naturally when you want Cursor to route toward the right workflow.
+- Use explicit skills when you want a specific execution mode or stronger control.
+- Let rules carry stable coding expectations instead of restating them in every task.
+- Keep domain packs narrow and stack-aware.
+- Treat specialist agents as bounded helpers, not as a replacement for thinking.
 
-Or just ask naturally:
-
-```text
-Plan this feature
-Review my current changes
-Walk me through the migration
-Debug this failing workflow
-```
-
-## Core workflows
-
-| Workflow | Command | Best for |
-| --- | --- | --- |
-| `omc-brainstorm` | `/omc-brainstorm` | exploring options before committing |
-| `omc-plan` | `/omc-plan` | turning an idea into an execution plan |
-| `omc-work` | `/omc-work` | guided step-by-step collaboration |
-| `omc-orchestrate` | `/omc-orchestrator` or `/omc-orchestrate` | multi-lane work with subagent delegation |
-| `omc-review` | `/omc-review` | code quality, security, and completeness review |
-| `omc-debug` | `/omc-debug` | root-cause investigation |
-| `omc-scm` | `/omc-scm` | git hygiene and handoff tasks |
-| `omc-architecture` | `/omc-architecture` | boundaries, tradeoffs, and design review |
-
-The repo also includes helpers for test planning, PR summaries, release checklists, incident reports, and migration checklists.
-
-## Subagent strategy
-
-`oh-my-cursor` does not treat subagents as generic extra hands.
-
-It uses a deliberate delegation model:
-
-- subagents should have clear specialist lanes
-- the active workflow shapes what kind of delegation is appropriate
-- domain packs narrow which specialists make sense for the current repo
-- subagents receive smaller, scoped briefs instead of the full project policy dump
-
-The goal is to make delegation feel useful, not ceremonial.
-
-### Default model lanes
-
-Different specialist roles use different model lanes by default:
-
-| Role | Default model lane | Description |
-| --- | --- | --- |
-| `frontend-engineer` | `gemini-3.1-pro` | Frontend implementation for web UI, component work, and interaction-heavy product surfaces. |
-| `java-backend-engineer` | `gpt-5.3-codex` | Java service and backend implementation with a stronger coding-first profile. |
-| `ios-engineer` | `claude-4.6-sonnet-medium` | Native iOS implementation with emphasis on app structure, platform patterns, and product polish. |
-| `android-engineer` | `claude-4.6-sonnet-medium` | Native Android implementation focused on maintainable app flows and platform-aligned structure. |
-| `flutter-engineer` | `gemini-3.1-pro` | Flutter UI and cross-platform feature work with strong support for iterative product development. |
-| `react-native-engineer` | `claude-4.6-sonnet-medium` | React Native implementation across screens, flows, and mobile product integration points. |
-| `architecture-reviewer` | `gpt-5.5-medium` | Reviews system boundaries, tradeoffs, abstractions, and long-horizon design risk. |
-| `debug-investigator` | `gpt-5.5-medium` | Investigates root causes, traces failures, and narrows ambiguous technical problems. |
-| `backend-qa-reviewer` | `gpt-5.3-codex` | Reviews backend changes for correctness, regressions, and implementation-level risk. |
-| `mobile-qa-reviewer` | `claude-4.6-sonnet-medium-thinking` | Reviews mobile changes with extra depth for UX flows, platform behavior, and edge cases. |
-| `frontend-qa-reviewer` | `grok-4-20` | Reviews frontend work for UI quality, behavior gaps, and user-facing regressions. |
-| `pm-planner` | `kimi-k2.5` | Breaks product requests into plans, milestones, decision points, and execution-ready tasks. |
-
-This is intentional: UI-heavy work, backend coding, planning, and deep review do not all benefit from the same model profile.
-
-## How it works
-
-`oh-my-cursor` is built from a few small pieces instead of one giant prompt:
-
-1. Workflows decide how a task should run.
-2. Domain packs add stack-specific guidance.
-3. Subagents handle bounded specialist work.
-4. Hooks provide routing, persistence, and lightweight governance.
-5. Rules keep durable engineering guidance separate from task choreography.
-
-That means a request like "review this React feature" can naturally pick up the review workflow, the frontend pack, and the right specialist helpers without you stitching them together manually.
-
-## Cursor-native mapping
-
-`oh-my-cursor` stays closest to Cursor's native customization model when each layer has one job:
-
-- `rules/` holds durable, composable guidance that should stay short and stack-aware
-- `skills/` holds multi-step workflows that are more detailed than rules
-- `agents/` holds a small set of focused subagents with explicit delegation triggers
-- `hooks/` handles routing, governance, telemetry, and session lifecycle glue
-- `config/` compiles metadata so the runtime stays predictable
-
-This mirrors Cursor's current guidance for Rules, Skills, Subagents, and Hooks: keep rules focused, keep subagents specific, and use hooks for lifecycle control instead of stuffing more instructions into prompts.
-
-## Repo structure
-
-| Path | Purpose |
-| --- | --- |
-| `.cursor-plugin/plugin.json` | Cursor plugin manifest |
-| `skills/` | workflow and domain skill entrypoints |
-| `agents/` | subagent definitions |
-| `hooks/` | routing, session, persistence, and governance hooks |
-| `rules/` | optional rule files |
-| `config/` | runtime metadata and generated guidance |
-| `scripts/` | build and verification utilities |
-
-## Architecture
-
-[ARCHITECTURE.md](./ARCHITECTURE.md) covers the system structure, configuration model, routing philosophy, and maintainer notes.
-
-## For maintainers
+## Maintainer notes
 
 After editing workflow, pack, capability, or subagent metadata, run:
 
@@ -176,6 +129,8 @@ node scripts/verify-guidance-index.mjs
 node scripts/verify-plugin.mjs
 node --test tests/*.test.mjs
 ```
+
+Additional design guidance lives in [ARCHITECTURE.md](/Users/smxiu/Desktop/oh-my-cursor/ARCHITECTURE.md) and [docs/orchestration-patterns.md](/Users/smxiu/Desktop/oh-my-cursor/docs/orchestration-patterns.md).
 
 ## License
 

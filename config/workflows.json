@@ -16,7 +16,7 @@
     {
       "id": "omc-orchestrate",
       "title": "Orchestrate",
-      "description": "Parallel or multi-phase execution with subagent delegation.",
+      "description": "Multi-lane execution for large or cross-domain work that needs planning, bounded delegation, integration, and end-to-end verification.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-orchestrator",
@@ -88,15 +88,15 @@
           "verification",
           "handoffs"
         ],
-        "successDefinition": "Workstreams integrated and verified against acceptance criteria."
+        "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs."
       },
       "explain": {
         "whenToUse": [
-          "Large cross-cutting work",
-          "Need parallel specialists"
+          "Large cross-domain work with clear ownership splits",
+          "Parallel specialist lanes materially improve speed or quality"
         ],
         "whenNotToUse": [
-          "Single trivial edit"
+          "Single local edit or other work that one agent can finish directly"
         ],
         "relatedWorkflowIds": [
           "omc-work",
@@ -107,7 +107,7 @@
     {
       "id": "omc-brainstorm",
       "title": "Brainstorm",
-      "description": "Explore options and shape rough intent before planning.",
+      "description": "Option exploration workflow for turning fuzzy intent into a small set of concrete directions before planning or implementation.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-brainstorm",
@@ -162,15 +162,15 @@
           "open_decisions",
           "plan_seed"
         ],
-        "successDefinition": "Options are concrete enough to choose a plan direction."
+        "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into planning."
       },
       "explain": {
         "whenToUse": [
-          "Fuzzy product intent",
-          "Need alternatives before planning"
+          "Fuzzy product or technical intent",
+          "Need alternatives and tradeoffs before committing to a path"
         ],
         "whenNotToUse": [
-          "Path is already selected"
+          "A path is already selected and the next need is planning or execution"
         ],
         "relatedWorkflowIds": [
           "omc-plan",
@@ -181,11 +181,12 @@
     {
       "id": "omc-work",
       "title": "Work",
-      "description": "Guided step-by-step execution with explicit checkpoints.",
+      "description": "Guided execution workflow for one small step at a time when the user wants close control and explicit checkpoints.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-work",
       "persistent": true,
+      "stopPolicy": "single-tap-exit",
       "priority": 95,
       "routing": {
         "keywords": [
@@ -236,14 +237,15 @@
           "next_options",
           "blocked_on"
         ],
-        "successDefinition": "Each step confirmed before the next executes."
+        "successDefinition": "Each step is small, verified, and clear enough for the next decision to stay local."
       },
       "explain": {
         "whenToUse": [
-          "Need human-in-the-loop control"
+          "Need close human-in-the-loop control",
+          "Want incremental execution instead of broad autonomous work"
         ],
         "whenNotToUse": [
-          "User wants full parallel automation"
+          "The task is better served by direct execution or parallel orchestration"
         ],
         "relatedWorkflowIds": [
           "omc-orchestrate",
@@ -254,7 +256,7 @@
     {
       "id": "omc-review",
       "title": "Review",
-      "description": "Independent review for quality, security, and completeness.",
+      "description": "Independent merge-readiness review focused on findings, severity, verification gaps, and residual risk.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-review",
@@ -267,6 +269,12 @@
           "security review",
           "code review",
           "pr review",
+          "review my current changes",
+          "review this",
+          "帮我 review",
+          "帮我看下代码",
+          "检查一下",
+          "帮我检查",
           "审查",
           "代码审查",
           "走查"
@@ -275,7 +283,7 @@
         "manualInvocations": [
           "/omc-review"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -288,7 +296,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
+        "allowAutoActivation": true,
         "allowPersistentActivation": false
       },
       "deactivation": {
@@ -313,15 +321,15 @@
           "residual_risks",
           "checks_run"
         ],
-        "successDefinition": "Actionable findings with evidence."
+        "successDefinition": "Findings are concrete, evidence-backed, severity-labeled, and accompanied by the smallest useful next checks."
       },
       "explain": {
         "whenToUse": [
-          "After changes",
-          "Before merge"
+          "After implementation or before merge",
+          "Need findings rather than code changes"
         ],
         "whenNotToUse": [
-          "No artifact to review"
+          "No concrete artifact, diff, or file scope exists to review"
         ],
         "relatedWorkflowIds": [
           "omc-debug",
@@ -332,7 +340,7 @@
     {
       "id": "omc-debug",
       "title": "Debug",
-      "description": "Root-cause analysis and minimal safe fixes.",
+      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-debug",
@@ -345,6 +353,13 @@
           "stack trace",
           "flaky",
           "regression",
+          "investigate",
+          "why failing",
+          "why is this failing",
+          "帮我排查",
+          "排查一下",
+          "看下原因",
+          "不生效",
           "排查",
           "调试",
           "错误"
@@ -353,7 +368,7 @@
         "manualInvocations": [
           "/omc-debug"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -366,7 +381,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
+        "allowAutoActivation": true,
         "allowPersistentActivation": false
       },
       "deactivation": {
@@ -389,14 +404,14 @@
           "fix",
           "tests"
         ],
-        "successDefinition": "Repro understood and fix verified."
+        "successDefinition": "The failure mode is understood, the root cause is evidence-backed, and the fix is verified on the most relevant proof path."
       },
       "explain": {
         "whenToUse": [
-          "Failures and regressions"
+          "Failures, regressions, flaky behavior, or ambiguous breakages"
         ],
         "whenNotToUse": [
-          "Greenfield feature with no bug"
+          "Greenfield feature work with no active failure to investigate"
         ],
         "relatedWorkflowIds": [
           "omc-review",
@@ -407,7 +422,7 @@
     {
       "id": "omc-plan",
       "title": "Plan",
-      "description": "Structured planning before implementation.",
+      "description": "Planning workflow for turning a goal into milestones, acceptance criteria, dependencies, and risk-aware execution steps.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-plan",
@@ -417,6 +432,14 @@
         "keywords": [
           "plan",
           "roadmap",
+          "plan this",
+          "help me plan",
+          "analyze this",
+          "break this down",
+          "分析一下",
+          "规划一下",
+          "拆一下",
+          "想想怎么做",
           "里程碑",
           "计划",
           "拆解需求",
@@ -427,7 +450,7 @@
         "manualInvocations": [
           "/omc-plan"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -440,7 +463,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
+        "allowAutoActivation": true,
         "allowPersistentActivation": false
       },
       "deactivation": {
@@ -463,15 +486,15 @@
           "dependencies",
           "risks"
         ],
-        "successDefinition": "Plan is executable with clear acceptance criteria."
+        "successDefinition": "The plan is explicit enough to execute without rediscovering scope, dependencies, or proof obligations."
       },
       "explain": {
         "whenToUse": [
-          "Ambiguous scope",
-          "Multi-step delivery"
+          "Multi-step delivery or cross-module scope",
+          "Need acceptance criteria and sequencing before implementation"
         ],
         "whenNotToUse": [
-          "Trivial one-line fix"
+          "Trivial local edits with obvious scope and proof"
         ],
         "relatedWorkflowIds": [
           "omc-work",
@@ -482,7 +505,7 @@
     {
       "id": "omc-architecture",
       "title": "Architecture",
-      "description": "Architecture decisions, boundaries, and technical tradeoffs.",
+      "description": "Architecture workflow for boundary decisions, tradeoff analysis, migration shape, and other changes that are expensive to reverse.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-architecture",
@@ -542,15 +565,15 @@
           "migration_plan",
           "verification"
         ],
-        "successDefinition": "Decision and rejected alternatives are clear enough for implementation."
+        "successDefinition": "Constraints, chosen direction, rejected alternatives, and migration shape are clear enough to implement responsibly."
       },
       "explain": {
         "whenToUse": [
-          "Cross-module technical decisions",
-          "Expensive-to-reverse designs"
+          "Cross-module or cross-system technical decisions",
+          "Design choices that would be expensive to reverse later"
         ],
         "whenNotToUse": [
-          "Small local implementation tasks"
+          "Small local tasks that can follow existing repo patterns directly"
         ],
         "relatedWorkflowIds": [
           "omc-brainstorm",
@@ -562,7 +585,7 @@
     {
       "id": "omc-scm",
       "title": "SCM",
-      "description": "Git workflow, commits, PRs, and handoff hygiene.",
+      "description": "Source-control workflow for branch strategy, staging boundaries, commits, PR prep, and safe collaboration hygiene.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-scm",
@@ -621,16 +644,15 @@
           "commit_messages",
           "pr_summary"
         ],
-        "successDefinition": "Changes are ready for collaboration."
+        "successDefinition": "The change set is intentionally grouped, collaboration-ready, and free of avoidable source-control risk."
       },
       "explain": {
         "whenToUse": [
-          "Handoff",
-          "PR prep",
-          "Release hygiene"
+          "Commit shaping, PR prep, or handoff work",
+          "Need safe source-control guidance around an existing change set"
         ],
         "whenNotToUse": [
-          "No VCS context needed"
+          "No source-control or collaboration boundary is part of the task"
         ],
         "relatedWorkflowIds": [
           "omc-review",
@@ -641,7 +663,7 @@
     {
       "id": "omc-test-plan",
       "title": "Test Plan",
-      "description": "Focused test planning and regression coverage recommendations.",
+      "description": "Verification-planning workflow for mapping behavior claims to regression checks, manual checks, and concrete coverage gaps.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-test-plan",
@@ -695,15 +717,15 @@
           "commands",
           "coverage_gaps"
         ],
-        "successDefinition": "Verification plan names concrete checks and residual gaps."
+        "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps."
       },
       "explain": {
         "whenToUse": [
-          "Before implementation testing",
-          "After implementation coverage review"
+          "Before implementation to shape proof early",
+          "After implementation or during review to identify missing coverage"
         ],
         "whenNotToUse": [
-          "No behavior change or verification need"
+          "No meaningful behavior, risk, or proof question exists"
         ],
         "relatedWorkflowIds": [
           "omc-review",
@@ -714,7 +736,7 @@
     {
       "id": "omc-pr-summary",
       "title": "PR Summary",
-      "description": "Reviewer-ready summary, verification notes, and risk handoff.",
+      "description": "Reviewer-facing change summary that explains why the work exists, what users feel, how it was verified, and what still carries risk.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-pr-summary",
@@ -767,15 +789,15 @@
           "verification",
           "risks"
         ],
-        "successDefinition": "Reviewer can understand the change and verification quickly."
+        "successDefinition": "A reviewer can understand the purpose, user impact, verification, and residual risk of the change without re-reading the whole diff first."
       },
       "explain": {
         "whenToUse": [
-          "Before opening PR",
-          "Local handoff"
+          "Before opening a PR",
+          "Need a concise local or teammate handoff artifact"
         ],
         "whenNotToUse": [
-          "No completed artifact"
+          "No reasonably complete artifact exists to summarize"
         ],
         "relatedWorkflowIds": [
           "omc-scm",
@@ -786,7 +808,7 @@
     {
       "id": "omc-release-checklist",
       "title": "Release Checklist",
-      "description": "Release readiness, rollout, rollback, docs, and verification checklist.",
+      "description": "Release-readiness workflow for separating blockers from follow-ups and making rollout, rollback, docs, and verification explicit.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-release-checklist",
@@ -842,14 +864,14 @@
           "rollback_plan",
           "handoff"
         ],
-        "successDefinition": "Release blockers and rollout evidence are explicit."
+        "successDefinition": "Release blockers, required checks, rollout expectations, and rollback shape are explicit enough to support a go or no-go decision."
       },
       "explain": {
         "whenToUse": [
-          "Before deploy or release"
+          "Before deployment, rollout, release, or store submission"
         ],
         "whenNotToUse": [
-          "No release boundary"
+          "No release boundary or rollout decision is actually in scope"
         ],
         "relatedWorkflowIds": [
           "omc-pr-summary",
@@ -860,7 +882,7 @@
     {
       "id": "omc-incident-report",
       "title": "Incident Report",
-      "description": "Incident/debug report with impact, timeline, root cause, fix, and prevention.",
+      "description": "Incident-report workflow for turning debugging or operational evidence into a clear record of impact, timeline, root cause, remediation, and prevention.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-incident-report",
@@ -915,14 +937,14 @@
           "verification",
           "prevention"
         ],
-        "successDefinition": "Incident evidence and prevention follow-ups are clear."
+        "successDefinition": "Impact, timeline, evidence, root cause, remediation, and prevention follow-ups are clear enough for future readers and stakeholders."
       },
       "explain": {
         "whenToUse": [
-          "After debugging or incident response"
+          "After a debugging investigation or incident response"
         ],
         "whenNotToUse": [
-          "No evidence or root-cause context"
+          "There is not yet enough evidence or root-cause context to write a trustworthy report"
         ],
         "relatedWorkflowIds": [
           "omc-debug",
@@ -933,7 +955,7 @@
     {
       "id": "omc-migration-checklist",
       "title": "Migration Checklist",
-      "description": "Migration steps, compatibility, verification, and rollback plan.",
+      "description": "Migration workflow for compatibility boundaries, ordered rollout steps, verification points, and rollback timing.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-migration-checklist",
@@ -988,14 +1010,14 @@
           "rollback",
           "risks"
         ],
-        "successDefinition": "Migration can proceed with ordered checks and rollback."
+        "successDefinition": "Current state, target state, compatibility window, ordered checks, and rollback path are explicit enough to migrate safely."
       },
       "explain": {
         "whenToUse": [
-          "Schema/API/platform/dependency migrations"
+          "Schema, API, dependency, platform, or architecture migrations"
         ],
         "whenNotToUse": [
-          "Small local edits without compatibility risk"
+          "Small local edits with no compatibility, coexistence, or rollback risk"
         ],
         "relatedWorkflowIds": [
           "omc-architecture",

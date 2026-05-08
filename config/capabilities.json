@@ -89,7 +89,7 @@
     {
       "id": "skill.omc-orchestrator",
       "title": "Orchestrator skill",
-      "description": "Multi-phase orchestration with subagents.",
+      "description": "Multi-lane execution workflow for large or cross-domain work that needs bounded delegation, integration, and end-to-end verification.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -111,7 +111,7 @@
       },
       "explain": {
         "category": "workflow",
-        "summary": "Orchestrate workflow entry."
+        "summary": "Workflow entry for bounded parallel execution, integration, and verification."
       }
     },
     {
@@ -229,7 +229,7 @@
     {
       "id": "skill.omc-frontend",
       "title": "Frontend domain skill",
-      "description": "Web frontend implementation expertise.",
+      "description": "Primary domain skill for scoped React, Next.js, and TypeScript frontend work across components, routes, styling, and client data flow.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -251,13 +251,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "Frontend pack primary skill."
+        "summary": "Primary domain skill for bounded web UI implementation."
       }
     },
     {
       "id": "skill.omc-java-backend",
       "title": "Java backend domain skill",
-      "description": "Java backend implementation expertise.",
+      "description": "Primary domain skill for scoped Java or Spring-style backend work across APIs, services, persistence, and verification.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -279,13 +279,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "Java backend pack primary skill."
+        "summary": "Primary domain skill for bounded Java backend implementation."
       }
     },
     {
       "id": "skill.omc-ios",
       "title": "iOS domain skill",
-      "description": "iOS implementation expertise.",
+      "description": "Primary domain skill for scoped native iOS work across Swift, SwiftUI, UIKit, lifecycle, and concurrency-sensitive behavior.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -307,13 +307,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "iOS pack primary skill."
+        "summary": "Primary domain skill for bounded native iOS implementation."
       }
     },
     {
       "id": "skill.omc-android",
       "title": "Android domain skill",
-      "description": "Android implementation expertise.",
+      "description": "Primary domain skill for scoped Android work across Kotlin, Jetpack, Compose or Views, lifecycle, and test surfaces.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -335,13 +335,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "Android pack primary skill."
+        "summary": "Primary domain skill for bounded native Android implementation."
       }
     },
     {
       "id": "skill.omc-flutter",
       "title": "Flutter domain skill",
-      "description": "Flutter implementation expertise.",
+      "description": "Primary domain skill for scoped Flutter and Dart work across widgets, state, plugins, and platform bridges.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -363,13 +363,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "Flutter pack primary skill."
+        "summary": "Primary domain skill for bounded Flutter implementation."
       }
     },
     {
       "id": "skill.omc-react-native",
       "title": "React Native domain skill",
-      "description": "React Native implementation expertise.",
+      "description": "Primary domain skill for scoped React Native or Expo work across screens, navigation, native modules, and JS/native boundaries.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -391,13 +391,13 @@
       },
       "explain": {
         "category": "domain",
-        "summary": "React Native pack primary skill."
+        "summary": "Primary domain skill for bounded React Native implementation."
       }
     },
     {
       "id": "agent.pm-planner",
       "title": "PM planner subagent",
-      "description": "Planning and task decomposition.",
+      "description": "Requirements framing, milestone planning, acceptance criteria, and minimal-question execution shaping.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -422,13 +422,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Planning specialist."
+        "summary": "Planning specialist for goals, sequencing, and acceptance criteria."
       }
     },
     {
       "id": "agent.architecture-reviewer",
       "title": "Architecture reviewer subagent",
-      "description": "Architecture tradeoffs and boundaries.",
+      "description": "Boundary, interface, migration, and long-horizon design risk review.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -453,13 +453,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Architecture specialist."
+        "summary": "Architecture specialist for tradeoffs, boundaries, and design risk."
       }
     },
     {
       "id": "agent.debug-investigator",
       "title": "Debug investigator subagent",
-      "description": "Root-cause investigation.",
+      "description": "Evidence-backed root-cause investigation for repros, flaky failures, and regressions.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -482,13 +482,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Debugging specialist."
+        "summary": "Debugging specialist for hypothesis narrowing and root-cause direction."
       }
     },
     {
       "id": "agent.frontend-engineer",
       "title": "Frontend engineer subagent",
-      "description": "Web frontend implementation.",
+      "description": "Scoped React, Next.js, and TypeScript frontend implementation aligned with repo UI and data-flow patterns.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -512,13 +512,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Frontend implementer."
+        "summary": "Frontend implementation lane for bounded web UI work."
       }
     },
     {
       "id": "agent.frontend-qa-reviewer",
       "title": "Frontend QA reviewer subagent",
-      "description": "Frontend-focused QA review.",
+      "description": "Frontend QA review for UX, accessibility, rendering risk, and missing verification.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -543,13 +543,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Frontend QA."
+        "summary": "Frontend QA lane for findings on UI risk and test gaps."
       }
     },
     {
       "id": "agent.java-backend-engineer",
       "title": "Java backend engineer subagent",
-      "description": "Java backend implementation.",
+      "description": "Scoped Java or Spring-style backend implementation across APIs, services, persistence, and tests.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -573,13 +573,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Java backend implementer."
+        "summary": "Backend implementation lane for bounded Java service work."
       }
     },
     {
       "id": "agent.backend-qa-reviewer",
       "title": "Backend QA reviewer subagent",
-      "description": "Backend-focused QA review.",
+      "description": "Backend QA review for API correctness, data integrity, trust boundaries, and verification gaps.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -604,13 +604,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Backend QA."
+        "summary": "Backend QA lane for findings on server-side risk and proof gaps."
       }
     },
     {
       "id": "agent.ios-engineer",
       "title": "iOS engineer subagent",
-      "description": "iOS implementation.",
+      "description": "Scoped native iOS implementation for Swift, SwiftUI, UIKit, lifecycle, and concurrency-sensitive work.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -634,13 +634,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "iOS implementer."
+        "summary": "iOS implementation lane for bounded native Apple-platform work."
       }
     },
     {
       "id": "agent.android-engineer",
       "title": "Android engineer subagent",
-      "description": "Android implementation.",
+      "description": "Scoped Android implementation for Kotlin, Jetpack, Compose or Views, lifecycle, and test surfaces.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -664,13 +664,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Android implementer."
+        "summary": "Android implementation lane for bounded native mobile work."
       }
     },
     {
       "id": "agent.flutter-engineer",
       "title": "Flutter engineer subagent",
-      "description": "Flutter implementation.",
+      "description": "Scoped Flutter and Dart implementation for widgets, state, plugins, and platform bridges.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -694,13 +694,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Flutter implementer."
+        "summary": "Flutter implementation lane for bounded cross-platform app work."
       }
     },
     {
       "id": "agent.react-native-engineer",
       "title": "React Native engineer subagent",
-      "description": "React Native implementation.",
+      "description": "Scoped React Native or Expo implementation for screens, navigation, native modules, and JS/native boundaries.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -724,13 +724,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "React Native implementer."
+        "summary": "React Native implementation lane for bounded shared mobile UI work."
       }
     },
     {
       "id": "agent.mobile-qa-reviewer",
       "title": "Mobile QA reviewer subagent",
-      "description": "Mobile-focused QA review.",
+      "description": "Mobile QA review for lifecycle, permissions, navigation, release risk, and simulator-versus-device gaps.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -758,7 +758,7 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Mobile QA."
+        "summary": "Mobile QA lane for platform-specific findings and release-risk gaps."
       }
     },
     {
@@ -842,7 +842,7 @@
     {
       "id": "rule.common-core",
       "title": "Common core rule",
-      "description": "Shared engineering guidance for clarification, simplicity, surgical changes, delegation discipline, and verification.",
+      "description": "Shared cross-pack rule for simplicity, explicit verification, careful delegation, and Cursor-native workflow discipline.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -879,13 +879,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Shared baseline rule for simplicity, clarity, delegation discipline, and verification."
+        "summary": "Shared baseline rule for simplicity, verification, and disciplined delegation."
       }
     },
     {
       "id": "rule.frontend-core",
       "title": "Frontend core rule",
-      "description": "Frontend standards for reuse, UI consistency, accessibility, and client data state.",
+      "description": "Frontend rule for component reuse, design-system consistency, accessibility, and disciplined client data-flow boundaries.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -910,13 +910,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Frontend pack baseline rule."
+        "summary": "Frontend baseline rule for UI consistency, accessibility, and clear data boundaries."
       }
     },
     {
       "id": "rule.next-app-router",
       "title": "Next.js App Router rule",
-      "description": "Next.js App Router standards for server-first rendering, route files, route handlers, and client/server boundaries.",
+      "description": "Next.js App Router rule for server-first rendering, route responsibilities, route handlers, and explicit client/server boundaries.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -941,13 +941,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Next.js App Router specialized rule."
+        "summary": "Next.js specialized rule for App Router file roles and client/server boundaries."
       }
     },
     {
       "id": "rule.java-backend-core",
       "title": "Java backend core rule",
-      "description": "Backend standards for service boundaries, DTO use, JPA correctness, and transactions.",
+      "description": "Java backend rule for service boundaries, DTO discipline, validation, JPA correctness, and transaction-aware server behavior.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -972,13 +972,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Java backend pack baseline rule."
+        "summary": "Backend baseline rule for layering, persistence correctness, and transactions."
       }
     },
     {
       "id": "rule.mobile-core",
       "title": "Mobile core rule",
-      "description": "Shared mobile standards for architecture fit, state flow, release risk, and testability.",
+      "description": "Shared mobile rule for architecture fit, explicit state flow, release risk, device behavior, and testable boundaries.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -1009,13 +1009,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Shared mobile baseline rule."
+        "summary": "Shared mobile baseline rule for state flow, platform risk, and testability."
       }
     },
     {
       "id": "rule.ios-swiftui",
       "title": "iOS SwiftUI rule",
-      "description": "iOS standards for SwiftUI composition and Swift concurrency discipline.",
+      "description": "iOS rule for SwiftUI composition, state ownership, structured concurrency, task lifetime, and platform-consistent interaction behavior.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -1040,13 +1040,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "iOS platform-specialized rule."
+        "summary": "iOS specialized rule for view composition and concurrency discipline."
       }
     },
     {
       "id": "rule.android-compose",
       "title": "Android Compose rule",
-      "description": "Android standards for Kotlin, Compose, Material 3, Flow, and ViewModel state flow.",
+      "description": "Android rule for Kotlin, Compose, Material 3, Flow, ViewModel-owned state, and lifecycle-aware UI behavior.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -1071,13 +1071,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Android platform-specialized rule."
+        "summary": "Android specialized rule for Compose, lifecycle-aware state, and Kotlin UI behavior."
       }
     },
     {
       "id": "rule.react-native-expo",
       "title": "React Native Expo rule",
-      "description": "React Native and Expo standards for typed components, platform capabilities, navigation, and mobile delivery concerns.",
+      "description": "React Native and Expo rule for typed components, navigation, device capability use, offline and storage concerns, and mobile delivery discipline.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -1102,13 +1102,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "React Native platform-specialized rule."
+        "summary": "React Native specialized rule for JS/native boundaries and mobile delivery concerns."
       }
     },
     {
       "id": "rule.flutter-core",
       "title": "Flutter core rule",
-      "description": "Flutter standards for widget composition, state boundaries, Material 3 alignment, and testable feature structure.",
+      "description": "Flutter rule for widget composition, state boundaries, Material 3 alignment, async clarity, and testable feature structure.",
       "status": "active",
       "type": "rule",
       "surface": "cursor-rule",
@@ -1133,13 +1133,13 @@
       },
       "explain": {
         "category": "rule",
-        "summary": "Flutter platform-specialized rule."
+        "summary": "Flutter specialized rule for widgets, state boundaries, and testable structure."
       }
     },
     {
       "id": "agent.test-writer",
       "title": "Test writer subagent",
-      "description": "Focused test additions and verification planning.",
+      "description": "Focused regression test additions and behavior-oriented verification shaping.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1173,13 +1173,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Focused test additions and verification planning."
+        "summary": "Test specialist for smallest-useful proof and regression coverage."
       }
     },
     {
       "id": "agent.release-notes-writer",
       "title": "Release notes writer subagent",
-      "description": "PR summaries, release notes, and handoff wording.",
+      "description": "Concise PR summaries, release notes, changelog entries, and stakeholder-facing handoff wording.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1211,13 +1211,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "PR summaries, release notes, and handoff wording."
+        "summary": "Writing lane for concise release and reviewer-facing artifacts."
       }
     },
     {
       "id": "agent.migration-reviewer",
       "title": "Migration reviewer subagent",
-      "description": "Migration, compatibility, rollout, and rollback review.",
+      "description": "Migration safety review for compatibility boundaries, rollout sequencing, and rollback viability.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1250,13 +1250,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Migration, compatibility, rollout, and rollback review."
+        "summary": "Migration specialist for coexistence, rollout order, and rollback risk."
       }
     },
     {
       "id": "agent.docs-maintainer",
       "title": "Docs maintainer subagent",
-      "description": "README, docs, migration docs, and user guidance updates.",
+      "description": "Repo documentation updates for setup, behavior, workflow, migration, and user guidance changes.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1289,13 +1289,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "README, docs, migration docs, and user guidance updates."
+        "summary": "Documentation lane for concise repo-native guidance updates."
       }
     },
     {
       "id": "agent.repo-researcher",
       "title": "Repo researcher subagent",
-      "description": "Read-only repository mapping and evidence gathering.",
+      "description": "Read-only repository mapping, convention lookup, and evidence gathering for parent-agent decisions.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1327,13 +1327,13 @@
       },
       "explain": {
         "category": "subagent",
-        "summary": "Read-only repository mapping and evidence gathering."
+        "summary": "Research lane for compact, evidence-backed repo mapping."
       }
     },
     {
       "id": "agent.question-asker",
       "title": "Question asker subagent",
-      "description": "Minimal clarifying questions and default assumptions.",
+      "description": "Minimal high-leverage clarifying questions plus safe default assumptions when ambiguity matters.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",

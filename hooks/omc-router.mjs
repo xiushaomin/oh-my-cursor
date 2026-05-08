@@ -54,20 +54,21 @@ function isExplicitInvocation(prompt, wf) {
 function looksInformational(prompt) {
   const p = String(prompt ?? "").trim().toLowerCase();
   if (!p) return false;
-  // Keep tiny and conservative. Goal: block obvious "what is / how to use" questions.
-  const patterns = [
-    /\bwhat\s+is\b/i,
-    /\bhow\s+to\b/i,
-    /\bexplain\b/i,
-    /\bdescribe\b/i,
-    /什么是/,
-    /是什么/,
-    /怎么用/,
-    /如何使用/,
-    /解释/,
-    /说明/,
+  // Keep this narrow: block pure "what is / how to use" help prompts,
+  // but do not swallow real workflow asks phrased as questions.
+  const pureInfoPatterns = [
+    /^\s*what\s+is\b/i,
+    /^\s*how\s+to\b/i,
+    /^\s*explain\b/i,
+    /^\s*describe\b/i,
+    /^\s*什么是/,
+    /^\s*.*是什么[？?]?\s*$/i,
+    /^\s*怎么用/,
+    /^\s*如何使用/,
+    /^\s*解释一下/,
+    /^\s*说明一下/,
   ];
-  return patterns.some((re) => re.test(p));
+  return pureInfoPatterns.some((re) => re.test(p)) && !hasComplexSignals(prompt);
 }
 
 function countWords(text) {

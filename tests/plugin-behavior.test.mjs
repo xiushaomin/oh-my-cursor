@@ -97,6 +97,57 @@ test("router supports the omc-orchestrate alias for explicit orchestration", () 
     assert.match(output, /\/omc-orchestrator/);
   }));
 
+test("router auto-activates debug for natural-language troubleshooting prompts", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "帮我排查这个问题为什么不生效",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-debug-auto",
+    });
+
+    assert.match(output, /OHC INTENT: OMC-DEBUG/);
+    assert.match(output, /\/omc-debug/);
+  }));
+
+test("router auto-activates plan for natural-language planning prompts", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "帮我规划一下这个需求怎么做",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-plan-auto",
+    });
+
+    assert.match(output, /OHC INTENT: OMC-PLAN/);
+    assert.match(output, /\/omc-plan/);
+  }));
+
+test("router auto-activates review for natural-language review prompts", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "帮我 review 当前改动有没有问题",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-review-auto",
+    });
+
+    assert.match(output, /OHC INTENT: OMC-REVIEW/);
+    assert.match(output, /\/omc-review/);
+  }));
+
+test("router still treats pure help prompts as informational", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "什么是 omc-plan",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-info-block",
+    });
+
+    assert.equal(output, "");
+  }));
+
 test("governance denies destructive shell commands and sensitive reads", () =>
   withTempDir((projectDir) => {
     const shellOutput = runNodeScript(
@@ -154,9 +205,9 @@ test("persistent hook requires a second stop to exit active workflow", () =>
     const stateDir = join(projectDir, ".cursor", "ohc", "state");
     mkdirSync(stateDir, { recursive: true });
     writeFileSync(
-      join(stateDir, "omc-work-state-session-a.json"),
+      join(stateDir, "omc-orchestrate-state-session-a.json"),
       JSON.stringify({
-        workflow: "omc-work",
+        workflow: "omc-orchestrate",
         sessionId: "session-a",
         activatedAt: new Date().toISOString(),
         reinforcementCount: 0,
@@ -177,7 +228,31 @@ test("persistent hook requires a second stop to exit active workflow", () =>
       sessionId: "session-a",
     });
     assert.equal(secondOutput, "");
-    assert.equal(existsSync(join(stateDir, "omc-work-state-session-a.json")), false);
+    assert.equal(existsSync(join(stateDir, "omc-orchestrate-state-session-a.json")), false);
+  }));
+
+test("persistent hook exits omc-work on the first stop", () =>
+  withTempDir((projectDir) => {
+    const stateDir = join(projectDir, ".cursor", "ohc", "state");
+    mkdirSync(stateDir, { recursive: true });
+    writeFileSync(
+      join(stateDir, "omc-work-state-session-c.json"),
+      JSON.stringify({
+        workflow: "omc-work",
+        sessionId: "session-c",
+        activatedAt: new Date().toISOString(),
+        reinforcementCount: 0,
+      }),
+    );
+
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-persistent.mjs"), {
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "session-c",
+    });
+
+    assert.equal(output, "");
+    assert.equal(existsSync(join(stateDir, "omc-work-state-session-c.json")), false);
   }));
 
 test("verify-plugin succeeds from the repository root", () => {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * oh-my-cursor: stop hook — double-tap within window to end persistent workflows.
+ * oh-my-cursor: stop hook — workflow-aware stop handling for persistent modes.
  */
 import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -51,10 +51,18 @@ function makeBlock(reason) {
   return JSON.stringify({ decision: "block", reason });
 }
 
-function loadPersistentWorkflowNames(doc) {
+function loadPersistentWorkflows(doc) {
   return normalizeWorkflowList(doc)
     .filter((w) => w.persistent)
-    .map((w) => w.id);
+    .map((w) => {
+      const raw = Array.isArray(doc?.workflows)
+        ? doc.workflows.find((candidate) => String(candidate?.id ?? "") === w.id)
+        : null;
+      return {
+        id: w.id,
+        stopPolicy: String(raw?.stopPolicy ?? "confirm-twice"),
+      };
+    });
 }
 
 function readModeState(projectDir, workflow, sessionId) {
@@ -130,36 +138,42 @@ function main() {
   const deactivationPhrases = collectDeactivationPhrases(doc);
 
   if (includesDeactivation(textToCheck, deactivationPhrases)) {
-    for (const w of loadPersistentWorkflowNames(doc)) {
-      deactivate(projectDir, w, sessionId);
+    for (const workflow of loadPersistentWorkflows(doc)) {
+      deactivate(projectDir, workflow.id, sessionId);
     }
     clearStopConfirmation(projectDir, sessionId);
     process.exit(0);
   }
 
-  const persistent = loadPersistentWorkflowNames(doc);
+  const persistent = loadPersistentWorkflows(doc);
   for (const workflow of persistent) {
-    const state = readModeState(projectDir, workflow, sessionId);
+    const state = readModeState(projectDir, workflow.id, sessionId);
     if (!state) continue;
 
     if (isStale(state) || (state.reinforcementCount ?? 0) >= MAX_REINFORCEMENTS) {
-      deactivate(projectDir, workflow, sessionId);
+      deactivate(projectDir, workflow.id, sessionId);
       clearStopConfirmation(projectDir, sessionId);
       continue;
     }
 
-    if (hasRecentStopConfirmation(projectDir, sessionId, workflow, windowMs)) {
-      deactivate(projectDir, workflow, sessionId);
+    if (workflow.stopPolicy === "single-tap-exit") {
+      deactivate(projectDir, workflow.id, sessionId);
       clearStopConfirmation(projectDir, sessionId);
       process.exit(0);
     }
 
-    armStopConfirmation(projectDir, sessionId, workflow);
-    incrementReinforcement(projectDir, workflow, sessionId, state);
+    if (hasRecentStopConfirmation(projectDir, sessionId, workflow.id, windowMs)) {
+      deactivate(projectDir, workflow.id, sessionId);
+      clearStopConfirmation(projectDir, sessionId);
+      process.exit(0);
+    }
 
-    const stateFile = ".cursor/ohc/state/" + `${workflow}-state-${sessionId}.json`;
+    armStopConfirmation(projectDir, sessionId, workflow.id);
+    incrementReinforcement(projectDir, workflow.id, sessionId, state);
+
+    const stateFile = ".cursor/ohc/state/" + `${workflow.id}-state-${sessionId}.json`;
     const reason = [
-      `[OHC PERSISTENT: ${workflow.toUpperCase()}]`,
+      `[OHC PERSISTENT: ${workflow.id.toUpperCase()}]`,
       `Stop was intercepted once. Press Stop again within ${Math.round(windowMs / 1000)}s to end this workflow.`,
       `To finish cleanly, use a deactivation phrase from workflows.json or remove ${stateFile}.`,
     ].join("\n");

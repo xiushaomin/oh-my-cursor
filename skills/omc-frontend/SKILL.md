@@ -1,27 +1,37 @@
 ---
 name: omc-frontend
-description: Web frontend — React/Next/TypeScript, components, a11y, and frontend testing.
+description: Web frontend domain skill for React, Next.js, and TypeScript UI work. Use when editing components, app routes, client data flows, styling systems, accessibility-sensitive UI, or frontend tests.
 metadata:
   category: pack
 ---
 
 # omc-frontend
 
-## Goal
-- Ship web UI changes that match repo conventions: architecture, styling, a11y, tests.
+## Overview
+
+Use this pack skill when the work lives in a web UI surface. The goal is to keep component boundaries, data flow, accessibility, and design-system consistency aligned with the repo.
+
+## When to use
+
+- React or Next.js UI work
+- Component, page, or route-layer changes
+- Client data-loading, mutation, or cache interaction work
+- Frontend-focused tests or accessibility-sensitive flows
+
+## When not to use
+
+- React Native or Expo work
+- Pure backend or infrastructure work
 
 ## Focus
-- UI architecture + data-fetching boundaries.
-- A11y (keyboard/labels/contrast) and UX states (loading/error/empty).
-- Match existing design system and styling choices in repo.
 
-## When NOT to use
-- React Native / Expo → `/omc-react-native`.
+- Reuse existing UI primitives and design-system patterns
+- Keep rendering and data responsibilities legible
+- Make loading, empty, success, and error states explicit
+- Treat accessibility and keyboard behavior as part of feature correctness
 
-## Verify (minimum)
-- Lint/typecheck if available.
-- Smoke check key flows (at least happy path + one error state).
-- If UI change: keyboard focus + basic screen reader labels.
+## Minimum verification
 
-## Delegation
-- Implementation: `frontend-engineer` subagent.
+- Run lint or typecheck when available
+- Smoke the primary flow and one meaningful failure state
+- If UI changed, confirm basic keyboard and labeling sanity

@@ -1,12 +1,12 @@
 # Architecture
 
-This document explains how `oh-my-cursor` is structured and how its pieces fit together.
+This document explains how `oh-my-cursor` is structured and how its parts fit together.
 
-If `README.md` is the product-facing guide, this file is the maintainer-facing map.
+If [README.md](/Users/smxiu/Desktop/oh-my-cursor/README.md) is the product-facing guide, this file is the maintainer-facing execution map.
 
 ## Product boundary
 
-`oh-my-cursor` is a Cursor plugin for app teams. It adds structure around Cursor's native primitives without replacing Cursor itself.
+`oh-my-cursor` is a Cursor-native coordination layer for app teams.
 
 It is designed for:
 
@@ -19,92 +19,113 @@ It is designed for:
 
 It is not trying to become:
 
-- a generic agent runtime
-- a CI/CD system
-- a deployment platform
-- a universal all-language framework
+- a replacement agent runtime
+- a universal prompt framework
+- a deployment system
+- an all-language platform
 
 ## Core idea
 
-The plugin works by combining a few small surfaces instead of one giant instruction set:
+The product works by keeping four surfaces sharp instead of collapsing everything into a giant prompt.
 
-1. **Workflows**
-   Define how work should run.
+1. `rules/`
+   Durable stack-aware engineering guidance.
 
-2. **Domain packs**
-   Define what stack-specific context matters.
+2. `skills/`
+   Ordered workflows with explicit exit criteria.
 
-3. **Subagents**
-   Handle bounded specialist work.
+3. `agents/`
+   Narrow specialist lanes for implementation, review, debugging, or documentation.
 
-4. **Hooks**
-   Add routing, persistence, and lightweight governance.
+4. `hooks/`
+   Lightweight routing, persistence, and governance tied to Cursor event boundaries.
 
-5. **Rules**
-   Provide stable, reusable engineering guidance.
+`config/` exists to keep these layers coherent. It should not become the place where behavior is invented for its own sake.
+
+## Cursor-native product shape
+
+The design target is to amplify Cursor's built-in model, not compete with it.
+
+- Rules should stay small, composable, and durable.
+- Skills should hold multi-step process, anti-rationalization, and verification gates.
+- Agents should have a single perspective and a bounded scope.
+- Hooks should stay operational and lightweight.
+
+When the same concern could live in multiple layers, prefer this order:
+
+1. `rules/` for durable expectations
+2. `skills/` for reusable workflows
+3. `agents/` for delegated perspectives
+4. `hooks/` for event-driven control
+5. `config/` for metadata glue
 
 ## Repository structure
 
 | Path | Purpose |
 | --- | --- |
 | `.cursor-plugin/plugin.json` | Cursor plugin manifest |
-| `skills/` | workflow and domain skill entrypoints |
-| `agents/` | subagent definitions |
-| `hooks/` | routing, session, persistence, and governance hooks |
-| `rules/` | optional rule files |
+| `skills/` | workflow and pack skill entrypoints |
+| `agents/` | focused subagent definitions |
+| `hooks/` | routing, persistence, and governance hooks |
+| `rules/` | durable stack-aware rules |
 | `config/` | runtime metadata and generated guidance |
+| `references/` | on-demand support material for skills |
+| `docs/` | maintainer-facing product guidance |
 | `scripts/` | build and verification utilities |
 
-The repo stays intentionally flat. New layers should exist only if they reduce real complexity.
+The repo should stay intentionally flat. Add a new layer only if it clearly reduces maintenance cost or user confusion.
 
 ## Runtime responsibilities
-
-### Skills
-
-Own:
-
-- workflow entrypoints
-- protocols
-- handoffs
-- checklists
-
-Do not own:
-
-- heavy static guidance
-- install logic
-- hidden runtime behavior
-
-### Subagents
-
-Own:
-
-- focused specialist execution
-- deep review
-- bounded implementation lanes
-
-Subagents should have a clear role, not a vague helper identity.
 
 ### Rules
 
 Own:
 
-- durable conventions
-- stack-specific principles
-- reusable guidance
+- stable coding expectations
+- stack-aware heuristics
+- reusable quality principles
 
-Rules should stay small and should not turn into workflow engines.
+Do not own:
+
+- long workflow choreography
+- routing logic
+- hidden state machines
+
+### Skills
+
+Own:
+
+- workflow steps
+- stop points
+- anti-rationalization
+- red flags
+- verification gates
+
+Do not own:
+
+- broad static stack knowledge better expressed as rules
+- hidden runtime behavior that only hooks can enforce
+
+### Agents
+
+Own:
+
+- a single specialist role
+- a narrow deliverable shape
+- deeper implementation or review passes
+
+Agents should not become generic helpers. They should have obvious delegation triggers and clear output formats.
 
 ### Hooks
 
 Own:
 
-- prompt routing
-- pack detection
-- session hints
-- persistent workflow stop behavior
-- conservative governance for shell, MCP, and file access
+- intent routing
+- persistent workflow state
+- conservative shell, MCP, and file guardrails
+- lightweight telemetry and session glue
 
-Hooks should stay operational and lightweight.
+Hooks should not become a second workflow engine.
 
 ## Workflow families
 
@@ -138,75 +159,85 @@ Current packs:
 - `omc-flutter`
 - `omc-react-native`
 
-Each pack contributes likely rules, specialist roles, and stack heuristics.
+Each pack contributes:
 
-There is also one shared baseline rule, `rules/omc-common.mdc`, which uses Cursor's `alwaysApply: true` mode. Stack-specific rules stay scoped, while the common rule carries cross-cutting expectations around clarity, simplicity, surgical changes, delegation discipline, and verification.
+- likely workflow fit
+- likely rules
+- likely agents
+- stack heuristics for detection
+
+There is also one shared baseline rule, [rules/omc-common.mdc](/Users/smxiu/Desktop/oh-my-cursor/rules/omc-common.mdc), which carries cross-cutting expectations around clarity, simplicity, narrow delegation, and evidence-backed verification.
 
 ## Configuration model
 
-Most of the contract lives in `config/`.
+Most of the product contract lives in `config/`.
 
 Key files:
 
-- `config/workflows.json`
-- `config/packs.json`
-- `config/capabilities.json`
-- `config/guidance-index.json`
-- `config/subagent-context.json`
-- `config/check-lanes.json`
-- `config/config.jsonc`
+- [config/workflows.json](/Users/smxiu/Desktop/oh-my-cursor/config/workflows.json)
+- [config/packs.json](/Users/smxiu/Desktop/oh-my-cursor/config/packs.json)
+- [config/capabilities.json](/Users/smxiu/Desktop/oh-my-cursor/config/capabilities.json)
+- [config/guidance-index.json](/Users/smxiu/Desktop/oh-my-cursor/config/guidance-index.json)
+- [config/subagent-context.json](/Users/smxiu/Desktop/oh-my-cursor/config/subagent-context.json)
+- [config/check-lanes.json](/Users/smxiu/Desktop/oh-my-cursor/config/check-lanes.json)
+- [config/config.jsonc](/Users/smxiu/Desktop/oh-my-cursor/config/config.jsonc)
 
-## Cursor-native best practices
+## Skill quality bar
 
-The design target is to amplify Cursor's native primitives, not compete with them.
+Core workflow skills should converge on one consistent anatomy:
 
-- Keep `rules/` concise and composable, like strong project rules rather than mini runtimes.
-- Keep `skills/` for multi-step workflows that need ordered protocols or handoffs.
-- Keep `agents/` narrowly scoped, with descriptions that clearly say when delegation should happen.
-- Keep `hooks/` responsible for lifecycle control, guardrails, and telemetry, because Cursor already gives hooks the right event boundaries for that job.
+- `Overview`
+- `When to use`
+- `When not to use`
+- `Workflow`
+- `Common rationalizations`
+- `Red flags`
+- `Verification`
 
-When a behavior could live in multiple places, prefer the most native layer first:
+Why this matters:
 
-1. `rules/` for durable coding guidance
-2. `skills/` for reusable workflows
-3. `agents/` for focused delegated work
-4. `hooks/` for event-driven control and enforcement
-5. `config/` only as the metadata glue that keeps the above coherent
+- Cursor skills need to stay reasonably short.
+- Short skills still need enough structure to constrain agent behavior.
+- Anti-rationalization is often more valuable than extra prose.
+- References and docs can carry deeper support material on demand.
 
-## Model routing
+## References and docs
 
-Model choice is role-based, not uniform.
+Long checklists and orchestration policies should live outside the core skill body.
 
-The guiding idea:
+Use:
 
-- UI-heavy work gets strong large-context UI models
-- backend coding gets coding-focused models
-- architecture and hard debugging get stronger reasoning models
-- planning stays cost-aware
+- `references/` for reusable quality assets such as testing, security, performance, and accessibility checklists
+- `docs/` for maintainer-facing product shape, orchestration patterns, and Cursor-native design guidance
 
-Default routing is intentionally pragmatic rather than flashy.
+This preserves progressive disclosure and reduces context bloat.
 
-## Rule design
+## Routing philosophy
 
-Rules in this repo should be:
+The router should remain pragmatic, not magical.
 
-- concise
-- composable
-- stack-aware
-- durable across many repos
+- Prefer explicit skill invocations when the user wants a specific mode.
+- Support natural-language routing when intent is clear.
+- Avoid accidental escalation into orchestration for tiny prompts.
+- Detect packs conservatively and keep the injected context compact.
 
-They should not encode task choreography. If guidance depends on sequence or handoff, it probably belongs in a skill.
+The best router is the one users barely notice.
 
-## Customization layers
+## Governance philosophy
 
-The expected precedence is:
+Safety guardrails should block obviously risky behavior without making ordinary work painful.
 
-1. shipped defaults
-2. plugin config
-3. repo rules and overlays
-4. Cursor team rules
+Current governance focuses on:
+
+- destructive shell commands
+- sensitive file reads
+- risky MCP configuration mutations
+
+This is intentionally conservative and dependency-free.
 
 ## Verification loop
+
+Because the product is mostly metadata plus runtime glue, quiet drift is a bigger risk than loud code failures.
 
 After metadata changes, run:
 
@@ -214,14 +245,17 @@ After metadata changes, run:
 node scripts/build-guidance-index.mjs
 node scripts/verify-guidance-index.mjs
 node scripts/verify-plugin.mjs
-```
-
-These checks matter because the product is mostly metadata plus runtime glue. Small path or schema drift can quietly break the plugin.
-
-Add the behavior suite too:
-
-```bash
 node --test tests/*.test.mjs
 ```
 
-Those tests lock the router, governance, persistent stop flow, and pack detection so best-practice cleanup work stays reversible.
+These checks matter because routing, capability mapping, and plugin structure can break from small schema or path changes.
+
+## Near-term improvement direction
+
+The current strategic direction is:
+
+- strengthen core workflow skills
+- keep the product more Cursor-native and less command-centric
+- expand references instead of bloating skills
+- document good and bad orchestration patterns explicitly
+- keep hooks lean while improving skill quality

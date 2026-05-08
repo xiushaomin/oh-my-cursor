@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1",
   "productVersion": "0.1.0",
-  "generatedAt": "2026-05-06T08:27:22.251Z",
+  "generatedAt": "2026-05-08T04:33:21.366Z",
   "workflows": [
     {
       "id": "omc-orchestrate",
       "title": "Orchestrate",
       "skillId": "omc-orchestrator",
-      "description": "Parallel or multi-phase execution with subagent delegation.",
+      "description": "Multi-lane execution for large or cross-domain work that needs planning, bounded delegation, integration, and end-to-end verification.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -188,7 +188,7 @@
         "verification",
         "handoffs"
       ],
-      "successDefinition": "Workstreams integrated and verified against acceptance criteria.",
+      "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs.",
       "relatedWorkflowIds": [
         "omc-work",
         "omc-plan"
@@ -199,7 +199,7 @@
       "id": "omc-brainstorm",
       "title": "Brainstorm",
       "skillId": "omc-brainstorm",
-      "description": "Explore options and shape rough intent before planning.",
+      "description": "Option exploration workflow for turning fuzzy intent into a small set of concrete directions before planning or implementation.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -299,7 +299,7 @@
         "open_decisions",
         "plan_seed"
       ],
-      "successDefinition": "Options are concrete enough to choose a plan direction.",
+      "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into planning.",
       "relatedWorkflowIds": [
         "omc-plan",
         "omc-architecture"
@@ -310,7 +310,7 @@
       "id": "omc-work",
       "title": "Work",
       "skillId": "omc-work",
-      "description": "Guided step-by-step execution with explicit checkpoints.",
+      "description": "Guided execution workflow for one small step at a time when the user wants close control and explicit checkpoints.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -408,7 +408,7 @@
         "next_options",
         "blocked_on"
       ],
-      "successDefinition": "Each step confirmed before the next executes.",
+      "successDefinition": "Each step is small, verified, and clear enough for the next decision to stay local.",
       "relatedWorkflowIds": [
         "omc-orchestrate",
         "omc-plan"
@@ -419,7 +419,7 @@
       "id": "omc-review",
       "title": "Review",
       "skillId": "omc-review",
-      "description": "Independent review for quality, security, and completeness.",
+      "description": "Independent merge-readiness review focused on findings, severity, verification gaps, and residual risk.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -543,7 +543,7 @@
         "residual_risks",
         "checks_run"
       ],
-      "successDefinition": "Actionable findings with evidence.",
+      "successDefinition": "Findings are concrete, evidence-backed, severity-labeled, and accompanied by the smallest useful next checks.",
       "relatedWorkflowIds": [
         "omc-debug",
         "omc-plan"
@@ -567,7 +567,7 @@
       "id": "omc-debug",
       "title": "Debug",
       "skillId": "omc-debug",
-      "description": "Root-cause analysis and minimal safe fixes.",
+      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -681,7 +681,7 @@
         "fix",
         "tests"
       ],
-      "successDefinition": "Repro understood and fix verified.",
+      "successDefinition": "The failure mode is understood, the root cause is evidence-backed, and the fix is verified on the most relevant proof path.",
       "relatedWorkflowIds": [
         "omc-review",
         "omc-work"
@@ -706,7 +706,7 @@
       "id": "omc-plan",
       "title": "Plan",
       "skillId": "omc-plan",
-      "description": "Structured planning before implementation.",
+      "description": "Planning workflow for turning a goal into milestones, acceptance criteria, dependencies, and risk-aware execution steps.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -820,7 +820,7 @@
         "dependencies",
         "risks"
       ],
-      "successDefinition": "Plan is executable with clear acceptance criteria.",
+      "successDefinition": "The plan is explicit enough to execute without rediscovering scope, dependencies, or proof obligations.",
       "relatedWorkflowIds": [
         "omc-work",
         "omc-orchestrate"
@@ -831,7 +831,7 @@
       "id": "omc-architecture",
       "title": "Architecture",
       "skillId": "omc-architecture",
-      "description": "Architecture decisions, boundaries, and technical tradeoffs.",
+      "description": "Architecture workflow for boundary decisions, tradeoff analysis, migration shape, and other changes that are expensive to reverse.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -943,7 +943,7 @@
         "migration_plan",
         "verification"
       ],
-      "successDefinition": "Decision and rejected alternatives are clear enough for implementation.",
+      "successDefinition": "Constraints, chosen direction, rejected alternatives, and migration shape are clear enough to implement responsibly.",
       "relatedWorkflowIds": [
         "omc-brainstorm",
         "omc-plan",
@@ -955,7 +955,7 @@
       "id": "omc-scm",
       "title": "SCM",
       "skillId": "omc-scm",
-      "description": "Git workflow, commits, PRs, and handoff hygiene.",
+      "description": "Source-control workflow for branch strategy, staging boundaries, commits, PR prep, and safe collaboration hygiene.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1058,7 +1058,7 @@
         "commit_messages",
         "pr_summary"
       ],
-      "successDefinition": "Changes are ready for collaboration.",
+      "successDefinition": "The change set is intentionally grouped, collaboration-ready, and free of avoidable source-control risk.",
       "relatedWorkflowIds": [
         "omc-review",
         "omc-work"
@@ -1069,7 +1069,7 @@
       "id": "omc-test-plan",
       "title": "Test Plan",
       "skillId": "omc-test-plan",
-      "description": "Focused test planning and regression coverage recommendations.",
+      "description": "Verification-planning workflow for mapping behavior claims to regression checks, manual checks, and concrete coverage gaps.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1170,7 +1170,7 @@
         "commands",
         "coverage_gaps"
       ],
-      "successDefinition": "Verification plan names concrete checks and residual gaps.",
+      "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps.",
       "relatedWorkflowIds": [
         "omc-review",
         "omc-debug"
@@ -1181,7 +1181,7 @@
       "id": "omc-pr-summary",
       "title": "PR Summary",
       "skillId": "omc-pr-summary",
-      "description": "Reviewer-ready summary, verification notes, and risk handoff.",
+      "description": "Reviewer-facing change summary that explains why the work exists, what users feel, how it was verified, and what still carries risk.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1286,7 +1286,7 @@
         "verification",
         "risks"
       ],
-      "successDefinition": "Reviewer can understand the change and verification quickly.",
+      "successDefinition": "A reviewer can understand the purpose, user impact, verification, and residual risk of the change without re-reading the whole diff first.",
       "relatedWorkflowIds": [
         "omc-scm",
         "omc-review"
@@ -1297,7 +1297,7 @@
       "id": "omc-release-checklist",
       "title": "Release Checklist",
       "skillId": "omc-release-checklist",
-      "description": "Release readiness, rollout, rollback, docs, and verification checklist.",
+      "description": "Release-readiness workflow for separating blockers from follow-ups and making rollout, rollback, docs, and verification explicit.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1408,7 +1408,7 @@
         "rollback_plan",
         "handoff"
       ],
-      "successDefinition": "Release blockers and rollout evidence are explicit.",
+      "successDefinition": "Release blockers, required checks, rollout expectations, and rollback shape are explicit enough to support a go or no-go decision.",
       "relatedWorkflowIds": [
         "omc-pr-summary",
         "omc-migration-checklist"
@@ -1433,7 +1433,7 @@
       "id": "omc-incident-report",
       "title": "Incident Report",
       "skillId": "omc-incident-report",
-      "description": "Incident/debug report with impact, timeline, root cause, fix, and prevention.",
+      "description": "Incident-report workflow for turning debugging or operational evidence into a clear record of impact, timeline, root cause, remediation, and prevention.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1539,7 +1539,7 @@
         "verification",
         "prevention"
       ],
-      "successDefinition": "Incident evidence and prevention follow-ups are clear.",
+      "successDefinition": "Impact, timeline, evidence, root cause, remediation, and prevention follow-ups are clear enough for future readers and stakeholders.",
       "relatedWorkflowIds": [
         "omc-debug",
         "omc-pr-summary"
@@ -1550,7 +1550,7 @@
       "id": "omc-migration-checklist",
       "title": "Migration Checklist",
       "skillId": "omc-migration-checklist",
-      "description": "Migration steps, compatibility, verification, and rollback plan.",
+      "description": "Migration workflow for compatibility boundaries, ordered rollout steps, verification points, and rollback timing.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1656,7 +1656,7 @@
         "rollback",
         "risks"
       ],
-      "successDefinition": "Migration can proceed with ordered checks and rollback.",
+      "successDefinition": "Current state, target state, compatibility window, ordered checks, and rollback path are explicit enough to migrate safely.",
       "relatedWorkflowIds": [
         "omc-architecture",
         "omc-release-checklist"
@@ -1915,7 +1915,7 @@
       "id": "pm-planner",
       "title": "PM planner subagent",
       "profileId": "planning",
-      "focus": "Clarify scope, constraints, and next steps with the smallest useful question set.",
+      "focus": "Clarify goals, constraints, sequencing, and only the minimum open questions needed to unblock execution.",
       "outputHints": [
         "goals",
         "milestones",
@@ -1933,7 +1933,7 @@
       "id": "question-asker",
       "title": "Question asker subagent",
       "profileId": "planning",
-      "focus": "Clarify scope, constraints, and next steps with the smallest useful question set.",
+      "focus": "Clarify goals, constraints, sequencing, and only the minimum open questions needed to unblock execution.",
       "outputHints": [
         "goals",
         "milestones",
@@ -1949,7 +1949,7 @@
       "id": "repo-researcher",
       "title": "Repo researcher subagent",
       "profileId": "research",
-      "focus": "Read narrowly, cite concrete files, and return evidence-backed findings only.",
+      "focus": "Read narrowly, map the repo with evidence, and return only concrete findings that help the parent decide the next move.",
       "outputHints": [
         "findings",
         "files_of_interest",
@@ -1967,7 +1967,7 @@
       "id": "debug-investigator",
       "title": "Debug investigator subagent",
       "profileId": "research",
-      "focus": "Read narrowly, cite concrete files, and return evidence-backed findings only.",
+      "focus": "Read narrowly, map the repo with evidence, and return only concrete findings that help the parent decide the next move.",
       "outputHints": [
         "findings",
         "files_of_interest",
@@ -1983,7 +1983,7 @@
       "id": "frontend-engineer",
       "title": "Frontend engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -1998,7 +1998,7 @@
       "id": "java-backend-engineer",
       "title": "Java backend engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2013,7 +2013,7 @@
       "id": "ios-engineer",
       "title": "iOS engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2028,7 +2028,7 @@
       "id": "android-engineer",
       "title": "Android engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2043,7 +2043,7 @@
       "id": "flutter-engineer",
       "title": "Flutter engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2058,7 +2058,7 @@
       "id": "react-native-engineer",
       "title": "React Native engineer subagent",
       "profileId": "implementation",
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2073,7 +2073,7 @@
       "id": "frontend-qa-reviewer",
       "title": "Frontend QA reviewer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2089,7 +2089,7 @@
       "id": "backend-qa-reviewer",
       "title": "Backend QA reviewer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2105,7 +2105,7 @@
       "id": "mobile-qa-reviewer",
       "title": "Mobile QA reviewer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2121,7 +2121,7 @@
       "id": "architecture-reviewer",
       "title": "Architecture reviewer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2139,7 +2139,7 @@
       "id": "migration-reviewer",
       "title": "Migration reviewer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2158,7 +2158,7 @@
       "id": "test-writer",
       "title": "Test writer subagent",
       "profileId": "review",
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2178,7 +2178,7 @@
       "id": "docs-maintainer",
       "title": "Docs maintainer subagent",
       "profileId": "documentation",
-      "focus": "Turn technical changes into concise reviewer-ready or user-facing artifacts.",
+      "focus": "Turn completed technical work into concise repo docs, handoff notes, or reviewer-facing artifacts without adding unnecessary implementation noise.",
       "outputHints": [
         "summary",
         "verification",
@@ -2197,7 +2197,7 @@
       "id": "release-notes-writer",
       "title": "Release notes writer subagent",
       "profileId": "documentation",
-      "focus": "Turn technical changes into concise reviewer-ready or user-facing artifacts.",
+      "focus": "Turn completed technical work into concise repo docs, handoff notes, or reviewer-facing artifacts without adding unnecessary implementation noise.",
       "outputHints": [
         "summary",
         "verification",
@@ -2225,7 +2225,7 @@
         "packRules": false,
         "checkLane": false
       },
-      "focus": "Clarify scope, constraints, and next steps with the smallest useful question set.",
+      "focus": "Clarify goals, constraints, sequencing, and only the minimum open questions needed to unblock execution.",
       "outputHints": [
         "goals",
         "milestones",
@@ -2245,7 +2245,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Read narrowly, cite concrete files, and return evidence-backed findings only.",
+      "focus": "Read narrowly, map the repo with evidence, and return only concrete findings that help the parent decide the next move.",
       "outputHints": [
         "findings",
         "files_of_interest",
@@ -2269,7 +2269,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -2293,7 +2293,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2313,7 +2313,7 @@
         "packRules": false,
         "checkLane": true
       },
-      "focus": "Turn technical changes into concise reviewer-ready or user-facing artifacts.",
+      "focus": "Turn completed technical work into concise repo docs, handoff notes, or reviewer-facing artifacts without adding unnecessary implementation noise.",
       "outputHints": [
         "summary",
         "verification",

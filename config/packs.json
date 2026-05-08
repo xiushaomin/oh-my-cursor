@@ -5,7 +5,7 @@
     {
       "id": "omc-frontend",
       "title": "Frontend",
-      "description": "React, Next.js, TypeScript, and modern web UI delivery.",
+      "description": "Web UI domain pack for React, Next.js, TypeScript, client data flow, design-system consistency, and accessibility-sensitive frontend work.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-frontend",
@@ -87,11 +87,11 @@
       },
       "explain": {
         "whenToUse": [
-          "Web UI work",
-          "Component systems"
+          "React or Next.js web UI work",
+          "Component, route, styling, or client data-flow changes"
         ],
         "whenNotToUse": [
-          "Pure mobile native without web UI"
+          "Pure native mobile work without a web UI surface"
         ],
         "relatedPackIds": [
           "omc-react-native"
@@ -101,7 +101,7 @@
     {
       "id": "omc-java-backend",
       "title": "Java backend",
-      "description": "Spring-style services, APIs, validation, and backend review.",
+      "description": "Backend domain pack for Java or Spring-style APIs, services, persistence, validation, transactions, and server-side verification.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-java-backend",
@@ -183,10 +183,11 @@
       },
       "explain": {
         "whenToUse": [
-          "Service and API work in Java ecosystem"
+          "Java or Spring-style service and API work",
+          "Backend persistence, validation, or transaction-sensitive changes"
         ],
         "whenNotToUse": [
-          "Pure frontend-only repos"
+          "Pure frontend work with no Java backend surface"
         ],
         "relatedPackIds": []
       }
@@ -194,7 +195,7 @@
     {
       "id": "omc-ios",
       "title": "iOS",
-      "description": "Swift, SwiftUI, UIKit, and Apple platform delivery.",
+      "description": "Native iOS domain pack for Swift, SwiftUI, UIKit, lifecycle-aware state, concurrency, navigation, and Apple-platform UI delivery.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-ios",
@@ -274,10 +275,11 @@
       },
       "explain": {
         "whenToUse": [
-          "Apple platform app work"
+          "Native iOS app work",
+          "SwiftUI, UIKit, navigation, or concurrency-sensitive Apple-platform changes"
         ],
         "whenNotToUse": [
-          "Android-only repos"
+          "Android-only or non-Apple platform work"
         ],
         "relatedPackIds": [
           "omc-flutter",
@@ -288,7 +290,7 @@
     {
       "id": "omc-android",
       "title": "Android",
-      "description": "Kotlin, Jetpack Compose, and Android architecture.",
+      "description": "Native Android domain pack for Kotlin, Jetpack, Compose or Views, lifecycle-aware state, threading, and Android app delivery.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-android",
@@ -367,10 +369,11 @@
       },
       "explain": {
         "whenToUse": [
-          "Android app work"
+          "Native Android app work",
+          "Compose, ViewModel, Flow, coroutine, or Android UI changes"
         ],
         "whenNotToUse": [
-          "iOS-only repos"
+          "iOS-only or non-Android platform work"
         ],
         "relatedPackIds": [
           "omc-flutter",
@@ -381,7 +384,7 @@
     {
       "id": "omc-flutter",
       "title": "Flutter",
-      "description": "Flutter and Dart cross-platform UI.",
+      "description": "Flutter domain pack for Dart widgets, state boundaries, platform bridges, rendering performance, and cross-platform mobile delivery.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-flutter",
@@ -457,10 +460,11 @@
       },
       "explain": {
         "whenToUse": [
-          "Flutter app work"
+          "Flutter or Dart app work",
+          "Widget, screen, state-management, or plugin-boundary changes"
         ],
         "whenNotToUse": [
-          "Pure native single-platform without Flutter"
+          "Pure native single-platform work without Flutter surfaces"
         ],
         "relatedPackIds": [
           "omc-react-native"
@@ -470,7 +474,7 @@
     {
       "id": "omc-react-native",
       "title": "React Native",
-      "description": "React Native and Expo apps with native boundary awareness.",
+      "description": "React Native domain pack for Expo, navigation, JS and native boundaries, device capability use, and shared mobile UI delivery.",
       "status": "active",
       "kind": "pack",
       "primarySkillId": "omc-react-native",
@@ -555,10 +559,11 @@
       },
       "explain": {
         "whenToUse": [
-          "RN / Expo mobile work"
+          "React Native or Expo mobile work",
+          "Cross-platform screen, navigation, or native-module-sensitive changes"
         ],
         "whenNotToUse": [
-          "Pure web SPA without RN"
+          "Pure web work without any React Native surface"
         ],
         "relatedPackIds": [
           "omc-frontend",

@@ -19,7 +19,7 @@
         "packRules": false,
         "checkLane": false
       },
-      "focus": "Clarify scope, constraints, and next steps with the smallest useful question set.",
+      "focus": "Clarify goals, constraints, sequencing, and only the minimum open questions needed to unblock execution.",
       "outputHints": [
         "goals",
         "milestones",
@@ -39,7 +39,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Read narrowly, cite concrete files, and return evidence-backed findings only.",
+      "focus": "Read narrowly, map the repo with evidence, and return only concrete findings that help the parent decide the next move.",
       "outputHints": [
         "findings",
         "files_of_interest",
@@ -63,7 +63,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Implement the smallest change that satisfies the workflow contract and detected stack rules.",
+      "focus": "Implement the smallest change that satisfies the assigned scope while preserving the repo's stack conventions and boundaries.",
       "outputHints": [
         "status",
         "files_changed",
@@ -87,7 +87,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Prefer findings, evidence, verification gaps, and rollback or compatibility risk over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -107,7 +107,7 @@
         "packRules": false,
         "checkLane": true
       },
-      "focus": "Turn technical changes into concise reviewer-ready or user-facing artifacts.",
+      "focus": "Turn completed technical work into concise repo docs, handoff notes, or reviewer-facing artifacts without adding unnecessary implementation noise.",
       "outputHints": [
         "summary",
         "verification",
