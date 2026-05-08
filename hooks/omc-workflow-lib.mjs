@@ -219,7 +219,7 @@ export function loadRuntimeConfig(scriptDir) {
       mcpGuardEnabled: config.safety?.mcpGuardEnabled !== false,
     },
     telemetry: {
-      localLogsEnabled: config.telemetry?.localLogsEnabled !== false,
+      localLogsEnabled: config.telemetry?.localLogsEnabled === true,
     },
   };
 }

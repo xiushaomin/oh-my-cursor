@@ -1,5 +1,8 @@
 # oh-my-cursor
 
+> Warning
+> This project is still in active testing. Behavior, APIs, defaults, and workflow details may change, and some features may be incomplete or unstable.
+
 `oh-my-cursor` is a Cursor plugin for app teams that want stronger execution discipline without fighting Cursor's native model.
 
 It combines:

@@ -200,6 +200,24 @@ test("governance allows normal MCP business tools like jira_add_comment", () =>
     assert.match(output, /"permission":"allow"/);
   }));
 
+test("governance does not create local log files when telemetry is disabled", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(
+      join(repoRoot, "hooks", "omc-governance.mjs"),
+      {
+        hookEventName: "beforeShellExecution",
+        command: "echo safe",
+        cwd: projectDir,
+        workspace_roots: [projectDir],
+      },
+      {},
+      repoRoot,
+    );
+
+    assert.match(output, /"permission":"allow"/);
+    assert.equal(existsSync(join(projectDir, ".cursor", "ohc", "logs")), false);
+  }));
+
 test("persistent hook requires a second stop to exit active workflow", () =>
   withTempDir((projectDir) => {
     const stateDir = join(projectDir, ".cursor", "ohc", "state");

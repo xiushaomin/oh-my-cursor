@@ -33,6 +33,6 @@
     "mcpGuardEnabled": true
   },
   "telemetry": {
-    "localLogsEnabled": true
+    "localLogsEnabled": false
   }
 }
