@@ -1,6 +1,6 @@
 ---
 name: omc-ios
-description: iOS domain skill for Swift, SwiftUI, UIKit, concurrency, navigation, lifecycle, and Xcode-friendly app workflows.
+description: iOS skill for Swift, SwiftUI, UIKit, concurrency, navigation, and lifecycle-sensitive app work. Use when changing screens, flows, state ownership, or iOS validation paths.
 metadata:
   category: pack
 ---
@@ -9,29 +9,26 @@ metadata:
 
 ## Overview
 
-Use this pack skill when the work primarily targets native iOS surfaces, app lifecycle behavior, or Apple-platform UI and concurrency constraints.
+Use this skill for native iOS surfaces, app lifecycle behavior, and Apple-platform UI work.
 
 ## When to use
 
 - SwiftUI or UIKit feature work
-- Navigation, state ownership, or lifecycle behavior
-- Concurrency, task lifetime, or `@MainActor` sensitive changes
-- XCTest or iOS UI validation work
+- Navigation, state ownership, or concurrency-sensitive changes
+- iOS verification and smoke coverage
 
-## When not to use
+## Repo-first discovery
 
-- React Native or Expo flows
-- Pure backend or non-iOS platform work
+- Find the owning screen, navigation flow, and state boundary first.
+- Reuse repo-local concurrency, navigation, and testing patterns.
 
-## Focus
+## Default deliverable
 
-- Keep views composable and orchestration out of view bodies
-- Respect task lifetime, cancellation, and actor boundaries
-- Stay aligned with the repo's app structure and Apple platform conventions
-- Treat accessibility and interaction feedback as feature behavior
+- Name the affected screen or lifecycle boundary.
+- State the concurrency or navigation assumption being preserved.
+- State the strongest simulator or device verification path.
 
-## Minimum verification
+## On-demand references
 
-- Build in Xcode or with the repo's configured build path
-- Smoke one critical flow
-- State simulator versus real-device gaps when relevant
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when ownership is unclear.
+- Pull from [`../../references/mobile-verification-prompts.md`](../../references/mobile-verification-prompts.md) and [`../../references/testing-checklist.md`](../../references/testing-checklist.md) for deeper verification.

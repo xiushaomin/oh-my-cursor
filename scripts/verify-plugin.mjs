@@ -106,8 +106,10 @@ try {
     "hooks/omc-persistent.mjs",
     "hooks/omc-governance.mjs",
     "scripts/build-guidance-index.mjs",
+    "scripts/verify-agents.mjs",
     "scripts/verify-guidance-index.mjs",
     "scripts/verify-plugin.mjs",
+    "scripts/verify-skills.mjs",
   ]);
   verifyJsonFiles();
   verifyWorkflowAssets();

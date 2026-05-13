@@ -5,7 +5,7 @@
     {
       "id": "skill.omc-brainstorm",
       "title": "Brainstorm skill",
-      "description": "Ideation and option exploration before planning.",
+      "description": "Option exploration workflow for turning fuzzy intent into concrete directions before planning or implementation.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -31,9 +31,37 @@
       }
     },
     {
+      "id": "skill.omc-spec",
+      "title": "Spec skill",
+      "description": "Lightweight specification workflow for broad or risky work that needs intent, constraints, acceptance criteria, and a quality contract before planning.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-spec"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-spec/SKILL.md",
+        "targetPath": "skills/omc-spec/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Spec workflow entry."
+      }
+    },
+    {
       "id": "skill.omc-plan",
       "title": "Plan skill",
-      "description": "Structured planning and decomposition.",
+      "description": "Planning workflow for turning a scoped goal into milestones, acceptance criteria, dependencies, and risks before implementation.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -59,9 +87,9 @@
       }
     },
     {
-      "id": "skill.omc-work",
-      "title": "Work skill",
-      "description": "Guided step-by-step execution.",
+      "id": "skill.omc-develop",
+      "title": "Develop skill",
+      "description": "Scoped implementation workflow for local code or documentation changes with tight scope control and local verification.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -71,25 +99,25 @@
       },
       "references": {
         "workflowIds": [
-          "omc-work"
+          "omc-develop"
         ],
         "packIds": [],
         "agentIds": []
       },
       "install": {
-        "sourcePath": "skills/omc-work/SKILL.md",
-        "targetPath": "skills/omc-work/SKILL.md",
+        "sourcePath": "skills/omc-develop/SKILL.md",
+        "targetPath": "skills/omc-develop/SKILL.md",
         "managed": true
       },
       "explain": {
         "category": "workflow",
-        "summary": "Guided work workflow entry."
+        "summary": "Develop workflow entry."
       }
     },
     {
-      "id": "skill.omc-orchestrator",
-      "title": "Orchestrator skill",
-      "description": "Multi-lane execution workflow for large or cross-domain work that needs bounded delegation, integration, and end-to-end verification.",
+      "id": "skill.omc-verify",
+      "title": "Check skill",
+      "description": "Verification-design workflow for mapping behavior claims to automated checks, manual checks, proof targets, blockers, and explicit coverage gaps.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -99,25 +127,25 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-verify"
         ],
         "packIds": [],
         "agentIds": []
       },
       "install": {
-        "sourcePath": "skills/omc-orchestrator/SKILL.md",
-        "targetPath": "skills/omc-orchestrator/SKILL.md",
+        "sourcePath": "skills/omc-verify/SKILL.md",
+        "targetPath": "skills/omc-verify/SKILL.md",
         "managed": true
       },
       "explain": {
         "category": "workflow",
-        "summary": "Workflow entry for bounded parallel execution, integration, and verification."
+        "summary": "Check workflow entry."
       }
     },
     {
       "id": "skill.omc-review",
       "title": "Review skill",
-      "description": "Quality and security review workflows.",
+      "description": "Independent merge-readiness review focused on evidence-backed findings, severity, verification gaps, residual risk, and handoff clarity.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -143,9 +171,65 @@
       }
     },
     {
+      "id": "skill.omc-architecture",
+      "title": "Architecture skill",
+      "description": "Architecture workflow for boundary decisions, tradeoff analysis, migration shape, and other changes that are expensive to reverse.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-architecture"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-architecture/SKILL.md",
+        "targetPath": "skills/omc-architecture/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Architecture workflow entry."
+      }
+    },
+    {
+      "id": "skill.omc-parallel",
+      "title": "Parallel skill",
+      "description": "Bounded multi-lane workflow for independent workstreams that need clear ownership, parent integration, and end-to-end verification.",
+      "status": "active",
+      "type": "skill",
+      "surface": "cursor-skill",
+      "owner": {
+        "package": "oh-my-cursor",
+        "packId": null
+      },
+      "references": {
+        "workflowIds": [
+          "omc-parallel"
+        ],
+        "packIds": [],
+        "agentIds": []
+      },
+      "install": {
+        "sourcePath": "skills/omc-parallel/SKILL.md",
+        "targetPath": "skills/omc-parallel/SKILL.md",
+        "managed": true
+      },
+      "explain": {
+        "category": "workflow",
+        "summary": "Parallel workflow entry."
+      }
+    },
+    {
       "id": "skill.omc-debug",
       "title": "Debug skill",
-      "description": "Root-cause debugging workflows.",
+      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix for a real bug or regression.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -171,9 +255,9 @@
       }
     },
     {
-      "id": "skill.omc-scm",
-      "title": "SCM skill",
-      "description": "Git and handoff workflows.",
+      "id": "skill.omc-learn",
+      "title": "Learn skill",
+      "description": "Learning workflow for turning incidents, regressions, repeated review findings, or debugging evidence into durable prevention assets.",
       "status": "active",
       "type": "skill",
       "surface": "cursor-skill",
@@ -183,47 +267,19 @@
       },
       "references": {
         "workflowIds": [
-          "omc-scm"
+          "omc-learn"
         ],
         "packIds": [],
         "agentIds": []
       },
       "install": {
-        "sourcePath": "skills/omc-scm/SKILL.md",
-        "targetPath": "skills/omc-scm/SKILL.md",
+        "sourcePath": "skills/omc-learn/SKILL.md",
+        "targetPath": "skills/omc-learn/SKILL.md",
         "managed": true
       },
       "explain": {
         "category": "workflow",
-        "summary": "SCM workflow entry."
-      }
-    },
-    {
-      "id": "skill.omc-architecture",
-      "title": "Architecture skill",
-      "description": "Architecture and tradeoff workflows.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-architecture"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-architecture/SKILL.md",
-        "targetPath": "skills/omc-architecture/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "workflow",
-        "summary": "Architecture workflow entry."
+        "summary": "Learn workflow entry."
       }
     },
     {
@@ -407,10 +463,11 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-brainstorm",
-          "omc-work",
-          "omc-plan"
+          "omc-develop",
+          "omc-plan",
+          "omc-spec"
         ],
         "packIds": [],
         "agentIds": []
@@ -438,10 +495,11 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review",
           "omc-plan",
-          "omc-architecture"
+          "omc-architecture",
+          "omc-spec"
         ],
         "packIds": [],
         "agentIds": []
@@ -470,7 +528,7 @@
       "references": {
         "workflowIds": [
           "omc-debug",
-          "omc-incident-report"
+          "omc-learn"
         ],
         "packIds": [],
         "agentIds": []
@@ -498,7 +556,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-frontend"
@@ -528,7 +587,7 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review"
         ],
         "packIds": [
@@ -559,7 +618,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-java-backend"
@@ -589,7 +649,7 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review"
         ],
         "packIds": [
@@ -620,7 +680,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-ios"
@@ -650,7 +711,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-android"
@@ -680,7 +742,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-flutter"
@@ -710,7 +773,8 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate"
+          "omc-parallel",
+          "omc-develop"
         ],
         "packIds": [
           "omc-react-native"
@@ -740,7 +804,7 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review"
         ],
         "packIds": [
@@ -1149,12 +1213,13 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review",
           "omc-debug",
-          "omc-test-plan",
-          "omc-release-checklist",
-          "omc-migration-checklist"
+          "omc-verify",
+          "omc-architecture",
+          "omc-develop",
+          "omc-learn"
         ],
         "packIds": [
           "omc-frontend",
@@ -1177,44 +1242,6 @@
       }
     },
     {
-      "id": "agent.release-notes-writer",
-      "title": "Release notes writer subagent",
-      "description": "Concise PR summaries, release notes, changelog entries, and stakeholder-facing handoff wording.",
-      "status": "active",
-      "type": "agent",
-      "surface": "cursor-agent",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-orchestrate",
-          "omc-scm",
-          "omc-pr-summary",
-          "omc-release-checklist"
-        ],
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "agents/release-notes-writer.md",
-        "targetPath": "agents/release-notes-writer.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "subagent",
-        "summary": "Writing lane for concise release and reviewer-facing artifacts."
-      }
-    },
-    {
       "id": "agent.migration-reviewer",
       "title": "Migration reviewer subagent",
       "description": "Migration safety review for compatibility boundaries, rollout sequencing, and rollback viability.",
@@ -1227,11 +1254,9 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-review",
-          "omc-architecture",
-          "omc-release-checklist",
-          "omc-migration-checklist"
+          "omc-architecture"
         ],
         "packIds": [
           "omc-frontend",
@@ -1256,7 +1281,7 @@
     {
       "id": "agent.docs-maintainer",
       "title": "Docs maintainer subagent",
-      "description": "Repo documentation updates for setup, behavior, workflow, migration, and user guidance changes.",
+      "description": "Repo documentation and formal handoff updates for setup, behavior, workflow, migration, and user guidance changes.",
       "status": "active",
       "type": "agent",
       "surface": "cursor-agent",
@@ -1266,11 +1291,11 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-debug",
-          "omc-scm",
-          "omc-pr-summary",
-          "omc-incident-report"
+          "omc-review",
+          "omc-learn",
+          "omc-develop"
         ],
         "packIds": [
           "omc-frontend",
@@ -1305,10 +1330,12 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
+          "omc-parallel",
           "omc-debug",
           "omc-plan",
-          "omc-architecture"
+          "omc-architecture",
+          "omc-develop",
+          "omc-verify"
         ],
         "packIds": [
           "omc-frontend",
@@ -1343,8 +1370,9 @@
       },
       "references": {
         "workflowIds": [
-          "omc-orchestrate",
-          "omc-plan"
+          "omc-parallel",
+          "omc-plan",
+          "omc-spec"
         ],
         "packIds": [
           "omc-frontend",
@@ -1364,146 +1392,6 @@
       "explain": {
         "category": "subagent",
         "summary": "Minimal clarifying questions and default assumptions."
-      }
-    },
-    {
-      "id": "skill.omc-test-plan",
-      "title": "Test plan skill",
-      "description": "Test planning and coverage workflow.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-test-plan"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-test-plan/SKILL.md",
-        "targetPath": "skills/omc-test-plan/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "delivery",
-        "summary": "Test planning and coverage workflow."
-      }
-    },
-    {
-      "id": "skill.omc-pr-summary",
-      "title": "PR summary skill",
-      "description": "Reviewer-ready PR summary workflow.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-pr-summary"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-pr-summary/SKILL.md",
-        "targetPath": "skills/omc-pr-summary/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "delivery",
-        "summary": "Reviewer-ready PR summary workflow."
-      }
-    },
-    {
-      "id": "skill.omc-release-checklist",
-      "title": "Release checklist skill",
-      "description": "Release readiness workflow.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-release-checklist"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-release-checklist/SKILL.md",
-        "targetPath": "skills/omc-release-checklist/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "delivery",
-        "summary": "Release readiness workflow."
-      }
-    },
-    {
-      "id": "skill.omc-incident-report",
-      "title": "Incident report skill",
-      "description": "Incident/debug report workflow.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-incident-report"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-incident-report/SKILL.md",
-        "targetPath": "skills/omc-incident-report/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "delivery",
-        "summary": "Incident/debug report workflow."
-      }
-    },
-    {
-      "id": "skill.omc-migration-checklist",
-      "title": "Migration checklist skill",
-      "description": "Migration and rollback planning workflow.",
-      "status": "active",
-      "type": "skill",
-      "surface": "cursor-skill",
-      "owner": {
-        "package": "oh-my-cursor",
-        "packId": null
-      },
-      "references": {
-        "workflowIds": [
-          "omc-migration-checklist"
-        ],
-        "packIds": [],
-        "agentIds": []
-      },
-      "install": {
-        "sourcePath": "skills/omc-migration-checklist/SKILL.md",
-        "targetPath": "skills/omc-migration-checklist/SKILL.md",
-        "managed": true
-      },
-      "explain": {
-        "category": "delivery",
-        "summary": "Migration and rollback planning workflow."
       }
     },
     {

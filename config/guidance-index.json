@@ -1,205 +1,13 @@
 {
   "schemaVersion": "1",
   "productVersion": "0.1.0",
-  "generatedAt": "2026-05-08T04:33:21.366Z",
+  "generatedAt": "2026-05-13T13:33:09.695Z",
   "workflows": [
-    {
-      "id": "omc-orchestrate",
-      "title": "Orchestrate",
-      "skillId": "omc-orchestrator",
-      "description": "Multi-lane execution for large or cross-domain work that needs planning, bounded delegation, integration, and end-to-end verification.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "pm-planner",
-        "repo-researcher",
-        "question-asker",
-        "architecture-reviewer",
-        "test-writer",
-        "docs-maintainer",
-        "migration-reviewer",
-        "frontend-engineer",
-        "java-backend-engineer",
-        "ios-engineer",
-        "android-engineer",
-        "flutter-engineer",
-        "react-native-engineer",
-        "frontend-qa-reviewer",
-        "backend-qa-reviewer",
-        "mobile-qa-reviewer",
-        "release-notes-writer"
-      ],
-      "agents": [
-        {
-          "id": "pm-planner",
-          "title": "PM planner subagent"
-        },
-        {
-          "id": "repo-researcher",
-          "title": "Repo researcher subagent"
-        },
-        {
-          "id": "question-asker",
-          "title": "Question asker subagent"
-        },
-        {
-          "id": "architecture-reviewer",
-          "title": "Architecture reviewer subagent"
-        },
-        {
-          "id": "test-writer",
-          "title": "Test writer subagent"
-        },
-        {
-          "id": "docs-maintainer",
-          "title": "Docs maintainer subagent"
-        },
-        {
-          "id": "migration-reviewer",
-          "title": "Migration reviewer subagent"
-        },
-        {
-          "id": "frontend-engineer",
-          "title": "Frontend engineer subagent"
-        },
-        {
-          "id": "java-backend-engineer",
-          "title": "Java backend engineer subagent"
-        },
-        {
-          "id": "ios-engineer",
-          "title": "iOS engineer subagent"
-        },
-        {
-          "id": "android-engineer",
-          "title": "Android engineer subagent"
-        },
-        {
-          "id": "flutter-engineer",
-          "title": "Flutter engineer subagent"
-        },
-        {
-          "id": "react-native-engineer",
-          "title": "React Native engineer subagent"
-        },
-        {
-          "id": "frontend-qa-reviewer",
-          "title": "Frontend QA reviewer subagent"
-        },
-        {
-          "id": "backend-qa-reviewer",
-          "title": "Backend QA reviewer subagent"
-        },
-        {
-          "id": "mobile-qa-reviewer",
-          "title": "Mobile QA reviewer subagent"
-        },
-        {
-          "id": "release-notes-writer",
-          "title": "Release notes writer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "status",
-        "plan",
-        "delegations",
-        "risks",
-        "verification",
-        "handoffs"
-      ],
-      "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs.",
-      "relatedWorkflowIds": [
-        "omc-work",
-        "omc-plan"
-      ],
-      "checkLane": null
-    },
     {
       "id": "omc-brainstorm",
       "title": "Brainstorm",
       "skillId": "omc-brainstorm",
-      "description": "Option exploration workflow for turning fuzzy intent into a small set of concrete directions before planning or implementation.",
+      "description": "Option exploration workflow for turning fuzzy intent into concrete directions before planning or implementation.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -299,18 +107,18 @@
         "open_decisions",
         "plan_seed"
       ],
-      "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into planning.",
+      "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into specification or planning.",
       "relatedWorkflowIds": [
-        "omc-plan",
-        "omc-architecture"
+        "omc-spec",
+        "omc-plan"
       ],
       "checkLane": null
     },
     {
-      "id": "omc-work",
-      "title": "Work",
-      "skillId": "omc-work",
-      "description": "Guided execution workflow for one small step at a time when the user wants close control and explicit checkpoints.",
+      "id": "omc-spec",
+      "title": "Spec",
+      "skillId": "omc-spec",
+      "description": "Lightweight specification workflow for broad or risky work that needs intent, constraints, acceptance criteria, and a quality contract before planning.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -346,12 +154,22 @@
         }
       ],
       "agentIds": [
-        "pm-planner"
+        "pm-planner",
+        "question-asker",
+        "architecture-reviewer"
       ],
       "agents": [
         {
           "id": "pm-planner",
           "title": "PM planner subagent"
+        },
+        {
+          "id": "question-asker",
+          "title": "Question asker subagent"
+        },
+        {
+          "id": "architecture-reviewer",
+          "title": "Architecture reviewer subagent"
         }
       ],
       "ruleIds": [
@@ -404,22 +222,436 @@
         }
       ],
       "deliverables": [
-        "current_step",
-        "next_options",
-        "blocked_on"
+        "intent",
+        "constraints",
+        "acceptance_criteria",
+        "quality_contract",
+        "open_questions"
       ],
-      "successDefinition": "Each step is small, verified, and clear enough for the next decision to stay local.",
+      "successDefinition": "Intent, constraints, acceptance criteria, and quality expectations are stable enough to plan implementation.",
       "relatedWorkflowIds": [
-        "omc-orchestrate",
-        "omc-plan"
+        "omc-brainstorm",
+        "omc-plan",
+        "omc-architecture"
       ],
       "checkLane": null
+    },
+    {
+      "id": "omc-plan",
+      "title": "Plan",
+      "skillId": "omc-plan",
+      "description": "Planning workflow for turning a scoped goal into milestones, acceptance criteria, dependencies, and risks before implementation.",
+      "packIds": [
+        "omc-frontend",
+        "omc-java-backend",
+        "omc-ios",
+        "omc-android",
+        "omc-flutter",
+        "omc-react-native"
+      ],
+      "packs": [
+        {
+          "id": "omc-frontend",
+          "title": "Frontend"
+        },
+        {
+          "id": "omc-java-backend",
+          "title": "Java backend"
+        },
+        {
+          "id": "omc-ios",
+          "title": "iOS"
+        },
+        {
+          "id": "omc-android",
+          "title": "Android"
+        },
+        {
+          "id": "omc-flutter",
+          "title": "Flutter"
+        },
+        {
+          "id": "omc-react-native",
+          "title": "React Native"
+        }
+      ],
+      "agentIds": [
+        "pm-planner",
+        "architecture-reviewer",
+        "repo-researcher",
+        "question-asker"
+      ],
+      "agents": [
+        {
+          "id": "pm-planner",
+          "title": "PM planner subagent"
+        },
+        {
+          "id": "architecture-reviewer",
+          "title": "Architecture reviewer subagent"
+        },
+        {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        },
+        {
+          "id": "question-asker",
+          "title": "Question asker subagent"
+        }
+      ],
+      "ruleIds": [
+        "rule.common-core",
+        "rule.frontend-core",
+        "rule.next-app-router",
+        "rule.java-backend-core",
+        "rule.mobile-core",
+        "rule.ios-swiftui",
+        "rule.android-compose",
+        "rule.flutter-core",
+        "rule.react-native-expo"
+      ],
+      "rules": [
+        {
+          "id": "rule.common-core",
+          "title": "Common core rule"
+        },
+        {
+          "id": "rule.frontend-core",
+          "title": "Frontend core rule"
+        },
+        {
+          "id": "rule.next-app-router",
+          "title": "Next.js App Router rule"
+        },
+        {
+          "id": "rule.java-backend-core",
+          "title": "Java backend core rule"
+        },
+        {
+          "id": "rule.mobile-core",
+          "title": "Mobile core rule"
+        },
+        {
+          "id": "rule.ios-swiftui",
+          "title": "iOS SwiftUI rule"
+        },
+        {
+          "id": "rule.android-compose",
+          "title": "Android Compose rule"
+        },
+        {
+          "id": "rule.flutter-core",
+          "title": "Flutter core rule"
+        },
+        {
+          "id": "rule.react-native-expo",
+          "title": "React Native Expo rule"
+        }
+      ],
+      "deliverables": [
+        "plan",
+        "acceptance_criteria",
+        "dependencies",
+        "risks"
+      ],
+      "successDefinition": "The plan is ordered, risk-aware, and verifiable enough to hand to development.",
+      "relatedWorkflowIds": [
+        "omc-spec",
+        "omc-develop",
+        "omc-architecture",
+        "omc-verify"
+      ],
+      "checkLane": null
+    },
+    {
+      "id": "omc-develop",
+      "title": "Develop",
+      "skillId": "omc-develop",
+      "description": "Scoped implementation workflow for local code or documentation changes with tight scope control and local verification.",
+      "packIds": [
+        "omc-frontend",
+        "omc-java-backend",
+        "omc-ios",
+        "omc-android",
+        "omc-flutter",
+        "omc-react-native"
+      ],
+      "packs": [
+        {
+          "id": "omc-frontend",
+          "title": "Frontend"
+        },
+        {
+          "id": "omc-java-backend",
+          "title": "Java backend"
+        },
+        {
+          "id": "omc-ios",
+          "title": "iOS"
+        },
+        {
+          "id": "omc-android",
+          "title": "Android"
+        },
+        {
+          "id": "omc-flutter",
+          "title": "Flutter"
+        },
+        {
+          "id": "omc-react-native",
+          "title": "React Native"
+        }
+      ],
+      "agentIds": [
+        "repo-researcher",
+        "test-writer",
+        "docs-maintainer",
+        "frontend-engineer",
+        "java-backend-engineer",
+        "ios-engineer",
+        "android-engineer",
+        "flutter-engineer",
+        "react-native-engineer"
+      ],
+      "agents": [
+        {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        },
+        {
+          "id": "test-writer",
+          "title": "Test writer subagent"
+        },
+        {
+          "id": "docs-maintainer",
+          "title": "Docs maintainer subagent"
+        },
+        {
+          "id": "frontend-engineer",
+          "title": "Frontend engineer subagent"
+        },
+        {
+          "id": "java-backend-engineer",
+          "title": "Java backend engineer subagent"
+        },
+        {
+          "id": "ios-engineer",
+          "title": "iOS engineer subagent"
+        },
+        {
+          "id": "android-engineer",
+          "title": "Android engineer subagent"
+        },
+        {
+          "id": "flutter-engineer",
+          "title": "Flutter engineer subagent"
+        },
+        {
+          "id": "react-native-engineer",
+          "title": "React Native engineer subagent"
+        }
+      ],
+      "ruleIds": [
+        "rule.common-core",
+        "rule.frontend-core",
+        "rule.next-app-router",
+        "rule.java-backend-core",
+        "rule.mobile-core",
+        "rule.ios-swiftui",
+        "rule.android-compose",
+        "rule.flutter-core",
+        "rule.react-native-expo"
+      ],
+      "rules": [
+        {
+          "id": "rule.common-core",
+          "title": "Common core rule"
+        },
+        {
+          "id": "rule.frontend-core",
+          "title": "Frontend core rule"
+        },
+        {
+          "id": "rule.next-app-router",
+          "title": "Next.js App Router rule"
+        },
+        {
+          "id": "rule.java-backend-core",
+          "title": "Java backend core rule"
+        },
+        {
+          "id": "rule.mobile-core",
+          "title": "Mobile core rule"
+        },
+        {
+          "id": "rule.ios-swiftui",
+          "title": "iOS SwiftUI rule"
+        },
+        {
+          "id": "rule.android-compose",
+          "title": "Android Compose rule"
+        },
+        {
+          "id": "rule.flutter-core",
+          "title": "Flutter core rule"
+        },
+        {
+          "id": "rule.react-native-expo",
+          "title": "React Native Expo rule"
+        }
+      ],
+      "deliverables": [
+        "scope",
+        "changes",
+        "checks_run",
+        "blocked_on",
+        "handoff"
+      ],
+      "successDefinition": "The scoped change is implemented, locally verified, and closed with explicit blockers or follow-up routing.",
+      "relatedWorkflowIds": [
+        "omc-plan",
+        "omc-verify",
+        "omc-review",
+        "omc-debug"
+      ],
+      "checkLane": null
+    },
+    {
+      "id": "omc-verify",
+      "title": "Check",
+      "skillId": "omc-verify",
+      "description": "Verification-design workflow for mapping behavior claims to automated checks, manual checks, proof targets, blockers, and explicit coverage gaps.",
+      "packIds": [
+        "omc-frontend",
+        "omc-java-backend",
+        "omc-ios",
+        "omc-android",
+        "omc-flutter",
+        "omc-react-native"
+      ],
+      "packs": [
+        {
+          "id": "omc-frontend",
+          "title": "Frontend"
+        },
+        {
+          "id": "omc-java-backend",
+          "title": "Java backend"
+        },
+        {
+          "id": "omc-ios",
+          "title": "iOS"
+        },
+        {
+          "id": "omc-android",
+          "title": "Android"
+        },
+        {
+          "id": "omc-flutter",
+          "title": "Flutter"
+        },
+        {
+          "id": "omc-react-native",
+          "title": "React Native"
+        }
+      ],
+      "agentIds": [
+        "test-writer",
+        "repo-researcher"
+      ],
+      "agents": [
+        {
+          "id": "test-writer",
+          "title": "Test writer subagent"
+        },
+        {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        }
+      ],
+      "ruleIds": [
+        "rule.common-core",
+        "rule.frontend-core",
+        "rule.next-app-router",
+        "rule.java-backend-core",
+        "rule.mobile-core",
+        "rule.ios-swiftui",
+        "rule.android-compose",
+        "rule.flutter-core",
+        "rule.react-native-expo"
+      ],
+      "rules": [
+        {
+          "id": "rule.common-core",
+          "title": "Common core rule"
+        },
+        {
+          "id": "rule.frontend-core",
+          "title": "Frontend core rule"
+        },
+        {
+          "id": "rule.next-app-router",
+          "title": "Next.js App Router rule"
+        },
+        {
+          "id": "rule.java-backend-core",
+          "title": "Java backend core rule"
+        },
+        {
+          "id": "rule.mobile-core",
+          "title": "Mobile core rule"
+        },
+        {
+          "id": "rule.ios-swiftui",
+          "title": "iOS SwiftUI rule"
+        },
+        {
+          "id": "rule.android-compose",
+          "title": "Android Compose rule"
+        },
+        {
+          "id": "rule.flutter-core",
+          "title": "Flutter core rule"
+        },
+        {
+          "id": "rule.react-native-expo",
+          "title": "React Native Expo rule"
+        }
+      ],
+      "deliverables": [
+        "scope",
+        "risks",
+        "automated_tests",
+        "manual_checks",
+        "check_targets",
+        "coverage_gaps"
+      ],
+      "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps.",
+      "relatedWorkflowIds": [
+        "omc-develop",
+        "omc-review",
+        "omc-debug"
+      ],
+      "checkLane": {
+        "title": "Verify Lane",
+        "minimumSections": [
+          "scope",
+          "risks",
+          "check_targets",
+          "coverage_gaps"
+        ],
+        "verificationPrompts": [
+          "Map each claim to a concrete proof target.",
+          "Separate automated checks from manual validation.",
+          "Name blockers and coverage gaps explicitly."
+        ]
+      }
     },
     {
       "id": "omc-review",
       "title": "Review",
       "skillId": "omc-review",
-      "description": "Independent merge-readiness review focused on findings, severity, verification gaps, and residual risk.",
+      "description": "Independent merge-readiness review focused on evidence-backed findings, severity, verification gaps, residual risk, and handoff clarity.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -541,291 +773,32 @@
         "findings",
         "severity",
         "residual_risks",
-        "checks_run"
+        "checks_run",
+        "handoff"
       ],
-      "successDefinition": "Findings are concrete, evidence-backed, severity-labeled, and accompanied by the smallest useful next checks.",
+      "successDefinition": "Findings are evidence-backed, severity-ordered, and include proof gaps plus any human-owned handoff notes.",
       "relatedWorkflowIds": [
-        "omc-debug",
-        "omc-plan"
+        "omc-develop",
+        "omc-plan",
+        "omc-architecture",
+        "omc-verify",
+        "omc-learn"
       ],
       "checkLane": {
-        "title": "Review Check Lane",
+        "title": "Review Lane",
         "minimumSections": [
           "findings",
           "severity",
-          "suggested_tests",
-          "residual_risks"
+          "checks_run",
+          "residual_risks",
+          "handoff"
         ],
         "verificationPrompts": [
           "Call out exact files or evidence for each finding.",
           "Separate verified issues from suspected gaps.",
-          "Name the smallest useful follow-up test."
+          "Keep human-owned release or SCM notes in handoff, not as a separate workflow."
         ]
       }
-    },
-    {
-      "id": "omc-debug",
-      "title": "Debug",
-      "skillId": "omc-debug",
-      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "debug-investigator",
-        "repo-researcher",
-        "test-writer",
-        "docs-maintainer"
-      ],
-      "agents": [
-        {
-          "id": "debug-investigator",
-          "title": "Debug investigator subagent"
-        },
-        {
-          "id": "repo-researcher",
-          "title": "Repo researcher subagent"
-        },
-        {
-          "id": "test-writer",
-          "title": "Test writer subagent"
-        },
-        {
-          "id": "docs-maintainer",
-          "title": "Docs maintainer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "root_cause",
-        "evidence",
-        "fix",
-        "tests"
-      ],
-      "successDefinition": "The failure mode is understood, the root cause is evidence-backed, and the fix is verified on the most relevant proof path.",
-      "relatedWorkflowIds": [
-        "omc-review",
-        "omc-work"
-      ],
-      "checkLane": {
-        "title": "Debug Check Lane",
-        "minimumSections": [
-          "symptom",
-          "root_cause",
-          "fix",
-          "verification",
-          "follow_ups"
-        ],
-        "verificationPrompts": [
-          "State the repro or best available evidence.",
-          "Name what changed and how the repro was rechecked.",
-          "List remaining uncertainty if full repro was not possible."
-        ]
-      }
-    },
-    {
-      "id": "omc-plan",
-      "title": "Plan",
-      "skillId": "omc-plan",
-      "description": "Planning workflow for turning a goal into milestones, acceptance criteria, dependencies, and risk-aware execution steps.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "pm-planner",
-        "architecture-reviewer",
-        "repo-researcher",
-        "question-asker"
-      ],
-      "agents": [
-        {
-          "id": "pm-planner",
-          "title": "PM planner subagent"
-        },
-        {
-          "id": "architecture-reviewer",
-          "title": "Architecture reviewer subagent"
-        },
-        {
-          "id": "repo-researcher",
-          "title": "Repo researcher subagent"
-        },
-        {
-          "id": "question-asker",
-          "title": "Question asker subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "plan",
-        "acceptance_criteria",
-        "dependencies",
-        "risks"
-      ],
-      "successDefinition": "The plan is explicit enough to execute without rediscovering scope, dependencies, or proof obligations.",
-      "relatedWorkflowIds": [
-        "omc-work",
-        "omc-orchestrate"
-      ],
-      "checkLane": null
     },
     {
       "id": "omc-architecture",
@@ -943,497 +916,222 @@
         "migration_plan",
         "verification"
       ],
-      "successDefinition": "Constraints, chosen direction, rejected alternatives, and migration shape are clear enough to implement responsibly.",
+      "successDefinition": "The decision record names constraints, viable options, the chosen path, rejected alternatives, migration shape, and verification points.",
       "relatedWorkflowIds": [
-        "omc-brainstorm",
+        "omc-spec",
         "omc-plan",
         "omc-review"
       ],
-      "checkLane": null
-    },
-    {
-      "id": "omc-scm",
-      "title": "SCM",
-      "skillId": "omc-scm",
-      "description": "Source-control workflow for branch strategy, staging boundaries, commits, PR prep, and safe collaboration hygiene.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "release-notes-writer",
-        "docs-maintainer"
-      ],
-      "agents": [
-        {
-          "id": "release-notes-writer",
-          "title": "Release notes writer subagent"
-        },
-        {
-          "id": "docs-maintainer",
-          "title": "Docs maintainer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "branch_plan",
-        "commit_messages",
-        "pr_summary"
-      ],
-      "successDefinition": "The change set is intentionally grouped, collaboration-ready, and free of avoidable source-control risk.",
-      "relatedWorkflowIds": [
-        "omc-review",
-        "omc-work"
-      ],
-      "checkLane": null
-    },
-    {
-      "id": "omc-test-plan",
-      "title": "Test Plan",
-      "skillId": "omc-test-plan",
-      "description": "Verification-planning workflow for mapping behavior claims to regression checks, manual checks, and concrete coverage gaps.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "test-writer"
-      ],
-      "agents": [
-        {
-          "id": "test-writer",
-          "title": "Test writer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "scope",
-        "risks",
-        "automated_tests",
-        "manual_checks",
-        "commands",
-        "coverage_gaps"
-      ],
-      "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps.",
-      "relatedWorkflowIds": [
-        "omc-review",
-        "omc-debug"
-      ],
-      "checkLane": null
-    },
-    {
-      "id": "omc-pr-summary",
-      "title": "PR Summary",
-      "skillId": "omc-pr-summary",
-      "description": "Reviewer-facing change summary that explains why the work exists, what users feel, how it was verified, and what still carries risk.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "release-notes-writer",
-        "docs-maintainer"
-      ],
-      "agents": [
-        {
-          "id": "release-notes-writer",
-          "title": "Release notes writer subagent"
-        },
-        {
-          "id": "docs-maintainer",
-          "title": "Docs maintainer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "summary",
-        "user_impact",
-        "implementation_notes",
-        "verification",
-        "risks"
-      ],
-      "successDefinition": "A reviewer can understand the purpose, user impact, verification, and residual risk of the change without re-reading the whole diff first.",
-      "relatedWorkflowIds": [
-        "omc-scm",
-        "omc-review"
-      ],
-      "checkLane": null
-    },
-    {
-      "id": "omc-release-checklist",
-      "title": "Release Checklist",
-      "skillId": "omc-release-checklist",
-      "description": "Release-readiness workflow for separating blockers from follow-ups and making rollout, rollback, docs, and verification explicit.",
-      "packIds": [
-        "omc-frontend",
-        "omc-java-backend",
-        "omc-ios",
-        "omc-android",
-        "omc-flutter",
-        "omc-react-native"
-      ],
-      "packs": [
-        {
-          "id": "omc-frontend",
-          "title": "Frontend"
-        },
-        {
-          "id": "omc-java-backend",
-          "title": "Java backend"
-        },
-        {
-          "id": "omc-ios",
-          "title": "iOS"
-        },
-        {
-          "id": "omc-android",
-          "title": "Android"
-        },
-        {
-          "id": "omc-flutter",
-          "title": "Flutter"
-        },
-        {
-          "id": "omc-react-native",
-          "title": "React Native"
-        }
-      ],
-      "agentIds": [
-        "release-notes-writer",
-        "test-writer",
-        "migration-reviewer"
-      ],
-      "agents": [
-        {
-          "id": "release-notes-writer",
-          "title": "Release notes writer subagent"
-        },
-        {
-          "id": "test-writer",
-          "title": "Test writer subagent"
-        },
-        {
-          "id": "migration-reviewer",
-          "title": "Migration reviewer subagent"
-        }
-      ],
-      "ruleIds": [
-        "rule.common-core",
-        "rule.frontend-core",
-        "rule.next-app-router",
-        "rule.java-backend-core",
-        "rule.mobile-core",
-        "rule.ios-swiftui",
-        "rule.android-compose",
-        "rule.flutter-core",
-        "rule.react-native-expo"
-      ],
-      "rules": [
-        {
-          "id": "rule.common-core",
-          "title": "Common core rule"
-        },
-        {
-          "id": "rule.frontend-core",
-          "title": "Frontend core rule"
-        },
-        {
-          "id": "rule.next-app-router",
-          "title": "Next.js App Router rule"
-        },
-        {
-          "id": "rule.java-backend-core",
-          "title": "Java backend core rule"
-        },
-        {
-          "id": "rule.mobile-core",
-          "title": "Mobile core rule"
-        },
-        {
-          "id": "rule.ios-swiftui",
-          "title": "iOS SwiftUI rule"
-        },
-        {
-          "id": "rule.android-compose",
-          "title": "Android Compose rule"
-        },
-        {
-          "id": "rule.flutter-core",
-          "title": "Flutter core rule"
-        },
-        {
-          "id": "rule.react-native-expo",
-          "title": "React Native Expo rule"
-        }
-      ],
-      "deliverables": [
-        "scope",
-        "required_checks",
-        "release_blockers",
-        "rollout_plan",
-        "rollback_plan",
-        "handoff"
-      ],
-      "successDefinition": "Release blockers, required checks, rollout expectations, and rollback shape are explicit enough to support a go or no-go decision.",
-      "relatedWorkflowIds": [
-        "omc-pr-summary",
-        "omc-migration-checklist"
-      ],
       "checkLane": {
-        "title": "Release Check Lane",
+        "title": "Architecture Lane",
         "minimumSections": [
-          "scope",
-          "required_checks",
-          "release_blockers",
-          "rollout_plan",
-          "rollback_plan"
+          "context",
+          "constraints",
+          "decision",
+          "migration_plan",
+          "verification"
         ],
         "verificationPrompts": [
-          "Separate blockers from follow-ups.",
-          "Include rollout owner or monitoring expectation when known.",
-          "Name rollback trigger or decision point."
+          "Name compatibility assumptions and migration pressure.",
+          "Include rollback decision points without claiming production release authority.",
+          "Tie verification points to the chosen architecture."
         ]
       }
     },
     {
-      "id": "omc-incident-report",
-      "title": "Incident Report",
-      "skillId": "omc-incident-report",
-      "description": "Incident-report workflow for turning debugging or operational evidence into a clear record of impact, timeline, root cause, remediation, and prevention.",
+      "id": "omc-parallel",
+      "title": "Parallel",
+      "skillId": "omc-parallel",
+      "description": "Bounded multi-lane workflow for independent workstreams that need clear ownership, parent integration, and end-to-end verification.",
+      "packIds": [
+        "omc-frontend",
+        "omc-java-backend",
+        "omc-ios",
+        "omc-android",
+        "omc-flutter",
+        "omc-react-native"
+      ],
+      "packs": [
+        {
+          "id": "omc-frontend",
+          "title": "Frontend"
+        },
+        {
+          "id": "omc-java-backend",
+          "title": "Java backend"
+        },
+        {
+          "id": "omc-ios",
+          "title": "iOS"
+        },
+        {
+          "id": "omc-android",
+          "title": "Android"
+        },
+        {
+          "id": "omc-flutter",
+          "title": "Flutter"
+        },
+        {
+          "id": "omc-react-native",
+          "title": "React Native"
+        }
+      ],
+      "agentIds": [
+        "pm-planner",
+        "repo-researcher",
+        "question-asker",
+        "architecture-reviewer",
+        "test-writer",
+        "docs-maintainer",
+        "migration-reviewer",
+        "frontend-engineer",
+        "java-backend-engineer",
+        "ios-engineer",
+        "android-engineer",
+        "flutter-engineer",
+        "react-native-engineer",
+        "frontend-qa-reviewer",
+        "backend-qa-reviewer",
+        "mobile-qa-reviewer"
+      ],
+      "agents": [
+        {
+          "id": "pm-planner",
+          "title": "PM planner subagent"
+        },
+        {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        },
+        {
+          "id": "question-asker",
+          "title": "Question asker subagent"
+        },
+        {
+          "id": "architecture-reviewer",
+          "title": "Architecture reviewer subagent"
+        },
+        {
+          "id": "test-writer",
+          "title": "Test writer subagent"
+        },
+        {
+          "id": "docs-maintainer",
+          "title": "Docs maintainer subagent"
+        },
+        {
+          "id": "migration-reviewer",
+          "title": "Migration reviewer subagent"
+        },
+        {
+          "id": "frontend-engineer",
+          "title": "Frontend engineer subagent"
+        },
+        {
+          "id": "java-backend-engineer",
+          "title": "Java backend engineer subagent"
+        },
+        {
+          "id": "ios-engineer",
+          "title": "iOS engineer subagent"
+        },
+        {
+          "id": "android-engineer",
+          "title": "Android engineer subagent"
+        },
+        {
+          "id": "flutter-engineer",
+          "title": "Flutter engineer subagent"
+        },
+        {
+          "id": "react-native-engineer",
+          "title": "React Native engineer subagent"
+        },
+        {
+          "id": "frontend-qa-reviewer",
+          "title": "Frontend QA reviewer subagent"
+        },
+        {
+          "id": "backend-qa-reviewer",
+          "title": "Backend QA reviewer subagent"
+        },
+        {
+          "id": "mobile-qa-reviewer",
+          "title": "Mobile QA reviewer subagent"
+        }
+      ],
+      "ruleIds": [
+        "rule.common-core",
+        "rule.frontend-core",
+        "rule.next-app-router",
+        "rule.java-backend-core",
+        "rule.mobile-core",
+        "rule.ios-swiftui",
+        "rule.android-compose",
+        "rule.flutter-core",
+        "rule.react-native-expo"
+      ],
+      "rules": [
+        {
+          "id": "rule.common-core",
+          "title": "Common core rule"
+        },
+        {
+          "id": "rule.frontend-core",
+          "title": "Frontend core rule"
+        },
+        {
+          "id": "rule.next-app-router",
+          "title": "Next.js App Router rule"
+        },
+        {
+          "id": "rule.java-backend-core",
+          "title": "Java backend core rule"
+        },
+        {
+          "id": "rule.mobile-core",
+          "title": "Mobile core rule"
+        },
+        {
+          "id": "rule.ios-swiftui",
+          "title": "iOS SwiftUI rule"
+        },
+        {
+          "id": "rule.android-compose",
+          "title": "Android Compose rule"
+        },
+        {
+          "id": "rule.flutter-core",
+          "title": "Flutter core rule"
+        },
+        {
+          "id": "rule.react-native-expo",
+          "title": "React Native Expo rule"
+        }
+      ],
+      "deliverables": [
+        "status",
+        "plan",
+        "delegations",
+        "risks",
+        "verification",
+        "handoffs"
+      ],
+      "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs.",
+      "relatedWorkflowIds": [
+        "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review"
+      ],
+      "checkLane": null
+    },
+    {
+      "id": "omc-debug",
+      "title": "Debug",
+      "skillId": "omc-debug",
+      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix for a real bug or regression.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1470,12 +1168,22 @@
       ],
       "agentIds": [
         "debug-investigator",
+        "repo-researcher",
+        "test-writer",
         "docs-maintainer"
       ],
       "agents": [
         {
           "id": "debug-investigator",
           "title": "Debug investigator subagent"
+        },
+        {
+          "id": "repo-researcher",
+          "title": "Repo researcher subagent"
+        },
+        {
+          "id": "test-writer",
+          "title": "Test writer subagent"
         },
         {
           "id": "docs-maintainer",
@@ -1532,25 +1240,39 @@
         }
       ],
       "deliverables": [
-        "impact",
-        "timeline",
         "root_cause",
+        "evidence",
         "fix",
-        "verification",
-        "prevention"
+        "tests"
       ],
-      "successDefinition": "Impact, timeline, evidence, root cause, remediation, and prevention follow-ups are clear enough for future readers and stakeholders.",
+      "successDefinition": "The root cause is evidence-backed, the fix is minimal, and the repro or regression path has been rechecked.",
       "relatedWorkflowIds": [
-        "omc-debug",
-        "omc-pr-summary"
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
+        "omc-learn"
       ],
-      "checkLane": null
+      "checkLane": {
+        "title": "Debug Lane",
+        "minimumSections": [
+          "symptom",
+          "root_cause",
+          "fix",
+          "verification",
+          "follow_ups"
+        ],
+        "verificationPrompts": [
+          "State the repro or best available evidence.",
+          "Name what changed and how the repro was rechecked.",
+          "List remaining uncertainty if full repro was not possible."
+        ]
+      }
     },
     {
-      "id": "omc-migration-checklist",
-      "title": "Migration Checklist",
-      "skillId": "omc-migration-checklist",
-      "description": "Migration workflow for compatibility boundaries, ordered rollout steps, verification points, and rollback timing.",
+      "id": "omc-learn",
+      "title": "Learn",
+      "skillId": "omc-learn",
+      "description": "Learning workflow for turning incidents, regressions, repeated review findings, or debugging evidence into durable prevention assets.",
       "packIds": [
         "omc-frontend",
         "omc-java-backend",
@@ -1586,13 +1308,18 @@
         }
       ],
       "agentIds": [
-        "migration-reviewer",
+        "debug-investigator",
+        "docs-maintainer",
         "test-writer"
       ],
       "agents": [
         {
-          "id": "migration-reviewer",
-          "title": "Migration reviewer subagent"
+          "id": "debug-investigator",
+          "title": "Debug investigator subagent"
+        },
+        {
+          "id": "docs-maintainer",
+          "title": "Docs maintainer subagent"
         },
         {
           "id": "test-writer",
@@ -1649,34 +1376,19 @@
         }
       ],
       "deliverables": [
-        "current_state",
-        "target_state",
-        "steps",
-        "verification",
-        "rollback",
-        "risks"
+        "trigger",
+        "evidence",
+        "lesson",
+        "prevention_assets",
+        "follow_ups"
       ],
-      "successDefinition": "Current state, target state, compatibility window, ordered checks, and rollback path are explicit enough to migrate safely.",
+      "successDefinition": "The lesson is evidence-backed and mapped to durable prevention assets or explicit follow-up.",
       "relatedWorkflowIds": [
-        "omc-architecture",
-        "omc-release-checklist"
+        "omc-review",
+        "omc-debug",
+        "omc-verify"
       ],
-      "checkLane": {
-        "title": "Migration Check Lane",
-        "minimumSections": [
-          "current_state",
-          "target_state",
-          "steps",
-          "verification",
-          "rollback",
-          "risks"
-        ],
-        "verificationPrompts": [
-          "Add a verification step for each risky transition.",
-          "Explain compatibility window and coexistence assumptions.",
-          "Call out rollback point before irreversible steps."
-        ]
-      }
+      "checkLane": null
     }
   ],
   "packs": [
@@ -1685,23 +1397,20 @@
       "title": "Frontend",
       "primarySkillId": "omc-frontend",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
         "omc-plan",
-        "omc-work"
+        "omc-develop"
       ],
       "ruleIds": [
         "rule.common-core",
@@ -1724,19 +1433,16 @@
       "title": "Java backend",
       "primarySkillId": "omc-java-backend",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
         "omc-plan",
@@ -1762,22 +1468,19 @@
       "title": "iOS",
       "primarySkillId": "omc-ios",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
-        "omc-work",
+        "omc-develop",
         "omc-debug"
       ],
       "ruleIds": [
@@ -1800,22 +1503,19 @@
       "title": "Android",
       "primarySkillId": "omc-android",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
-        "omc-work",
+        "omc-develop",
         "omc-debug"
       ],
       "ruleIds": [
@@ -1838,22 +1538,19 @@
       "title": "Flutter",
       "primarySkillId": "omc-flutter",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
-        "omc-work",
+        "omc-develop",
         "omc-review"
       ],
       "ruleIds": [
@@ -1876,22 +1573,19 @@
       "title": "React Native",
       "primarySkillId": "omc-react-native",
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-review",
-        "omc-debug",
+        "omc-spec",
         "omc-plan",
+        "omc-develop",
+        "omc-verify",
+        "omc-review",
         "omc-architecture",
-        "omc-scm",
-        "omc-test-plan",
-        "omc-pr-summary",
-        "omc-release-checklist",
-        "omc-incident-report",
-        "omc-migration-checklist"
+        "omc-parallel",
+        "omc-debug",
+        "omc-learn"
       ],
       "defaultWorkflowIds": [
-        "omc-work",
+        "omc-develop",
         "omc-debug"
       ],
       "ruleIds": [
@@ -1923,10 +1617,10 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate",
         "omc-brainstorm",
-        "omc-work",
-        "omc-plan"
+        "omc-spec",
+        "omc-plan",
+        "omc-parallel"
       ]
     },
     {
@@ -1941,8 +1635,9 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-plan"
+        "omc-spec",
+        "omc-plan",
+        "omc-parallel"
       ]
     },
     {
@@ -1957,10 +1652,12 @@
         "next_steps"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-debug",
         "omc-plan",
-        "omc-architecture"
+        "omc-develop",
+        "omc-verify",
+        "omc-architecture",
+        "omc-parallel",
+        "omc-debug"
       ]
     },
     {
@@ -1976,7 +1673,7 @@
       ],
       "workflowIds": [
         "omc-debug",
-        "omc-incident-report"
+        "omc-learn"
       ]
     },
     {
@@ -1991,7 +1688,8 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
@@ -2006,7 +1704,8 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
@@ -2021,7 +1720,8 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
@@ -2036,7 +1736,8 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
@@ -2051,7 +1752,8 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
@@ -2066,14 +1768,15 @@
         "risks"
       ],
       "workflowIds": [
-        "omc-orchestrate"
+        "omc-develop",
+        "omc-parallel"
       ]
     },
     {
       "id": "frontend-qa-reviewer",
       "title": "Frontend QA reviewer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2081,15 +1784,15 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-review"
+        "omc-review",
+        "omc-parallel"
       ]
     },
     {
       "id": "backend-qa-reviewer",
       "title": "Backend QA reviewer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2097,15 +1800,15 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-review"
+        "omc-review",
+        "omc-parallel"
       ]
     },
     {
       "id": "mobile-qa-reviewer",
       "title": "Mobile QA reviewer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2113,15 +1816,15 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-review"
+        "omc-review",
+        "omc-parallel"
       ]
     },
     {
       "id": "architecture-reviewer",
       "title": "Architecture reviewer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2129,17 +1832,18 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
-        "omc-review",
+        "omc-spec",
         "omc-plan",
-        "omc-architecture"
+        "omc-review",
+        "omc-architecture",
+        "omc-parallel"
       ]
     },
     {
       "id": "migration-reviewer",
       "title": "Migration reviewer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2147,18 +1851,16 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
         "omc-review",
         "omc-architecture",
-        "omc-release-checklist",
-        "omc-migration-checklist"
+        "omc-parallel"
       ]
     },
     {
       "id": "test-writer",
       "title": "Test writer subagent",
       "profileId": "review",
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2166,12 +1868,12 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
+        "omc-develop",
+        "omc-verify",
         "omc-review",
+        "omc-parallel",
         "omc-debug",
-        "omc-test-plan",
-        "omc-release-checklist",
-        "omc-migration-checklist"
+        "omc-learn"
       ]
     },
     {
@@ -2186,29 +1888,10 @@
         "handoffs"
       ],
       "workflowIds": [
-        "omc-orchestrate",
+        "omc-develop",
+        "omc-parallel",
         "omc-debug",
-        "omc-scm",
-        "omc-pr-summary",
-        "omc-incident-report"
-      ]
-    },
-    {
-      "id": "release-notes-writer",
-      "title": "Release notes writer subagent",
-      "profileId": "documentation",
-      "focus": "Turn completed technical work into concise repo docs, handoff notes, or reviewer-facing artifacts without adding unnecessary implementation noise.",
-      "outputHints": [
-        "summary",
-        "verification",
-        "risks",
-        "handoffs"
-      ],
-      "workflowIds": [
-        "omc-orchestrate",
-        "omc-scm",
-        "omc-pr-summary",
-        "omc-release-checklist"
+        "omc-learn"
       ]
     }
   ],
@@ -2293,7 +1976,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -2304,8 +1987,7 @@
     {
       "id": "documentation",
       "agentIds": [
-        "docs-maintainer",
-        "release-notes-writer"
+        "docs-maintainer"
       ],
       "include": {
         "workflowSummary": true,
@@ -2324,23 +2006,39 @@
   ],
   "checkLanes": [
     {
+      "workflowId": "omc-verify",
+      "title": "Verify Lane",
+      "minimumSections": [
+        "scope",
+        "risks",
+        "check_targets",
+        "coverage_gaps"
+      ],
+      "verificationPrompts": [
+        "Map each claim to a concrete proof target.",
+        "Separate automated checks from manual validation.",
+        "Name blockers and coverage gaps explicitly."
+      ]
+    },
+    {
       "workflowId": "omc-review",
-      "title": "Review Check Lane",
+      "title": "Review Lane",
       "minimumSections": [
         "findings",
         "severity",
-        "suggested_tests",
-        "residual_risks"
+        "checks_run",
+        "residual_risks",
+        "handoff"
       ],
       "verificationPrompts": [
         "Call out exact files or evidence for each finding.",
         "Separate verified issues from suspected gaps.",
-        "Name the smallest useful follow-up test."
+        "Keep human-owned release or SCM notes in handoff, not as a separate workflow."
       ]
     },
     {
       "workflowId": "omc-debug",
-      "title": "Debug Check Lane",
+      "title": "Debug Lane",
       "minimumSections": [
         "symptom",
         "root_cause",
@@ -2355,36 +2053,19 @@
       ]
     },
     {
-      "workflowId": "omc-release-checklist",
-      "title": "Release Check Lane",
+      "workflowId": "omc-architecture",
+      "title": "Architecture Lane",
       "minimumSections": [
-        "scope",
-        "required_checks",
-        "release_blockers",
-        "rollout_plan",
-        "rollback_plan"
+        "context",
+        "constraints",
+        "decision",
+        "migration_plan",
+        "verification"
       ],
       "verificationPrompts": [
-        "Separate blockers from follow-ups.",
-        "Include rollout owner or monitoring expectation when known.",
-        "Name rollback trigger or decision point."
-      ]
-    },
-    {
-      "workflowId": "omc-migration-checklist",
-      "title": "Migration Check Lane",
-      "minimumSections": [
-        "current_state",
-        "target_state",
-        "steps",
-        "verification",
-        "rollback",
-        "risks"
-      ],
-      "verificationPrompts": [
-        "Add a verification step for each risky transition.",
-        "Explain compatibility window and coexistence assumptions.",
-        "Call out rollback point before irreversible steps."
+        "Name compatibility assumptions and migration pressure.",
+        "Include rollback decision points without claiming production release authority.",
+        "Tie verification points to the chosen architecture."
       ]
     }
   ]

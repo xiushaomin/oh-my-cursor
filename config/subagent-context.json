@@ -87,7 +87,7 @@
         "packRules": true,
         "checkLane": true
       },
-      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and release impact over narration.",
+      "focus": "Produce findings first, keep them evidence-backed, and emphasize verification gaps, compatibility risk, and handoff clarity over narration.",
       "outputHints": [
         "findings",
         "severity",
@@ -98,8 +98,7 @@
     {
       "id": "documentation",
       "agentIds": [
-        "docs-maintainer",
-        "release-notes-writer"
+        "docs-maintainer"
       ],
       "include": {
         "workflowSummary": true,

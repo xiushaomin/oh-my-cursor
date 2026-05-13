@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "name": "brainstorm-explicit",
+      "prompt": "/omc-brainstorm 给我 3 个 onboarding 方向",
+      "expectedWorkflow": "omc-brainstorm"
+    },
+    {
+      "name": "spec-explicit",
+      "prompt": "/omc-spec write acceptance criteria and constraints for this feature",
+      "expectedWorkflow": "omc-spec"
+    },
+    {
+      "name": "plan-auto-cn",
+      "prompt": "帮我规划一下这个需求怎么做",
+      "expectedWorkflow": "omc-plan"
+    },
+    {
+      "name": "plan-explicit-en",
+      "prompt": "/omc-plan break this feature into milestones and risks",
+      "expectedWorkflow": "omc-plan"
+    },
+    {
+      "name": "debug-auto-cn",
+      "prompt": "帮我排查这个问题为什么不生效",
+      "expectedWorkflow": "omc-debug"
+    },
+    {
+      "name": "review-auto-cn",
+      "prompt": "帮我 review 当前改动有没有问题",
+      "expectedWorkflow": "omc-review"
+    },
+    {
+      "name": "develop-explicit",
+      "prompt": "/omc-develop implement this feature end to end",
+      "expectedWorkflow": "omc-develop"
+    },
+    {
+      "name": "check-explicit",
+      "prompt": "/omc-verify prove this works and identify coverage gaps",
+      "expectedWorkflow": "omc-verify"
+    },
+    {
+      "name": "parallel-explicit",
+      "prompt": "/omc-parallel parallelize this cross-platform rollout",
+      "expectedWorkflow": "omc-parallel"
+    },
+    {
+      "name": "parallel-not-tiny",
+      "prompt": "parallel",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "learn-explicit",
+      "prompt": "/omc-learn capture the lesson from this regression",
+      "expectedWorkflow": "omc-learn"
+    },
+    {
+      "name": "info-not-plan",
+      "prompt": "什么是 omc-plan",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "generic-analyze-does-not-hijack",
+      "prompt": "analyze this helper and explain what it does",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "generic-check-does-not-force-review",
+      "prompt": "帮我检查一下这个接口文档怎么写",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "generic-error-does-not-force-debug",
+      "prompt": "这个错误提示文案改一下",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "stepwise-request-does-not-map-to-develop",
+      "prompt": "一步一步带我改这个页面",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "removed-legacy-orchestrate-stays-inactive",
+      "prompt": "/omc-orchestrate do this in parallel",
+      "expectedWorkflow": null
+    },
+    {
+      "name": "removed-legacy-work-stays-inactive",
+      "prompt": "/omc-work implement this change",
+      "expectedWorkflow": null
+    }
+  ]
+}

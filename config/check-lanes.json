@@ -3,23 +3,39 @@
   "productVersion": "0.1.0",
   "lanes": [
     {
+      "workflowId": "omc-verify",
+      "title": "Verify Lane",
+      "minimumSections": [
+        "scope",
+        "risks",
+        "check_targets",
+        "coverage_gaps"
+      ],
+      "verificationPrompts": [
+        "Map each claim to a concrete proof target.",
+        "Separate automated checks from manual validation.",
+        "Name blockers and coverage gaps explicitly."
+      ]
+    },
+    {
       "workflowId": "omc-review",
-      "title": "Review Check Lane",
+      "title": "Review Lane",
       "minimumSections": [
         "findings",
         "severity",
-        "suggested_tests",
-        "residual_risks"
+        "checks_run",
+        "residual_risks",
+        "handoff"
       ],
       "verificationPrompts": [
         "Call out exact files or evidence for each finding.",
         "Separate verified issues from suspected gaps.",
-        "Name the smallest useful follow-up test."
+        "Keep human-owned release or SCM notes in handoff, not as a separate workflow."
       ]
     },
     {
       "workflowId": "omc-debug",
-      "title": "Debug Check Lane",
+      "title": "Debug Lane",
       "minimumSections": [
         "symptom",
         "root_cause",
@@ -34,36 +50,19 @@
       ]
     },
     {
-      "workflowId": "omc-release-checklist",
-      "title": "Release Check Lane",
+      "workflowId": "omc-architecture",
+      "title": "Architecture Lane",
       "minimumSections": [
-        "scope",
-        "required_checks",
-        "release_blockers",
-        "rollout_plan",
-        "rollback_plan"
+        "context",
+        "constraints",
+        "decision",
+        "migration_plan",
+        "verification"
       ],
       "verificationPrompts": [
-        "Separate blockers from follow-ups.",
-        "Include rollout owner or monitoring expectation when known.",
-        "Name rollback trigger or decision point."
-      ]
-    },
-    {
-      "workflowId": "omc-migration-checklist",
-      "title": "Migration Check Lane",
-      "minimumSections": [
-        "current_state",
-        "target_state",
-        "steps",
-        "verification",
-        "rollback",
-        "risks"
-      ],
-      "verificationPrompts": [
-        "Add a verification step for each risky transition.",
-        "Explain compatibility window and coexistence assumptions.",
-        "Call out rollback point before irreversible steps."
+        "Name compatibility assumptions and migration pressure.",
+        "Include rollback decision points without claiming production release authority.",
+        "Tie verification points to the chosen architecture."
       ]
     }
   ]

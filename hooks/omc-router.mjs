@@ -90,7 +90,7 @@ function hasComplexSignals(prompt) {
   return re.some((x) => x.test(p));
 }
 
-function suppressOrchestrateAuto(prompt) {
+function suppressParallelAuto(prompt) {
   // Small prompt + no concrete signals => avoid accidental "do everything" explosions.
   const w = countWords(prompt);
   if (w > 60) return false;
@@ -191,20 +191,23 @@ function main() {
   if (!list.length) process.exit(0);
 
   const sorted = [...list].sort((a, b) => b.priority - a.priority);
+  const explicitMatches = sorted.filter((wf) => isExplicitInvocation(prompt, wf));
+  const startsWithSlash = prompt.trim().startsWith("/");
+  if (startsWithSlash && !explicitMatches.length) process.exit(0);
+  const candidates = explicitMatches.length ? explicitMatches : sorted;
 
-  for (const wf of sorted) {
+  for (const wf of candidates) {
     if (config.workflows.disabledWorkflowIds.includes(wf.id)) continue;
-    // 1) Explicit invocation always allowed, even if auto is disabled.
-    const explicit = isExplicitInvocation(prompt, wf);
+    const explicit = explicitMatches.length > 0;
 
-    // 2) Auto activation gating.
+    // Explicit invocation outranks natural-language routing across workflows.
     if (!explicit) {
       if (!config.workflows.autoActivationEnabled) continue;
       if (config.routing.preferExplicitInvocation) continue;
       if (wf.routing?.preferExplicitInvocation) continue;
       if (wf.activation?.allowAutoActivation === false) continue;
       if (looksInformational(prompt)) continue;
-      if (wf.id === "omc-orchestrate" && suppressOrchestrateAuto(prompt)) continue;
+      if (wf.id === "omc-parallel" && suppressParallelAuto(prompt)) continue;
     }
 
     const lowered = prompt.toLowerCase();
@@ -230,6 +233,7 @@ function main() {
   }
 
   if (
+    !explicitMatches.length &&
     config.routing.fallbackToDefaultWorkflow &&
     !config.routing.preferExplicitInvocation &&
     config.workflows.defaultWorkflowId &&

@@ -1,6 +1,6 @@
 ---
 name: omc-plan
-description: Turns a goal into an execution-ready plan with assumptions, milestones, risks, ownership, and verification. Use when the work is multi-step, crosses modules, or needs explicit acceptance criteria before implementation.
+description: Turn a scoped goal into an execution-ready plan. Use when the work is multi-step, crosses modules, or needs milestones, acceptance criteria, risks, and verification before implementation.
 metadata:
   category: workflow
 ---
@@ -9,7 +9,7 @@ metadata:
 
 ## Overview
 
-Use this skill to turn intent into an execution-ready plan before implementation starts. A good plan makes scope, dependencies, verification, and ownership visible early enough to avoid expensive rework.
+Turn intent into an execution-ready plan before implementation starts. A good plan makes scope, dependencies, verification, and ownership visible early enough to avoid expensive rework.
 
 ## When to use
 
@@ -22,55 +22,38 @@ Use this skill to turn intent into an execution-ready plan before implementation
 
 - The task is a tiny local change with obvious scope
 - The user wants brainstorming before committing to a path
-- The user wants step-by-step supervised execution instead of a full plan
+- The user wants scoped implementation instead of a full plan
+
+## Repo-first discovery
+
+- Inspect the repo before planning so milestones reflect real modules, verification paths, and ownership boundaries.
+- Find the most likely verification path early instead of leaving test shape abstract.
+- If the repo is missing structure, call that out as a planning risk.
 
 ## Workflow
 
-1. Define the outcome.
-   State the goal, user impact, and explicit non-goals.
+1. State the goal, user impact, and explicit non-goals.
+2. Name assumptions that could change the plan.
+3. Break the work into 2-6 reviewable milestones.
+4. Add ownership, dependencies, acceptance criteria, and risks.
+5. End with the proof path that should validate execution.
 
-2. Surface assumptions.
-   Name the assumptions that could change the plan if they are wrong.
+## Output contract
 
-3. Map the work.
-   Break the change into 2-6 milestones. Each milestone should produce a meaningful checkpoint, not just a bucket of activity.
+- `plan`: ordered milestones with purpose and ownership
+- `acceptance_criteria`: the proof obligation for each milestone
+- `dependencies`: sequencing constraints, prerequisites, or external blockers
+- `risks`: highest-risk steps, assumptions, and mitigation
 
-4. Name ownership and ordering.
-   For each major task, say whether it belongs to the parent agent or a focused specialist lane, and identify dependencies.
+## Guardrails
 
-5. Build acceptance criteria.
-   Each milestone needs verifiable conditions that prove completion.
+- Do not start implementation.
+- Keep milestones reviewable, not vague buckets of activity.
+- Make verification part of the plan, not a follow-up thought.
+- Name dependencies and assumptions explicitly.
 
-6. Add risk and verification.
-   Name the highest-risk step, mitigation strategy, and what commands, tests, or manual checks would prove the plan worked.
+## On-demand references
 
-7. Stop at the plan boundary.
-   Present the plan cleanly enough that implementation can start without re-discovering the task shape.
-
-## Common rationalizations
-
-| Rationalization | Reality |
-| --- | --- |
-| "This is small enough to just start coding." | If the work crosses files or behaviors, a short plan saves more time than it costs. |
-| "I already know what to do." | A private mental plan is not a shared execution contract. |
-| "I'll figure out tests after implementation." | Verification shape is part of the plan, not an afterthought. |
-| "Milestones are overhead." | Milestones are how we keep progress reviewable and recoverable. |
-
-## Red flags
-
-- Tasks are listed without acceptance criteria
-- Dependencies are implied instead of named
-- The plan mixes execution detail with unresolved product choices
-- Risks are omitted because the path "seems straightforward"
-- The plan is too vague to tell what proves success
-
-## Verification
-
-Before concluding the planning step, confirm:
-
-- [ ] Goal and non-goals are explicit
-- [ ] Assumptions that could materially change execution are named
-- [ ] Milestones are ordered and reviewable
-- [ ] Acceptance criteria are verifiable
-- [ ] Risks and mitigation are called out
-- [ ] The verification plan names concrete checks or commands when known
+- Pull from [`../../references/workflow-plan.md`](../../references/workflow-plan.md) when sequencing or proof obligations need more detail.
+- Pull from [`../../references/skill-output-contracts.md`](../../references/skill-output-contracts.md) to keep the artifact stable for downstream workflows.
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when you need to ground milestones in the actual repo shape.

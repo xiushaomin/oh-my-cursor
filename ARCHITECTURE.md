@@ -2,7 +2,7 @@
 
 This document explains how `oh-my-cursor` is structured and how its parts fit together.
 
-If [README.md](/Users/smxiu/Desktop/oh-my-cursor/README.md) is the product-facing guide, this file is the maintainer-facing execution map.
+If [README.md](README.md) is the product-facing guide, this file is the maintainer-facing execution map.
 
 ## Product boundary
 
@@ -23,6 +23,7 @@ It is not trying to become:
 - a universal prompt framework
 - a deployment system
 - an all-language platform
+- a command framework layered on top of skills
 
 ## Core idea
 
@@ -42,23 +43,6 @@ The product works by keeping four surfaces sharp instead of collapsing everythin
 
 `config/` exists to keep these layers coherent. It should not become the place where behavior is invented for its own sake.
 
-## Cursor-native product shape
-
-The design target is to amplify Cursor's built-in model, not compete with it.
-
-- Rules should stay small, composable, and durable.
-- Skills should hold multi-step process, anti-rationalization, and verification gates.
-- Agents should have a single perspective and a bounded scope.
-- Hooks should stay operational and lightweight.
-
-When the same concern could live in multiple layers, prefer this order:
-
-1. `rules/` for durable expectations
-2. `skills/` for reusable workflows
-3. `agents/` for delegated perspectives
-4. `hooks/` for event-driven control
-5. `config/` for metadata glue
-
 ## Repository structure
 
 | Path | Purpose |
@@ -75,78 +59,40 @@ When the same concern could live in multiple layers, prefer this order:
 
 The repo should stay intentionally flat. Add a new layer only if it clearly reduces maintenance cost or user confusion.
 
-## Runtime responsibilities
+## Layer responsibilities
 
-### Rules
-
-Own:
-
-- stable coding expectations
-- stack-aware heuristics
-- reusable quality principles
-
-Do not own:
-
-- long workflow choreography
-- routing logic
-- hidden state machines
-
-### Skills
-
-Own:
-
-- workflow steps
-- stop points
-- anti-rationalization
-- red flags
-- verification gates
-
-Do not own:
-
-- broad static stack knowledge better expressed as rules
-- hidden runtime behavior that only hooks can enforce
-
-### Agents
-
-Own:
-
-- a single specialist role
-- a narrow deliverable shape
-- deeper implementation or review passes
-
-Agents should not become generic helpers. They should have obvious delegation triggers and clear output formats.
-
-### Hooks
-
-Own:
-
-- intent routing
-- persistent workflow state
-- conservative shell, MCP, and file guardrails
-- lightweight telemetry and session glue
-
-Hooks should not become a second workflow engine.
+- `rules/` hold durable engineering expectations.
+- `skills/` hold reusable workflows, verification gates, and handoff artifacts.
+- `agents/` hold narrow specialist perspectives.
+- `hooks/` hold routing, persistence, and conservative safety guardrails.
+- `config/` holds metadata glue and generated guidance.
 
 ## Workflow families
 
-### Core workflows
+Workflow names should read like everyday engineering actions. The canonical product language is brainstorm, spec, plan, develop, verify, review, architecture, parallel, debug, and learn.
+
+The target lifecycle is intentionally short:
+
+```text
+brainstorm -> plan -> develop -> review
+```
+
+Most tasks should use only the subset they need. Broader or riskier work may add `spec`, `check`, `architecture`, or `parallel` as helper skills.
+
+### Workflow catalog
 
 - `omc-brainstorm`
+- `omc-spec`
 - `omc-plan`
-- `omc-work`
-- `omc-orchestrate`
+- `omc-develop`
+- `omc-verify`
 - `omc-review`
-- `omc-debug`
-- `omc-scm`
 - `omc-architecture`
+- `omc-parallel`
+- `omc-debug`
+- `omc-learn`
 
-### Delivery helpers
-
-- `omc-test-plan`
-- `omc-pr-summary`
-- `omc-release-checklist`
-- `omc-incident-report`
-- `omc-migration-checklist`
+The catalog should stay short and developer-native. Lifecycle handoffs that involve source-control notes, release readiness, or migration details belong inside `omc-review` or `omc-architecture` artifacts instead of becoming standalone workflow surfaces.
 
 ## Domain packs
 
@@ -159,14 +105,7 @@ Current packs:
 - `omc-flutter`
 - `omc-react-native`
 
-Each pack contributes:
-
-- likely workflow fit
-- likely rules
-- likely agents
-- stack heuristics for detection
-
-There is also one shared baseline rule, [rules/omc-common.mdc](/Users/smxiu/Desktop/oh-my-cursor/rules/omc-common.mdc), which carries cross-cutting expectations around clarity, simplicity, narrow delegation, and evidence-backed verification.
+There is also one shared baseline rule, [rules/omc-common.mdc](rules/omc-common.mdc), which carries cross-cutting expectations around clarity, simplicity, narrow delegation, and evidence-backed verification.
 
 ## Configuration model
 
@@ -174,32 +113,27 @@ Most of the product contract lives in `config/`.
 
 Key files:
 
-- [config/workflows.json](/Users/smxiu/Desktop/oh-my-cursor/config/workflows.json)
-- [config/packs.json](/Users/smxiu/Desktop/oh-my-cursor/config/packs.json)
-- [config/capabilities.json](/Users/smxiu/Desktop/oh-my-cursor/config/capabilities.json)
-- [config/guidance-index.json](/Users/smxiu/Desktop/oh-my-cursor/config/guidance-index.json)
-- [config/subagent-context.json](/Users/smxiu/Desktop/oh-my-cursor/config/subagent-context.json)
-- [config/check-lanes.json](/Users/smxiu/Desktop/oh-my-cursor/config/check-lanes.json)
-- [config/config.jsonc](/Users/smxiu/Desktop/oh-my-cursor/config/config.jsonc)
+- [config/workflows.json](config/workflows.json)
+- [config/packs.json](config/packs.json)
+- [config/capabilities.json](config/capabilities.json)
+- [config/guidance-index.json](config/guidance-index.json)
+- [config/subagent-context.json](config/subagent-context.json)
+- [config/check-lanes.json](config/check-lanes.json)
+- [config/config.jsonc](config/config.jsonc)
 
 ## Skill quality bar
 
-Core workflow skills should converge on one consistent anatomy:
+Core workflow skills should keep one compact anatomy:
 
 - `Overview`
 - `When to use`
 - `When not to use`
+- `Repo-first discovery`
 - `Workflow`
-- `Common rationalizations`
+- `Output contract`
 - `Red flags`
 - `Verification`
-
-Why this matters:
-
-- Cursor skills need to stay reasonably short.
-- Short skills still need enough structure to constrain agent behavior.
-- Anti-rationalization is often more valuable than extra prose.
-- References and docs can carry deeper support material on demand.
+- `On-demand references`
 
 ## References and docs
 
@@ -208,6 +142,7 @@ Long checklists and orchestration policies should live outside the core skill bo
 Use:
 
 - `references/` for reusable quality assets such as testing, security, performance, and accessibility checklists
+- `evals/` for routing and output-contract regression fixtures
 - `docs/` for maintainer-facing product shape, orchestration patterns, and Cursor-native design guidance
 
 This preserves progressive disclosure and reduces context bloat.
@@ -220,24 +155,22 @@ The router should remain pragmatic, not magical.
 - Support natural-language routing when intent is clear.
 - Avoid accidental escalation into orchestration for tiny prompts.
 - Detect packs conservatively and keep the injected context compact.
+- Route vague work toward brainstorm, spec, or plan before implementation.
+- Route serious review findings back to the right upstream skill instead of hiding them in local patching.
 
 The best router is the one users barely notice.
-
-## Governance philosophy
-
-Safety guardrails should block obviously risky behavior without making ordinary work painful.
-
-Current governance focuses on:
-
-- destructive shell commands
-- sensitive file reads
-- risky MCP configuration mutations
-
-This is intentionally conservative and dependency-free.
 
 ## Verification loop
 
 Because the product is mostly metadata plus runtime glue, quiet drift is a bigger risk than loud code failures.
+
+For non-trivial work, the delivery loop should be explicit:
+
+```text
+plan -> develop -> review
+```
+
+If review is clean, the work should end with a handoff artifact. If review finds serious risk, the finding should flow back to `develop`, `plan`, `architecture`, or `check` depending on the root cause.
 
 After metadata changes, run:
 
@@ -245,6 +178,8 @@ After metadata changes, run:
 node scripts/build-guidance-index.mjs
 node scripts/verify-guidance-index.mjs
 node scripts/verify-plugin.mjs
+node scripts/verify-skill-evals.mjs
+node scripts/verify-output-contracts.mjs
 node --test tests/*.test.mjs
 ```
 
@@ -252,10 +187,4 @@ These checks matter because routing, capability mapping, and plugin structure ca
 
 ## Near-term improvement direction
 
-The current strategic direction is:
-
-- strengthen core workflow skills
-- keep the product more Cursor-native and less command-centric
-- expand references instead of bloating skills
-- document good and bad orchestration patterns explicitly
-- keep hooks lean while improving skill quality
+The current strategic direction is to keep the workflow catalog small, keep hooks lean, and move depth into references and verification instead of adding new runtime surfaces.

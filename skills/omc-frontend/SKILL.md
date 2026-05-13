@@ -1,6 +1,6 @@
 ---
 name: omc-frontend
-description: Web frontend domain skill for React, Next.js, and TypeScript UI work. Use when editing components, app routes, client data flows, styling systems, accessibility-sensitive UI, or frontend tests.
+description: Frontend skill for React, Next.js, and TypeScript UI work. Use when changing components, routes, client data flow, styling systems, accessibility-sensitive UI, or frontend tests.
 metadata:
   category: pack
 ---
@@ -9,29 +9,26 @@ metadata:
 
 ## Overview
 
-Use this pack skill when the work lives in a web UI surface. The goal is to keep component boundaries, data flow, accessibility, and design-system consistency aligned with the repo.
+Use this skill for web UI work in React or Next.js surfaces.
 
 ## When to use
 
-- React or Next.js UI work
-- Component, page, or route-layer changes
-- Client data-loading, mutation, or cache interaction work
-- Frontend-focused tests or accessibility-sensitive flows
+- Component, route, or page changes
+- Client data flow or mutation behavior
+- Styling, accessibility, or frontend verification work
 
-## When not to use
+## Repo-first discovery
 
-- React Native or Expo work
-- Pure backend or infrastructure work
+- Find the owning route, component boundary, and UI primitives before changing anything.
+- Reuse repo-local data-flow and testing patterns before reaching for generic framework advice.
 
-## Focus
+## Default deliverable
 
-- Reuse existing UI primitives and design-system patterns
-- Keep rendering and data responsibilities legible
-- Make loading, empty, success, and error states explicit
-- Treat accessibility and keyboard behavior as part of feature correctness
+- Name the affected UI boundary.
+- State the data-flow or state pattern being preserved.
+- State the primary verification path.
 
-## Minimum verification
+## On-demand references
 
-- Run lint or typecheck when available
-- Smoke the primary flow and one meaningful failure state
-- If UI changed, confirm basic keyboard and labeling sanity
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when local ownership is unclear.
+- Pull from [`../../references/frontend-review-prompts.md`](../../references/frontend-review-prompts.md), [`../../references/accessibility-checklist.md`](../../references/accessibility-checklist.md), and [`../../references/performance-checklist.md`](../../references/performance-checklist.md) for deeper review and verification.

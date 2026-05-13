@@ -532,7 +532,6 @@ function rankWorkflowAgents(workflowEntry, detectedPacks, guidanceIndex) {
     "debug-investigator",
     "test-writer",
     "docs-maintainer",
-    "release-notes-writer",
     "migration-reviewer",
   ]);
   const narrowed = preferred.size

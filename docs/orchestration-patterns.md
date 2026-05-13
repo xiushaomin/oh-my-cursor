@@ -8,6 +8,8 @@ Work directly unless delegation materially improves quality, speed, or safety.
 
 The existence of specialist agents is not a reason to use them.
 
+`oh-my-cursor` should feel skill-first, not command-first. A workflow skill is the user-facing unit of intent; hooks and agents support it, but should not become competing orchestration layers.
+
 ## Recommended patterns
 
 ### 1. Direct execution
@@ -49,6 +51,23 @@ Use when:
 - sequencing matters
 - the parent needs to own integration and verification
 
+### 5. Review feedback loop
+
+Use review findings as structured input to the next workflow instead of treating review as a terminal report.
+
+Use when:
+
+- review finds scope, architecture, or proof gaps
+- the fix path is not just a local patch
+- the same class of issue appears repeatedly
+
+Route findings back to:
+
+- `develop` for local implementation defects
+- `plan` for scope or sequencing gaps
+- `architecture` for boundary, migration, or compatibility concerns
+- `check` for missing proof obligations
+
 ## Anti-patterns
 
 ### 1. Router-on-router
@@ -82,13 +101,23 @@ Why it is bad:
 
 ### 4. Premature orchestration
 
-Do not jump to `omc-orchestrate` when `omc-work`, `omc-plan`, or direct execution is enough.
+Do not jump to parallel orchestration when develop, plan, or direct execution is enough.
 
 Why it is bad:
 
 - heavier context
 - more moving parts
 - easier to overrun the user's actual request
+
+### 5. Command shadowing
+
+Do not add a command layer that duplicates skills.
+
+Why it is bad:
+
+- users have to learn two names for the same workflow
+- routing becomes harder to reason about
+- product behavior drifts away from Cursor's native skill model
 
 ## Delegation checklist
 

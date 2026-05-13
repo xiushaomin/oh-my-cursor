@@ -1,6 +1,6 @@
 ---
 name: omc-android
-description: Android domain skill for Kotlin, Jetpack, Compose or Views, lifecycle-aware state, threading, and Android test surfaces.
+description: Android skill for Kotlin, Jetpack, Compose or Views, lifecycle-aware state, and Android test surfaces. Use when changing screens, ViewModels, navigation, or Android verification paths.
 metadata:
   category: pack
 ---
@@ -9,29 +9,26 @@ metadata:
 
 ## Overview
 
-Use this pack skill when the work primarily targets native Android surfaces, Compose or View-based UI, lifecycle-aware state, or Gradle-based app structure.
+Use this skill for native Android screens, state, navigation, and Gradle-based app work.
 
 ## When to use
 
-- Kotlin feature work
-- Compose or Android View UI changes
+- Compose or View UI changes
 - ViewModel, Flow, coroutine, or lifecycle-sensitive behavior
-- Android instrumentation or unit test updates
+- Android verification and smoke coverage
 
-## When not to use
+## Repo-first discovery
 
-- Flutter or React Native feature work
-- Pure backend or non-Android platform work
+- Find the owning screen, ViewModel, navigation flow, and module first.
+- Reuse repo-local coroutine, Flow, and lifecycle patterns.
 
-## Focus
+## Default deliverable
 
-- Keep UI state explicit and lifecycle-aware
-- Use coroutines and Flow consistently with repo patterns
-- Avoid work in composition that belongs in ViewModel or domain logic
-- Make loading, error, and empty states explicit
+- Name the affected screen, module, or lifecycle boundary.
+- State the state or navigation assumption being preserved.
+- State the strongest build or test path available in the repo.
 
-## Minimum verification
+## On-demand references
 
-- Run the Gradle build and tests when available
-- Smoke navigation or the affected flow
-- If UI changed, consider rotation or background/restore sanity where practical
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when ownership is unclear.
+- Pull from [`../../references/mobile-verification-prompts.md`](../../references/mobile-verification-prompts.md) and [`../../references/testing-checklist.md`](../../references/testing-checklist.md) for deeper verification.

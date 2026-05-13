@@ -59,7 +59,76 @@ test("detectPacks finds the frontend pack from repo signals", () =>
     assert.match(detected[0]?.reasons.join(" "), /react|next|components/i);
   }));
 
-test("router suppresses accidental orchestrate auto-activation on tiny prompts", () =>
+test("detectPacks finds the java backend pack from repo signals", () =>
+  withTempDir((projectDir) => {
+    mkdirSync(join(projectDir, "src", "main", "java", "com", "example"), { recursive: true });
+    writeFileSync(join(projectDir, "pom.xml"), "<project></project>\n");
+    writeFileSync(join(projectDir, "src", "main", "java", "com", "example", "App.java"), "class App {}\n");
+
+    const packsDoc = readJsonFile(packsPath);
+    const detected = detectPacks(packsDoc, projectDir, "review this spring backend change");
+
+    assert.equal(detected[0]?.id, "omc-java-backend");
+    assert.match(detected[0]?.reasons.join(" "), /pom|java|backend|spring/i);
+  }));
+
+test("detectPacks finds the ios pack from repo signals", () =>
+  withTempDir((projectDir) => {
+    mkdirSync(join(projectDir, "ios"), { recursive: true });
+    writeFileSync(join(projectDir, "Package.swift"), "// swift package\n");
+    writeFileSync(join(projectDir, "ios", "HomeView.swift"), "struct HomeView {}\n");
+
+    const packsDoc = readJsonFile(packsPath);
+    const detected = detectPacks(packsDoc, projectDir, "fix this swiftui screen");
+
+    assert.equal(detected[0]?.id, "omc-ios");
+    assert.match(detected[0]?.reasons.join(" "), /swift|package|ios/i);
+  }));
+
+test("detectPacks finds the android pack from repo signals", () =>
+  withTempDir((projectDir) => {
+    mkdirSync(join(projectDir, "app", "src", "main"), { recursive: true });
+    writeFileSync(join(projectDir, "settings.gradle.kts"), "rootProject.name = \"app\"\n");
+    writeFileSync(join(projectDir, "app", "src", "main", "AndroidManifest.xml"), "<manifest />\n");
+    writeFileSync(join(projectDir, "app", "src", "main", "MainActivity.kt"), "class MainActivity {}\n");
+
+    const packsDoc = readJsonFile(packsPath);
+    const detected = detectPacks(packsDoc, projectDir, "fix this android compose flow");
+
+    assert.equal(detected[0]?.id, "omc-android");
+    assert.match(detected[0]?.reasons.join(" "), /android|manifest|gradle|kotlin|compose/i);
+  }));
+
+test("detectPacks finds the flutter pack from repo signals", () =>
+  withTempDir((projectDir) => {
+    mkdirSync(join(projectDir, "lib"), { recursive: true });
+    writeFileSync(join(projectDir, "pubspec.yaml"), "name: demo\n");
+    writeFileSync(join(projectDir, "lib", "main.dart"), "void main() {}\n");
+
+    const packsDoc = readJsonFile(packsPath);
+    const detected = detectPacks(packsDoc, projectDir, "fix this flutter widget");
+
+    assert.equal(detected[0]?.id, "omc-flutter");
+    assert.match(detected[0]?.reasons.join(" "), /flutter|dart|pubspec/i);
+  }));
+
+test("detectPacks finds the react native pack from repo signals", () =>
+  withTempDir((projectDir) => {
+    writeFileSync(
+      join(projectDir, "package.json"),
+      JSON.stringify({ dependencies: { "react-native": "^0.81.0", expo: "^54.0.0" } }, null, 2),
+    );
+    writeFileSync(join(projectDir, "app.json"), "{ \"expo\": {} }\n");
+    writeFileSync(join(projectDir, "App.tsx"), "export default function App() { return null; }\n");
+
+    const packsDoc = readJsonFile(packsPath);
+    const detected = detectPacks(packsDoc, projectDir, "debug this react native screen");
+
+    assert.equal(detected[0]?.id, "omc-react-native");
+    assert.match(detected[0]?.reasons.join(" "), /react-native|expo|app\.json|screen/i);
+  }));
+
+test("router suppresses accidental parallel auto-activation on tiny prompts", () =>
   withTempDir((projectDir) => {
     const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
       prompt: "parallel",
@@ -71,20 +140,41 @@ test("router suppresses accidental orchestrate auto-activation on tiny prompts",
     assert.equal(output, "");
   }));
 
-test("router supports explicit orchestrator invocation and injects workflow context", () =>
+test("router supports explicit parallel invocation and injects workflow context", () =>
   withTempDir((projectDir) => {
     const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
-      prompt: "/omc-orchestrator implement this feature",
+      prompt: "/omc-parallel implement this feature",
       cwd: projectDir,
       workspace_roots: [projectDir],
       sessionId: "router-explicit",
     });
 
-    assert.match(output, /OHC INTENT: OMC-ORCHESTRATE/);
-    assert.match(output, /\/omc-orchestrator/);
+    assert.match(output, /OHC INTENT: OMC-PARALLEL/);
+    assert.match(output, /\/omc-parallel/);
   }));
 
-test("router supports the omc-orchestrate alias for explicit orchestration", () =>
+test("router injects detected pack context for frontend prompts", () =>
+  withTempDir((projectDir) => {
+    writeFileSync(
+      join(projectDir, "package.json"),
+      JSON.stringify({ dependencies: { react: "^19.0.0", next: "^15.0.0" } }, null, 2),
+    );
+    mkdirSync(join(projectDir, "src", "components"), { recursive: true });
+    writeFileSync(join(projectDir, "src", "components", "Button.tsx"), "export function Button() { return null; }\n");
+
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "/omc-review review this React UI change",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-pack-context",
+    });
+
+    assert.match(output, /\[OHC DOMAIN PACKS\]/);
+    assert.match(output, /omc-frontend/);
+    assert.match(output, /frontend-engineer|frontend-qa-reviewer/);
+  }));
+
+test("router does not keep removed legacy orchestration invocations active", () =>
   withTempDir((projectDir) => {
     const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
       prompt: "/omc-orchestrate implement this feature",
@@ -93,8 +183,7 @@ test("router supports the omc-orchestrate alias for explicit orchestration", () 
       sessionId: "router-alias",
     });
 
-    assert.match(output, /OHC INTENT: OMC-ORCHESTRATE/);
-    assert.match(output, /\/omc-orchestrator/);
+    assert.equal(output, "");
   }));
 
 test("router auto-activates debug for natural-language troubleshooting prompts", () =>
@@ -143,6 +232,42 @@ test("router still treats pure help prompts as informational", () =>
       cwd: projectDir,
       workspace_roots: [projectDir],
       sessionId: "router-info-block",
+    });
+
+    assert.equal(output, "");
+  }));
+
+test("router does not auto-activate plan for generic analyze requests", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "analyze this helper and explain what it does",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-plan-precision",
+    });
+
+    assert.equal(output, "");
+  }));
+
+test("router does not auto-activate review for generic verify phrasing", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "帮我检查一下这个接口文档怎么写",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-review-precision",
+    });
+
+    assert.equal(output, "");
+  }));
+
+test("router does not auto-activate debug for copy-only error wording", () =>
+  withTempDir((projectDir) => {
+    const output = runNodeScript(join(repoRoot, "hooks", "omc-router.mjs"), {
+      prompt: "这个错误提示文案改一下",
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "router-debug-precision",
     });
 
     assert.equal(output, "");
@@ -223,9 +348,9 @@ test("persistent hook requires a second stop to exit active workflow", () =>
     const stateDir = join(projectDir, ".cursor", "ohc", "state");
     mkdirSync(stateDir, { recursive: true });
     writeFileSync(
-      join(stateDir, "omc-orchestrate-state-session-a.json"),
+      join(stateDir, "omc-parallel-state-session-a.json"),
       JSON.stringify({
-        workflow: "omc-orchestrate",
+        workflow: "omc-parallel",
         sessionId: "session-a",
         activatedAt: new Date().toISOString(),
         reinforcementCount: 0,
@@ -246,31 +371,39 @@ test("persistent hook requires a second stop to exit active workflow", () =>
       sessionId: "session-a",
     });
     assert.equal(secondOutput, "");
-    assert.equal(existsSync(join(stateDir, "omc-orchestrate-state-session-a.json")), false);
+    assert.equal(existsSync(join(stateDir, "omc-parallel-state-session-a.json")), false);
   }));
 
-test("persistent hook exits omc-work on the first stop", () =>
+test("persistent hook requires a second stop to exit omc-develop", () =>
   withTempDir((projectDir) => {
     const stateDir = join(projectDir, ".cursor", "ohc", "state");
     mkdirSync(stateDir, { recursive: true });
     writeFileSync(
-      join(stateDir, "omc-work-state-session-c.json"),
+      join(stateDir, "omc-develop-state-session-c.json"),
       JSON.stringify({
-        workflow: "omc-work",
+        workflow: "omc-develop",
         sessionId: "session-c",
         activatedAt: new Date().toISOString(),
         reinforcementCount: 0,
       }),
     );
 
-    const output = runNodeScript(join(repoRoot, "hooks", "omc-persistent.mjs"), {
+    const firstOutput = runNodeScript(join(repoRoot, "hooks", "omc-persistent.mjs"), {
       cwd: projectDir,
       workspace_roots: [projectDir],
       sessionId: "session-c",
     });
 
-    assert.equal(output, "");
-    assert.equal(existsSync(join(stateDir, "omc-work-state-session-c.json")), false);
+    assert.match(firstOutput, /"decision":"block"/);
+
+    const secondOutput = runNodeScript(join(repoRoot, "hooks", "omc-persistent.mjs"), {
+      cwd: projectDir,
+      workspace_roots: [projectDir],
+      sessionId: "session-c",
+    });
+
+    assert.equal(secondOutput, "");
+    assert.equal(existsSync(join(stateDir, "omc-develop-state-session-c.json")), false);
   }));
 
 test("verify-plugin succeeds from the repository root", () => {
@@ -283,15 +416,55 @@ test("verify-plugin succeeds from the repository root", () => {
   assert.match(result.stdout, /plugin metadata, hooks, assets, and compiled guidance are valid/i);
 });
 
+test("verify-skill-evals succeeds from the repository root", () => {
+  const result = spawnSync("node", ["scripts/verify-skill-evals.mjs"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /routing evals passed/i);
+});
+
+test("verify-agents succeeds from the repository root", () => {
+  const result = spawnSync("node", ["scripts/verify-agents.mjs"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /agents verified/i);
+});
+
+test("verify-skills succeeds from the repository root", () => {
+  const result = spawnSync("node", ["scripts/verify-skills.mjs"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /skills verified/i);
+});
+
+test("verify-output-contracts succeeds from the repository root", () => {
+  const result = spawnSync("node", ["scripts/verify-output-contracts.mjs"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /workflow output contracts verified/i);
+});
+
 test("persistent hook increments reinforcement count on first intercepted stop", () =>
   withTempDir((projectDir) => {
     const stateDir = join(projectDir, ".cursor", "ohc", "state");
     mkdirSync(stateDir, { recursive: true });
-    const statePath = join(stateDir, "omc-orchestrate-state-session-b.json");
+    const statePath = join(stateDir, "omc-parallel-state-session-b.json");
     writeFileSync(
       statePath,
       JSON.stringify({
-        workflow: "omc-orchestrate",
+        workflow: "omc-parallel",
         sessionId: "session-b",
         activatedAt: new Date().toISOString(),
         reinforcementCount: 1,

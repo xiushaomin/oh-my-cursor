@@ -1,6 +1,6 @@
 ---
 name: omc-flutter
-description: Flutter domain skill for Dart widgets, state boundaries, platform bridges, rendering performance, and cross-platform mobile delivery.
+description: Flutter skill for Dart widgets, state boundaries, platform bridges, and mobile delivery. Use when changing widget trees, state-management flow, plugin boundaries, or Flutter verification paths.
 metadata:
   category: pack
 ---
@@ -9,29 +9,26 @@ metadata:
 
 ## Overview
 
-Use this pack skill when the work lives in Flutter UI, Dart state-management surfaces, or platform-bridge boundaries.
+Use this skill for Flutter UI, state-management, and plugin-boundary work.
 
 ## When to use
 
-- Widget tree or screen-level changes
+- Widget tree or screen changes
 - State-management or async UI flow work
-- Platform channel or plugin-boundary changes
-- Flutter test or launch-surface validation
+- Plugin or platform-bridge behavior
 
-## When not to use
+## Repo-first discovery
 
-- Native iOS or Android work without Flutter surfaces
-- Web-only frontend work
+- Find the owning screen, widget boundary, and state-management surface first.
+- Reuse repo-local navigation and state patterns.
 
-## Focus
+## Default deliverable
 
-- Keep widgets small and state boundaries clear
-- Respect the repo's chosen state-management shape
-- Watch rebuild scope, jank, and plugin boundaries
-- Keep loading, error, and empty states explicit
+- Name the affected screen, widget boundary, or plugin surface.
+- State the state pattern being preserved.
+- State the strongest analyze, test, or launch proof path.
 
-## Minimum verification
+## On-demand references
 
-- Run `flutter analyze` or the repo's equivalent when available
-- Run tests if the repo supports them
-- Confirm the critical flow launches on at least one target platform
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when ownership is unclear.
+- Pull from [`../../references/mobile-verification-prompts.md`](../../references/mobile-verification-prompts.md) and [`../../references/testing-checklist.md`](../../references/testing-checklist.md) for deeper verification.

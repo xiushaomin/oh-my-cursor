@@ -1,6 +1,6 @@
 ---
 name: omc-java-backend
-description: Java backend domain skill for Spring-style services, APIs, persistence, validation, transactions, and observability-aware server work.
+description: Backend skill for Java and Spring-style service work. Use when changing controllers, services, repositories, persistence, validation, transactions, or backend verification.
 metadata:
   category: pack
 ---
@@ -9,29 +9,26 @@ metadata:
 
 ## Overview
 
-Use this pack skill when the work is primarily in Java service code, API boundaries, persistence logic, or backend verification.
+Use this skill for Java service, API, and persistence work.
 
 ## When to use
 
-- Controller, service, repository, DTO, or validation work
-- New or modified endpoints
-- Persistence, transaction, or query-shape changes
-- Backend tests around business behavior or API behavior
+- Controller, service, DTO, or repository changes
+- Endpoint, validation, transaction, or query-shape work
+- Backend-focused verification
 
-## When not to use
+## Repo-first discovery
 
-- UI-only work
-- Mobile-only work without shared Java backend changes
+- Find the owning controller, service, repository, and test surface first.
+- Reuse repo-local transaction, validation, and error-shaping patterns.
 
-## Focus
+## Default deliverable
 
-- Keep controller, service, and repository boundaries clear
-- Validate inputs near the boundary
-- Watch transaction shape, N+1 risk, and error semantics
-- Keep observability and failure behavior explicit when it matters
+- Name the affected API or service boundary.
+- State the validation, persistence, or transaction behavior involved.
+- State the strongest verification path available in the repo.
 
-## Minimum verification
+## On-demand references
 
-- Run build and unit tests when available
-- For endpoint changes, verify happy path and error path behavior
-- Call out any missing integration coverage
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when service ownership is unclear.
+- Pull from [`../../references/backend-verification-prompts.md`](../../references/backend-verification-prompts.md), [`../../references/security-checklist.md`](../../references/security-checklist.md), and [`../../references/testing-checklist.md`](../../references/testing-checklist.md) for deeper verification.

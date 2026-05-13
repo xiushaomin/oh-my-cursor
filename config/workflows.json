@@ -14,100 +14,12 @@
   ],
   "workflows": [
     {
-      "id": "omc-orchestrate",
-      "title": "Orchestrate",
-      "description": "Multi-lane execution for large or cross-domain work that needs planning, bounded delegation, integration, and end-to-end verification.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-orchestrator",
-      "persistent": true,
-      "priority": 100,
-      "routing": {
-        "keywords": [
-          "orchestrate",
-          "orchestrator",
-          "parallel",
-          "run in parallel",
-          "do everything",
-          "并行执行",
-          "自动执行"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-orchestrate",
-          "/omc-orchestrator"
-        ],
-        "preferExplicitInvocation": false
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": true,
-        "allowPersistentActivation": true
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "pm-planner",
-          "repo-researcher",
-          "question-asker",
-          "architecture-reviewer",
-          "test-writer",
-          "docs-maintainer",
-          "migration-reviewer",
-          "frontend-engineer",
-          "java-backend-engineer",
-          "ios-engineer",
-          "android-engineer",
-          "flutter-engineer",
-          "react-native-engineer",
-          "frontend-qa-reviewer",
-          "backend-qa-reviewer",
-          "mobile-qa-reviewer",
-          "release-notes-writer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "status",
-          "plan",
-          "delegations",
-          "risks",
-          "verification",
-          "handoffs"
-        ],
-        "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs."
-      },
-      "explain": {
-        "whenToUse": [
-          "Large cross-domain work with clear ownership splits",
-          "Parallel specialist lanes materially improve speed or quality"
-        ],
-        "whenNotToUse": [
-          "Single local edit or other work that one agent can finish directly"
-        ],
-        "relatedWorkflowIds": [
-          "omc-work",
-          "omc-plan"
-        ]
-      }
-    },
-    {
       "id": "omc-brainstorm",
+      "canonicalName": "brainstorm",
+      "lifecycleStage": "main",
+      "removedLegacyIds": [],
       "title": "Brainstorm",
-      "description": "Option exploration workflow for turning fuzzy intent into a small set of concrete directions before planning or implementation.",
+      "description": "Option exploration workflow for turning fuzzy intent into concrete directions before planning or implementation.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-brainstorm",
@@ -141,8 +53,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
+        "allowAutoActivation": false
       },
       "deactivation": {
         "phrases": [],
@@ -162,289 +73,117 @@
           "open_decisions",
           "plan_seed"
         ],
-        "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into planning."
+        "successDefinition": "The problem frame, tradeoffs, and recommended direction are concrete enough to move into specification or planning."
       },
       "explain": {
-        "whenToUse": [
-          "Fuzzy product or technical intent",
-          "Need alternatives and tradeoffs before committing to a path"
-        ],
-        "whenNotToUse": [
-          "A path is already selected and the next need is planning or execution"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
+          "omc-spec",
+          "omc-plan"
+        ]
+      }
+    },
+    {
+      "id": "omc-spec",
+      "canonicalName": "spec",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [],
+      "title": "Spec",
+      "description": "Lightweight specification workflow for broad or risky work that needs intent, constraints, acceptance criteria, and a quality contract before planning.",
+      "status": "active",
+      "kind": "workflow",
+      "skillId": "omc-spec",
+      "persistent": false,
+      "priority": 87,
+      "routing": {
+        "keywords": [
+          "spec",
+          "specification",
+          "requirements",
+          "acceptance criteria",
+          "quality contract",
+          "write a spec",
+          "需求规格",
+          "需求文档",
+          "验收标准"
+        ],
+        "phrases": [],
+        "manualInvocations": [
+          "/omc-spec"
+        ],
+        "preferExplicitInvocation": false
+      },
+      "compatibility": {
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      },
+      "activation": {
+        "allowAutoActivation": true
+      },
+      "deactivation": {
+        "phrases": [],
+        "clearOnCompletion": true
+      },
+      "subagents": {
+        "recommended": [
+          "pm-planner",
+          "question-asker",
+          "architecture-reviewer"
+        ],
+        "forbidden": []
+      },
+      "outputContract": {
+        "fields": [
+          "intent",
+          "constraints",
+          "acceptance_criteria",
+          "quality_contract",
+          "open_questions"
+        ],
+        "successDefinition": "Intent, constraints, acceptance criteria, and quality expectations are stable enough to plan implementation."
+      },
+      "explain": {
+        "whenToUse": [],
+        "whenNotToUse": [],
+        "relatedWorkflowIds": [
+          "omc-brainstorm",
           "omc-plan",
           "omc-architecture"
         ]
       }
     },
     {
-      "id": "omc-work",
-      "title": "Work",
-      "description": "Guided execution workflow for one small step at a time when the user wants close control and explicit checkpoints.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-work",
-      "persistent": true,
-      "stopPolicy": "single-tap-exit",
-      "priority": 95,
-      "routing": {
-        "keywords": [
-          "step by step",
-          "one step at a time",
-          "guide me",
-          "walk me through",
-          "manual mode",
-          "一步一步",
-          "逐步",
-          "带我做",
-          "一歩ずつ",
-          "단계별"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-work"
-        ],
-        "preferExplicitInvocation": false
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": true,
-        "allowPersistentActivation": true
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "pm-planner"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "current_step",
-          "next_options",
-          "blocked_on"
-        ],
-        "successDefinition": "Each step is small, verified, and clear enough for the next decision to stay local."
-      },
-      "explain": {
-        "whenToUse": [
-          "Need close human-in-the-loop control",
-          "Want incremental execution instead of broad autonomous work"
-        ],
-        "whenNotToUse": [
-          "The task is better served by direct execution or parallel orchestration"
-        ],
-        "relatedWorkflowIds": [
-          "omc-orchestrate",
-          "omc-plan"
-        ]
-      }
-    },
-    {
-      "id": "omc-review",
-      "title": "Review",
-      "description": "Independent merge-readiness review focused on findings, severity, verification gaps, and residual risk.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-review",
-      "persistent": false,
-      "priority": 85,
-      "routing": {
-        "keywords": [
-          "review",
-          "audit",
-          "security review",
-          "code review",
-          "pr review",
-          "review my current changes",
-          "review this",
-          "帮我 review",
-          "帮我看下代码",
-          "检查一下",
-          "帮我检查",
-          "审查",
-          "代码审查",
-          "走查"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-review"
-        ],
-        "preferExplicitInvocation": false
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": true,
-        "allowPersistentActivation": false
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "frontend-qa-reviewer",
-          "backend-qa-reviewer",
-          "mobile-qa-reviewer",
-          "architecture-reviewer",
-          "test-writer",
-          "migration-reviewer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "findings",
-          "severity",
-          "residual_risks",
-          "checks_run"
-        ],
-        "successDefinition": "Findings are concrete, evidence-backed, severity-labeled, and accompanied by the smallest useful next checks."
-      },
-      "explain": {
-        "whenToUse": [
-          "After implementation or before merge",
-          "Need findings rather than code changes"
-        ],
-        "whenNotToUse": [
-          "No concrete artifact, diff, or file scope exists to review"
-        ],
-        "relatedWorkflowIds": [
-          "omc-debug",
-          "omc-plan"
-        ]
-      }
-    },
-    {
-      "id": "omc-debug",
-      "title": "Debug",
-      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-debug",
-      "persistent": false,
-      "priority": 84,
-      "routing": {
-        "keywords": [
-          "debug",
-          "root cause",
-          "stack trace",
-          "flaky",
-          "regression",
-          "investigate",
-          "why failing",
-          "why is this failing",
-          "帮我排查",
-          "排查一下",
-          "看下原因",
-          "不生效",
-          "排查",
-          "调试",
-          "错误"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-debug"
-        ],
-        "preferExplicitInvocation": false
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": true,
-        "allowPersistentActivation": false
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "debug-investigator",
-          "repo-researcher",
-          "test-writer",
-          "docs-maintainer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "root_cause",
-          "evidence",
-          "fix",
-          "tests"
-        ],
-        "successDefinition": "The failure mode is understood, the root cause is evidence-backed, and the fix is verified on the most relevant proof path."
-      },
-      "explain": {
-        "whenToUse": [
-          "Failures, regressions, flaky behavior, or ambiguous breakages"
-        ],
-        "whenNotToUse": [
-          "Greenfield feature work with no active failure to investigate"
-        ],
-        "relatedWorkflowIds": [
-          "omc-review",
-          "omc-work"
-        ]
-      }
-    },
-    {
       "id": "omc-plan",
+      "canonicalName": "plan",
+      "lifecycleStage": "main",
+      "removedLegacyIds": [],
       "title": "Plan",
-      "description": "Planning workflow for turning a goal into milestones, acceptance criteria, dependencies, and risk-aware execution steps.",
+      "description": "Planning workflow for turning a scoped goal into milestones, acceptance criteria, dependencies, and risks before implementation.",
       "status": "active",
       "kind": "workflow",
       "skillId": "omc-plan",
       "persistent": false,
-      "priority": 75,
+      "priority": 86,
       "routing": {
         "keywords": [
           "plan",
+          "planning",
           "roadmap",
           "plan this",
           "help me plan",
-          "analyze this",
           "break this down",
-          "分析一下",
+          "milestones",
           "规划一下",
-          "拆一下",
-          "想想怎么做",
-          "里程碑",
           "计划",
-          "拆解需求",
-          "milestone",
-          "break down"
+          "拆解",
+          "怎么做"
         ],
         "phrases": [],
         "manualInvocations": [
@@ -463,8 +202,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": true,
-        "allowPersistentActivation": false
+        "allowAutoActivation": true
       },
       "deactivation": {
         "phrases": [],
@@ -486,48 +224,48 @@
           "dependencies",
           "risks"
         ],
-        "successDefinition": "The plan is explicit enough to execute without rediscovering scope, dependencies, or proof obligations."
+        "successDefinition": "The plan is ordered, risk-aware, and verifiable enough to hand to development."
       },
       "explain": {
-        "whenToUse": [
-          "Multi-step delivery or cross-module scope",
-          "Need acceptance criteria and sequencing before implementation"
-        ],
-        "whenNotToUse": [
-          "Trivial local edits with obvious scope and proof"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
-          "omc-work",
-          "omc-orchestrate"
+          "omc-spec",
+          "omc-develop",
+          "omc-architecture",
+          "omc-verify"
         ]
       }
     },
     {
-      "id": "omc-architecture",
-      "title": "Architecture",
-      "description": "Architecture workflow for boundary decisions, tradeoff analysis, migration shape, and other changes that are expensive to reverse.",
+      "id": "omc-develop",
+      "canonicalName": "develop",
+      "lifecycleStage": "main",
+      "removedLegacyIds": [
+        "omc-work"
+      ],
+      "title": "Develop",
+      "description": "Scoped implementation workflow for local code or documentation changes with tight scope control and local verification.",
       "status": "active",
       "kind": "workflow",
-      "skillId": "omc-architecture",
-      "persistent": false,
-      "priority": 70,
+      "skillId": "omc-develop",
+      "persistent": true,
+      "priority": 95,
       "routing": {
         "keywords": [
-          "architecture",
-          "design doc",
-          "technical design",
-          "tradeoff",
-          "migration",
-          "boundary",
-          "架构",
-          "技术方案",
-          "迁移"
+          "develop",
+          "implement",
+          "build this",
+          "code this",
+          "make the change",
+          "实现",
+          "开发"
         ],
         "phrases": [],
         "manualInvocations": [
-          "/omc-architecture"
+          "/omc-develop"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -540,8 +278,259 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
+        "allowAutoActivation": true
+      },
+      "deactivation": {
+        "phrases": [],
+        "clearOnCompletion": true
+      },
+      "subagents": {
+        "recommended": [
+          "repo-researcher",
+          "test-writer",
+          "docs-maintainer",
+          "frontend-engineer",
+          "java-backend-engineer",
+          "ios-engineer",
+          "android-engineer",
+          "flutter-engineer",
+          "react-native-engineer"
+        ],
+        "forbidden": []
+      },
+      "outputContract": {
+        "fields": [
+          "scope",
+          "changes",
+          "checks_run",
+          "blocked_on",
+          "handoff"
+        ],
+        "successDefinition": "The scoped change is implemented, locally verified, and closed with explicit blockers or follow-up routing."
+      },
+      "explain": {
+        "whenToUse": [],
+        "whenNotToUse": [],
+        "relatedWorkflowIds": [
+          "omc-plan",
+          "omc-verify",
+          "omc-review",
+          "omc-debug"
+        ]
+      }
+    },
+    {
+      "id": "omc-verify",
+      "canonicalName": "verify",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [
+        "omc-test-plan"
+      ],
+      "title": "Check",
+      "description": "Verification-design workflow for mapping behavior claims to automated checks, manual checks, proof targets, blockers, and explicit coverage gaps.",
+      "status": "active",
+      "kind": "workflow",
+      "skillId": "omc-verify",
+      "persistent": false,
+      "priority": 84,
+      "routing": {
+        "keywords": [
+          "verify plan",
+          "verification plan",
+          "test plan",
+          "prove this works",
+          "what should we test",
+          "coverage gaps",
+          "验证计划",
+          "测试计划",
+          "怎么验证",
+          "证明可用"
+        ],
+        "phrases": [],
+        "manualInvocations": [
+          "/omc-verify"
+        ],
+        "preferExplicitInvocation": false
+      },
+      "compatibility": {
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      },
+      "activation": {
+        "allowAutoActivation": true
+      },
+      "deactivation": {
+        "phrases": [],
+        "clearOnCompletion": true
+      },
+      "subagents": {
+        "recommended": [
+          "test-writer",
+          "repo-researcher"
+        ],
+        "forbidden": []
+      },
+      "outputContract": {
+        "fields": [
+          "scope",
+          "risks",
+          "automated_tests",
+          "manual_checks",
+          "check_targets",
+          "coverage_gaps"
+        ],
+        "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps."
+      },
+      "explain": {
+        "whenToUse": [],
+        "whenNotToUse": [],
+        "relatedWorkflowIds": [
+          "omc-develop",
+          "omc-review",
+          "omc-debug"
+        ]
+      }
+    },
+    {
+      "id": "omc-review",
+      "canonicalName": "review",
+      "lifecycleStage": "main",
+      "removedLegacyIds": [
+        "omc-pr-summary",
+        "omc-scm",
+        "omc-release-checklist"
+      ],
+      "title": "Review",
+      "description": "Independent merge-readiness review focused on evidence-backed findings, severity, verification gaps, residual risk, and handoff clarity.",
+      "status": "active",
+      "kind": "workflow",
+      "skillId": "omc-review",
+      "persistent": false,
+      "priority": 90,
+      "routing": {
+        "keywords": [
+          "review",
+          "code review",
+          "pr review",
+          "review my current changes",
+          "review this diff",
+          "audit this change",
+          "帮我 review",
+          "帮我看下改动",
+          "检查当前改动",
+          "帮我检查改动",
+          "审查",
+          "代码审查",
+          "走查"
+        ],
+        "phrases": [],
+        "manualInvocations": [
+          "/omc-review"
+        ],
+        "preferExplicitInvocation": false
+      },
+      "compatibility": {
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      },
+      "activation": {
+        "allowAutoActivation": true
+      },
+      "deactivation": {
+        "phrases": [],
+        "clearOnCompletion": true
+      },
+      "subagents": {
+        "recommended": [
+          "frontend-qa-reviewer",
+          "backend-qa-reviewer",
+          "mobile-qa-reviewer",
+          "architecture-reviewer",
+          "test-writer",
+          "migration-reviewer"
+        ],
+        "forbidden": []
+      },
+      "outputContract": {
+        "fields": [
+          "findings",
+          "severity",
+          "residual_risks",
+          "checks_run",
+          "handoff"
+        ],
+        "successDefinition": "Findings are evidence-backed, severity-ordered, and include proof gaps plus any human-owned handoff notes."
+      },
+      "explain": {
+        "whenToUse": [],
+        "whenNotToUse": [],
+        "relatedWorkflowIds": [
+          "omc-develop",
+          "omc-plan",
+          "omc-architecture",
+          "omc-verify",
+          "omc-learn"
+        ]
+      }
+    },
+    {
+      "id": "omc-architecture",
+      "canonicalName": "architecture",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [
+        "omc-migration-checklist"
+      ],
+      "title": "Architecture",
+      "description": "Architecture workflow for boundary decisions, tradeoff analysis, migration shape, and other changes that are expensive to reverse.",
+      "status": "active",
+      "kind": "workflow",
+      "skillId": "omc-architecture",
+      "persistent": false,
+      "priority": 85,
+      "routing": {
+        "keywords": [
+          "architecture",
+          "architect",
+          "design decision",
+          "tradeoff",
+          "api contract",
+          "migration strategy",
+          "system design",
+          "架构",
+          "设计决策",
+          "技术方案",
+          "迁移策略"
+        ],
+        "phrases": [],
+        "manualInvocations": [
+          "/omc-architecture"
+        ],
+        "preferExplicitInvocation": false
+      },
+      "compatibility": {
+        "packIds": [
+          "omc-frontend",
+          "omc-java-backend",
+          "omc-ios",
+          "omc-android",
+          "omc-flutter",
+          "omc-react-native"
+        ]
+      },
+      "activation": {
+        "allowAutoActivation": true
       },
       "deactivation": {
         "phrases": [],
@@ -565,53 +554,49 @@
           "migration_plan",
           "verification"
         ],
-        "successDefinition": "Constraints, chosen direction, rejected alternatives, and migration shape are clear enough to implement responsibly."
+        "successDefinition": "The decision record names constraints, viable options, the chosen path, rejected alternatives, migration shape, and verification points."
       },
       "explain": {
-        "whenToUse": [
-          "Cross-module or cross-system technical decisions",
-          "Design choices that would be expensive to reverse later"
-        ],
-        "whenNotToUse": [
-          "Small local tasks that can follow existing repo patterns directly"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
-          "omc-brainstorm",
+          "omc-spec",
           "omc-plan",
           "omc-review"
         ]
       }
     },
     {
-      "id": "omc-scm",
-      "title": "SCM",
-      "description": "Source-control workflow for branch strategy, staging boundaries, commits, PR prep, and safe collaboration hygiene.",
+      "id": "omc-parallel",
+      "canonicalName": "parallel",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [
+        "omc-orchestrate",
+        "omc-orchestrator"
+      ],
+      "title": "Parallel",
+      "description": "Bounded multi-lane workflow for independent workstreams that need clear ownership, parent integration, and end-to-end verification.",
       "status": "active",
       "kind": "workflow",
-      "skillId": "omc-scm",
-      "persistent": false,
-      "priority": 65,
+      "skillId": "omc-parallel",
+      "persistent": true,
+      "priority": 100,
       "routing": {
         "keywords": [
-          "git",
-          "commit",
-          "branch",
-          "pr",
-          "pull request",
-          "merge",
-          "rebase",
-          "cherry-pick",
-          "worktree",
-          "release notes",
-          "版本",
-          "分支",
-          "合并"
+          "parallel",
+          "run in parallel",
+          "multi-lane",
+          "multiple workstreams",
+          "split across agents",
+          "并行执行",
+          "多路",
+          "多代理"
         ],
         "phrases": [],
         "manualInvocations": [
-          "/omc-scm"
+          "/omc-parallel"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -624,8 +609,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
+        "allowAutoActivation": true
       },
       "deactivation": {
         "phrases": [],
@@ -633,201 +617,79 @@
       },
       "subagents": {
         "recommended": [
-          "release-notes-writer",
-          "docs-maintainer"
+          "pm-planner",
+          "repo-researcher",
+          "question-asker",
+          "architecture-reviewer",
+          "test-writer",
+          "docs-maintainer",
+          "migration-reviewer",
+          "frontend-engineer",
+          "java-backend-engineer",
+          "ios-engineer",
+          "android-engineer",
+          "flutter-engineer",
+          "react-native-engineer",
+          "frontend-qa-reviewer",
+          "backend-qa-reviewer",
+          "mobile-qa-reviewer"
         ],
         "forbidden": []
       },
       "outputContract": {
         "fields": [
-          "branch_plan",
-          "commit_messages",
-          "pr_summary"
-        ],
-        "successDefinition": "The change set is intentionally grouped, collaboration-ready, and free of avoidable source-control risk."
-      },
-      "explain": {
-        "whenToUse": [
-          "Commit shaping, PR prep, or handoff work",
-          "Need safe source-control guidance around an existing change set"
-        ],
-        "whenNotToUse": [
-          "No source-control or collaboration boundary is part of the task"
-        ],
-        "relatedWorkflowIds": [
-          "omc-review",
-          "omc-work"
-        ]
-      }
-    },
-    {
-      "id": "omc-test-plan",
-      "title": "Test Plan",
-      "description": "Verification-planning workflow for mapping behavior claims to regression checks, manual checks, and concrete coverage gaps.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-test-plan",
-      "persistent": false,
-      "priority": 62,
-      "routing": {
-        "keywords": [
-          "test plan",
-          "testing plan",
-          "coverage plan",
-          "regression tests",
-          "测试计划",
-          "测试覆盖"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-test-plan"
-        ],
-        "preferExplicitInvocation": true
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "test-writer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "scope",
+          "status",
+          "plan",
+          "delegations",
           "risks",
-          "automated_tests",
-          "manual_checks",
-          "commands",
-          "coverage_gaps"
-        ],
-        "successDefinition": "The verification plan names the behavior to prove, the highest-value checks, and any explicit proof gaps."
-      },
-      "explain": {
-        "whenToUse": [
-          "Before implementation to shape proof early",
-          "After implementation or during review to identify missing coverage"
-        ],
-        "whenNotToUse": [
-          "No meaningful behavior, risk, or proof question exists"
-        ],
-        "relatedWorkflowIds": [
-          "omc-review",
-          "omc-debug"
-        ]
-      }
-    },
-    {
-      "id": "omc-pr-summary",
-      "title": "PR Summary",
-      "description": "Reviewer-facing change summary that explains why the work exists, what users feel, how it was verified, and what still carries risk.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-pr-summary",
-      "persistent": false,
-      "priority": 61,
-      "routing": {
-        "keywords": [
-          "pr summary",
-          "pull request summary",
-          "change summary",
-          "handoff summary",
-          "PR 总结"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-pr-summary"
-        ],
-        "preferExplicitInvocation": true
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "release-notes-writer",
-          "docs-maintainer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "summary",
-          "user_impact",
-          "implementation_notes",
           "verification",
-          "risks"
+          "handoffs"
         ],
-        "successDefinition": "A reviewer can understand the purpose, user impact, verification, and residual risk of the change without re-reading the whole diff first."
+        "successDefinition": "Bounded workstreams are integrated, verified, and closed with explicit residual risks or handoffs."
       },
       "explain": {
-        "whenToUse": [
-          "Before opening a PR",
-          "Need a concise local or teammate handoff artifact"
-        ],
-        "whenNotToUse": [
-          "No reasonably complete artifact exists to summarize"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
-          "omc-scm",
+          "omc-plan",
+          "omc-develop",
+          "omc-verify",
           "omc-review"
         ]
       }
     },
     {
-      "id": "omc-release-checklist",
-      "title": "Release Checklist",
-      "description": "Release-readiness workflow for separating blockers from follow-ups and making rollout, rollback, docs, and verification explicit.",
+      "id": "omc-debug",
+      "canonicalName": "debug",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [],
+      "title": "Debug",
+      "description": "Debugging workflow for reproducing failures, narrowing hypotheses, identifying root cause, and proving the smallest safe fix for a real bug or regression.",
       "status": "active",
       "kind": "workflow",
-      "skillId": "omc-release-checklist",
+      "skillId": "omc-debug",
       "persistent": false,
-      "priority": 60,
+      "priority": 89,
       "routing": {
         "keywords": [
-          "release checklist",
-          "release readiness",
-          "rollout",
-          "rollback",
-          "发布检查",
-          "上线检查"
+          "debug",
+          "bug",
+          "regression",
+          "root cause",
+          "why failing",
+          "not working",
+          "troubleshoot",
+          "排查这个问题",
+          "看下原因",
+          "不生效",
+          "排查",
+          "调试"
         ],
         "phrases": [],
         "manualInvocations": [
-          "/omc-release-checklist"
+          "/omc-debug"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -840,82 +702,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
-      },
-      "deactivation": {
-        "phrases": [],
-        "clearOnCompletion": true
-      },
-      "subagents": {
-        "recommended": [
-          "release-notes-writer",
-          "test-writer",
-          "migration-reviewer"
-        ],
-        "forbidden": []
-      },
-      "outputContract": {
-        "fields": [
-          "scope",
-          "required_checks",
-          "release_blockers",
-          "rollout_plan",
-          "rollback_plan",
-          "handoff"
-        ],
-        "successDefinition": "Release blockers, required checks, rollout expectations, and rollback shape are explicit enough to support a go or no-go decision."
-      },
-      "explain": {
-        "whenToUse": [
-          "Before deployment, rollout, release, or store submission"
-        ],
-        "whenNotToUse": [
-          "No release boundary or rollout decision is actually in scope"
-        ],
-        "relatedWorkflowIds": [
-          "omc-pr-summary",
-          "omc-migration-checklist"
-        ]
-      }
-    },
-    {
-      "id": "omc-incident-report",
-      "title": "Incident Report",
-      "description": "Incident-report workflow for turning debugging or operational evidence into a clear record of impact, timeline, root cause, remediation, and prevention.",
-      "status": "active",
-      "kind": "workflow",
-      "skillId": "omc-incident-report",
-      "persistent": false,
-      "priority": 59,
-      "routing": {
-        "keywords": [
-          "incident report",
-          "postmortem",
-          "debug report",
-          "root cause report",
-          "事故报告",
-          "复盘"
-        ],
-        "phrases": [],
-        "manualInvocations": [
-          "/omc-incident-report"
-        ],
-        "preferExplicitInvocation": true
-      },
-      "compatibility": {
-        "packIds": [
-          "omc-frontend",
-          "omc-java-backend",
-          "omc-ios",
-          "omc-android",
-          "omc-flutter",
-          "omc-react-native"
-        ]
-      },
-      "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
+        "allowAutoActivation": true
       },
       "deactivation": {
         "phrases": [],
@@ -924,57 +711,64 @@
       "subagents": {
         "recommended": [
           "debug-investigator",
+          "repo-researcher",
+          "test-writer",
           "docs-maintainer"
         ],
         "forbidden": []
       },
       "outputContract": {
         "fields": [
-          "impact",
-          "timeline",
           "root_cause",
+          "evidence",
           "fix",
-          "verification",
-          "prevention"
+          "tests"
         ],
-        "successDefinition": "Impact, timeline, evidence, root cause, remediation, and prevention follow-ups are clear enough for future readers and stakeholders."
+        "successDefinition": "The root cause is evidence-backed, the fix is minimal, and the repro or regression path has been rechecked."
       },
       "explain": {
-        "whenToUse": [
-          "After a debugging investigation or incident response"
-        ],
-        "whenNotToUse": [
-          "There is not yet enough evidence or root-cause context to write a trustworthy report"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
-          "omc-debug",
-          "omc-pr-summary"
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
+          "omc-learn"
         ]
       }
     },
     {
-      "id": "omc-migration-checklist",
-      "title": "Migration Checklist",
-      "description": "Migration workflow for compatibility boundaries, ordered rollout steps, verification points, and rollback timing.",
+      "id": "omc-learn",
+      "canonicalName": "learn",
+      "lifecycleStage": "helper",
+      "removedLegacyIds": [
+        "omc-incident-report"
+      ],
+      "title": "Learn",
+      "description": "Learning workflow for turning incidents, regressions, repeated review findings, or debugging evidence into durable prevention assets.",
       "status": "active",
       "kind": "workflow",
-      "skillId": "omc-migration-checklist",
+      "skillId": "omc-learn",
       "persistent": false,
-      "priority": 58,
+      "priority": 82,
       "routing": {
         "keywords": [
-          "migration checklist",
-          "migration plan",
-          "compatibility plan",
-          "rollback plan",
-          "迁移清单",
-          "迁移计划"
+          "learn",
+          "lesson",
+          "postmortem",
+          "prevention",
+          "retro",
+          "follow-up prevention",
+          "复盘",
+          "沉淀",
+          "经验",
+          "预防"
         ],
         "phrases": [],
         "manualInvocations": [
-          "/omc-migration-checklist"
+          "/omc-learn"
         ],
-        "preferExplicitInvocation": true
+        "preferExplicitInvocation": false
       },
       "compatibility": {
         "packIds": [
@@ -987,8 +781,7 @@
         ]
       },
       "activation": {
-        "allowAutoActivation": false,
-        "allowPersistentActivation": false
+        "allowAutoActivation": true
       },
       "deactivation": {
         "phrases": [],
@@ -996,32 +789,29 @@
       },
       "subagents": {
         "recommended": [
-          "migration-reviewer",
+          "debug-investigator",
+          "docs-maintainer",
           "test-writer"
         ],
         "forbidden": []
       },
       "outputContract": {
         "fields": [
-          "current_state",
-          "target_state",
-          "steps",
-          "verification",
-          "rollback",
-          "risks"
+          "trigger",
+          "evidence",
+          "lesson",
+          "prevention_assets",
+          "follow_ups"
         ],
-        "successDefinition": "Current state, target state, compatibility window, ordered checks, and rollback path are explicit enough to migrate safely."
+        "successDefinition": "The lesson is evidence-backed and mapped to durable prevention assets or explicit follow-up."
       },
       "explain": {
-        "whenToUse": [
-          "Schema, API, dependency, platform, or architecture migrations"
-        ],
-        "whenNotToUse": [
-          "Small local edits with no compatibility, coexistence, or rollback risk"
-        ],
+        "whenToUse": [],
+        "whenNotToUse": [],
         "relatedWorkflowIds": [
-          "omc-architecture",
-          "omc-release-checklist"
+          "omc-review",
+          "omc-debug",
+          "omc-verify"
         ]
       }
     }

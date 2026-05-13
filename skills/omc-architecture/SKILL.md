@@ -1,6 +1,6 @@
 ---
 name: omc-architecture
-description: Architecture and tradeoff workflow for boundaries, module design, API contracts, migration paths, and cross-domain technical decisions that are expensive to reverse.
+description: Make a design decision with explicit tradeoffs. Use when the hard part is system shape, boundaries, contracts, or migration risk rather than local implementation.
 metadata:
   category: workflow
 ---
@@ -9,7 +9,7 @@ metadata:
 
 ## Overview
 
-Use this skill when the hard part of the task is choosing the shape of the system rather than writing the code. Good architecture work makes constraints, rejected alternatives, and migration consequences explicit.
+Use this skill when the hard part is choosing the shape of the system rather than writing the code. Good architecture work makes constraints, rejected alternatives, and migration consequences explicit.
 
 ## When to use
 
@@ -23,46 +23,39 @@ Use this skill when the hard part of the task is choosing the shape of the syste
 - A small local implementation task with obvious existing patterns
 - Early ideation where breadth matters more than design commitment
 
+## Repo-first discovery
+
+- Read the current module, API, routing, or ownership boundaries before sketching a better shape.
+- Ground options in the repo's real constraints, not abstract architecture preferences.
+- Verify whether migration and compatibility pressure already exists in adjacent code or docs.
+
 ## Workflow
 
-1. Map the current shape.
-   Identify existing boundaries, ownership, and constraints in the repo.
+1. Map the current boundaries, constraints, and affected surfaces.
+2. State the forces and tradeoffs.
+3. Compare 2-3 viable options.
+4. Recommend one path and name the rejected alternatives.
+5. End with migration shape and verification points.
 
-2. State the forces.
-   Name what the design must optimize for and what it can afford to trade away.
+## Output contract
 
-3. Compare real options.
-   Evaluate 2-3 viable approaches, not strawmen.
+- `context`: current system shape and affected surfaces
+- `constraints`: forces, tradeoffs, and non-goals
+- `options`: 2-3 viable approaches with tradeoffs
+- `decision`: the recommended path
+- `rejected`: alternatives and why they lose
+- `migration_plan`: transition shape, compatibility window, rollback decision point, and human-owned operational notes when relevant
+- `verification`: proof points for the chosen design
 
-4. Make the decision.
-   Recommend one path and name the rejected alternatives and why they lose.
+## Guardrails
 
-5. Define execution shape.
-   Describe migration steps, compatibility concerns, and verification checkpoints.
+- Do not present one option as if tradeoffs do not exist.
+- Keep migration cost inside the decision, not as a later note.
+- Avoid theoretical purity that ignores the repo's current shape.
+- Do not pretend to own production rollout authority.
 
-## Common rationalizations
+## On-demand references
 
-| Rationalization | Reality |
-| --- | --- |
-| "There's an obvious best design." | If it affects multiple surfaces, the tradeoffs should still be written down. |
-| "We'll decide the migration later." | Migration cost is part of the architecture choice. |
-| "The existing repo shape is messy, so we'll replace it wholesale." | Consistency with the current system often beats theoretical purity. |
-| "We only need one option to keep momentum." | Without alternatives, the decision record is weak and easy to revisit badly. |
-
-## Red flags
-
-- Constraints are implicit
-- Rejected alternatives are missing
-- The decision optimizes one concern while hiding the cost to another
-- Migration or compatibility work is hand-waved
-- The proposed design depends on new abstractions that solve no current problem
-
-## Verification
-
-Before concluding the architecture step, confirm:
-
-- [ ] Current constraints and boundaries are explicit
-- [ ] Multiple viable options were considered
-- [ ] The chosen option has a clear why
-- [ ] Rejected options are named
-- [ ] Migration and verification shape are defined
+- Pull from [`../../references/workflow-architecture.md`](../../references/workflow-architecture.md) when the decision record needs a stronger tradeoff bar.
+- Pull from [`../../references/skill-output-contracts.md`](../../references/skill-output-contracts.md) when another workflow will consume the decision record.
+- Pull from [`../../references/skill-repo-discovery.md`](../../references/skill-repo-discovery.md) when local boundaries or constraints are not yet explicit.

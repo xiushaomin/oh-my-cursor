@@ -1,6 +1,6 @@
 ---
 name: omc-review
-description: Independent merge-readiness review focused on correctness, security, maintainability, performance, UX risk, and missing verification. Use after implementation or before release when the user wants findings rather than code changes.
+description: Review existing changes for correctness, risk, and missing proof. Use when the user wants findings, severity, and verification gaps rather than code changes after implementation.
 metadata:
   category: workflow
 ---
@@ -9,11 +9,11 @@ metadata:
 
 ## Overview
 
-Use this skill to inspect a change as a reviewer, not as an implementer. The primary output is concrete findings tied to evidence, plus the smallest useful tests that would confirm or disprove risk.
+Inspect a change as a reviewer, not as an implementer. The primary output is concrete findings tied to evidence, plus the smallest useful tests that would confirm or disprove risk.
 
 ## When to use
 
-- After implementation and before merge or release
+- After implementation and before merge or handoff
 - When the user asks for code review, audit, walkthrough, or risk assessment
 - When a change affects security, data, UX, or compatibility and needs a second pass
 
@@ -22,6 +22,12 @@ Use this skill to inspect a change as a reviewer, not as an implementer. The pri
 - There is no artifact, diff, or file scope to review
 - The user wants implementation rather than findings
 - The task is primarily planning or debugging
+
+## Repo-first discovery
+
+- Read the diff, target files, and nearby patterns before forming findings.
+- Identify which checks already ran so review can focus on unproven risk.
+- Prefer repo-local trust boundaries and conventions over generic style opinions.
 
 ## Workflow
 
@@ -33,42 +39,39 @@ Use this skill to inspect a change as a reviewer, not as an implementer. The pri
 
 3. Review for trust-boundary risk.
    Inspect auth, validation, secret handling, file/shell/network usage, and external integration safety.
-   Pull from [security-checklist.md](/Users/smxiu/Desktop/oh-my-cursor/references/security-checklist.md) when needed.
+   Pull from [`../../references/security-checklist.md`](../../references/security-checklist.md) when needed.
 
 4. Review for performance and UX risk.
    Inspect rendering/query shape, payload size, latency states, loading/error handling, and platform fit.
-   Pull from [performance-checklist.md](/Users/smxiu/Desktop/oh-my-cursor/references/performance-checklist.md) and [accessibility-checklist.md](/Users/smxiu/Desktop/oh-my-cursor/references/accessibility-checklist.md) when relevant.
+   Pull from [`../../references/performance-checklist.md`](../../references/performance-checklist.md), [`../../references/accessibility-checklist.md`](../../references/accessibility-checklist.md), and [`../../references/frontend-review-prompts.md`](../../references/frontend-review-prompts.md) when relevant.
 
 5. Review for verification gaps.
    Ask what tests, checks, or manual proofs are missing.
-   Pull from [testing-checklist.md](/Users/smxiu/Desktop/oh-my-cursor/references/testing-checklist.md) when deeper coverage guidance is needed.
+   Pull from [`../../references/testing-checklist.md`](../../references/testing-checklist.md), [`../../references/mobile-verification-prompts.md`](../../references/mobile-verification-prompts.md), or [`../../references/backend-verification-prompts.md`](../../references/backend-verification-prompts.md) when deeper coverage guidance is needed.
 
 6. Report findings only.
    Lead with severity-ordered issues. Keep summary secondary.
 
-## Common rationalizations
+7. Close with handoff notes.
+   Include only the minimal summary and next workflow routing that the evidence supports.
 
-| Rationalization | Reality |
-| --- | --- |
-| "The code looks clean, so it's probably fine." | Readability is helpful, but review is about behavior and risk. |
-| "I'll suggest a refactor instead of naming the bug." | Findings should identify failure risk first, not rewrite style. |
-| "There are no tests, so review can't go further." | Missing tests are themselves a review finding. |
-| "This issue is probably too small to mention." | If it can cause a regression, confusion, or exploit path, mention it. |
+## Output contract
 
-## Red flags
+- `findings`: severity-ordered, evidence-backed issues
+- `severity`: the rating for each meaningful issue
+- `residual_risks`: what remains unproven or unreviewed
+- `checks_run`: existing or newly run checks that informed the review
+- `handoff`: concise summary, human follow-ups, or next workflow routing
 
-- Findings are vague and not tied to files or behavior
-- The review turns into an implementation pass
-- Severity is missing or inconsistent
-- Missing tests are noted without saying what the smallest useful check would be
-- Summary comes before findings
+## Guardrails
 
-## Verification
+- Findings come before summary.
+- Tie every meaningful issue to evidence.
+- Name the smallest useful follow-up test.
+- Do not turn review into implementation or release choreography.
 
-Before concluding the review, confirm:
+## On-demand references
 
-- [ ] Findings are concrete and evidence-backed
-- [ ] Severity is stated for each meaningful issue
-- [ ] Suggested tests are specific and minimal
-- [ ] Residual risk is named when verification is incomplete
-- [ ] Summary stays secondary to actionable findings
+- Pull from [`../../references/workflow-review.md`](../../references/workflow-review.md) when the findings-first pass needs a stronger quality bar.
+- Pull from [`../../references/security-checklist.md`](../../references/security-checklist.md) when trust-boundary risk is central.
+- Pull from [`../../references/testing-checklist.md`](../../references/testing-checklist.md), [`../../references/mobile-verification-prompts.md`](../../references/mobile-verification-prompts.md), or [`../../references/backend-verification-prompts.md`](../../references/backend-verification-prompts.md) when proof gaps need more depth.

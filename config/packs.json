@@ -29,23 +29,20 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
           "omc-plan",
-          "omc-work"
+          "omc-develop"
         ]
       },
       "assets": {
@@ -126,19 +123,16 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
           "omc-plan",
@@ -219,22 +213,19 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
-          "omc-work",
+          "omc-develop",
           "omc-debug"
         ]
       },
@@ -314,22 +305,19 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
-          "omc-work",
+          "omc-develop",
           "omc-debug"
         ]
       },
@@ -408,22 +396,19 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
-          "omc-work",
+          "omc-develop",
           "omc-review"
         ]
       },
@@ -500,22 +485,19 @@
       },
       "compatibility": {
         "workflowIds": [
-          "omc-orchestrate",
           "omc-brainstorm",
-          "omc-work",
-          "omc-review",
-          "omc-debug",
+          "omc-spec",
           "omc-plan",
+          "omc-develop",
+          "omc-verify",
+          "omc-review",
           "omc-architecture",
-          "omc-scm",
-          "omc-test-plan",
-          "omc-pr-summary",
-          "omc-release-checklist",
-          "omc-incident-report",
-          "omc-migration-checklist"
+          "omc-parallel",
+          "omc-debug",
+          "omc-learn"
         ],
         "defaultWorkflowIds": [
-          "omc-work",
+          "omc-develop",
           "omc-debug"
         ]
       },

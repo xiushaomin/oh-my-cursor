@@ -54,15 +54,7 @@ function makeBlock(reason) {
 function loadPersistentWorkflows(doc) {
   return normalizeWorkflowList(doc)
     .filter((w) => w.persistent)
-    .map((w) => {
-      const raw = Array.isArray(doc?.workflows)
-        ? doc.workflows.find((candidate) => String(candidate?.id ?? "") === w.id)
-        : null;
-      return {
-        id: w.id,
-        stopPolicy: String(raw?.stopPolicy ?? "confirm-twice"),
-      };
-    });
+    .map((w) => ({ id: w.id }));
 }
 
 function readModeState(projectDir, workflow, sessionId) {
@@ -154,12 +146,6 @@ function main() {
       deactivate(projectDir, workflow.id, sessionId);
       clearStopConfirmation(projectDir, sessionId);
       continue;
-    }
-
-    if (workflow.stopPolicy === "single-tap-exit") {
-      deactivate(projectDir, workflow.id, sessionId);
-      clearStopConfirmation(projectDir, sessionId);
-      process.exit(0);
     }
 
     if (hasRecentStopConfirmation(projectDir, sessionId, workflow.id, windowMs)) {

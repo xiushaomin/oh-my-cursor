@@ -1,59 +1,116 @@
 # oh-my-cursor
 
-> Warning
-> This project is still in active testing. Behavior, APIs, defaults, and workflow details may change, and some features may be incomplete or unstable.
+> [!WARNING]
+> This project is still in active testing. Behavior, defaults, and workflow details may evolve.
 
-`oh-my-cursor` is a Cursor plugin for app teams that want stronger execution discipline without fighting Cursor's native model.
+> Turn Cursor into a disciplined engineering teammate.
 
-It combines:
+`oh-my-cursor` is a Cursor plugin for teams that want AI help to feel more like a strong senior engineer:
+clearer planning, tighter implementation, better review quality, safer handoffs, and less prompt chaos.
 
-- `rules/` for durable stack-aware guidance
-- `skills/` for multi-step workflows with explicit verification
-- `agents/` for narrow specialist delegation
-- `hooks/` for lightweight routing, persistence, and safety guardrails
+It stays Cursor-native.
+No custom runtime.
+No fake command layer.
+No giant system prompt.
 
-The goal is not to replace Cursor with a custom runtime. The goal is to make Cursor behave more like a disciplined senior engineering teammate across planning, implementation, debugging, review, and release work.
+## Why It Stands Out
 
-## Design principles
+- **Skill-first execution**: reusable workflows instead of one-off prompt rituals
+- **Real engineering discipline**: plan, develop, verify, review, debug, and learn as distinct modes
+- **Specialist subagents**: planning, research, implementation, review, and docs roles that reinforce each workflow
+- **Pack-aware guidance**: frontend, Java backend, iOS, Android, Flutter, and React Native support
+- **Guardrails without drama**: routing, persistence, and safety hooks that keep work on track
+- **Actually testable**: routing evals, output-contract checks, skill validation, and plugin verification
 
-- Stay Cursor-native. Prefer project rules, skills, focused agents, and hooks over one giant prompt.
-- Keep layers sharp. Rules hold durable guidance, skills hold workflows, agents hold perspectives, hooks hold event-driven control.
-- Favor evidence. Read the repo, inspect the relevant files, and verify changes before claiming completion.
-- Keep changes reviewable. Prefer small diffs, explicit assumptions, and narrow delegation.
-- Make quality habitual. Planning, testing, review, rollout, and rollback should be first-class concerns, not afterthoughts.
+## Before / After
 
-## What you get
+Instead of this:
 
-- Core workflow skills for planning, execution, orchestration, review, debugging, architecture, and SCM handoff
-- Domain packs for frontend, Java backend, iOS, Android, Flutter, and React Native work
-- Stack-aware rules that attach lightweight, reusable guidance close to the relevant files
-- Focused specialist agents for implementation, QA, debugging, planning, documentation, and migration work
-- Hooks for intent routing, persistent workflow behavior, and conservative shell/MCP/file guardrails
+```text
+"please be careful, think deeply, review everything, don't miss edge cases,
+follow our style, test it, and also maybe plan first..."
+```
 
-## Workflow set
+You get this:
 
-Core workflows:
+```text
+idea -> spec -> plan -> develop -> review
+```
+
+With explicit skills, domain context, and verification built in.
+
+## Core Idea
+
+`oh-my-cursor` combines four small surfaces that reinforce each other:
+
+- `rules/` for durable engineering expectations
+- `skills/` for reusable workflows
+- `agents/` for narrow specialist lanes
+- `hooks/` for routing, persistence, and safety
+
+That combination makes Cursor feel less like “a chat box with code access” and more like “a programmable engineering operating model”.
+
+## Workflow Catalog
+
+The workflow names are intentionally developer-native:
 
 - `omc-brainstorm`
+- `omc-spec`
 - `omc-plan`
-- `omc-work`
-- `omc-orchestrate`
+- `omc-develop`
+- `omc-verify`
 - `omc-review`
-- `omc-debug`
-- `omc-scm`
 - `omc-architecture`
+- `omc-parallel`
+- `omc-debug`
+- `omc-learn`
 
-Delivery helpers:
+They are designed to read naturally in both explicit invocation and natural language.
 
-- `omc-test-plan`
-- `omc-pr-summary`
-- `omc-release-checklist`
-- `omc-incident-report`
-- `omc-migration-checklist`
+## Workflow Map
 
-The plugin supports both explicit skill invocation and natural-language routing. The important abstraction is the workflow, not a custom command layer.
+```mermaid
+flowchart TB
+    subgraph MainPath["Main Path"]
+        direction LR
+        A["Brainstorm"] --> B["Plan"] --> C["Develop"] --> D["Review"]
+    end
 
-Current domain packs:
+    subgraph PlanHelpers["Plan Helpers"]
+        direction LR
+        S["Spec"] --- G["Architecture"] --- L["Learn"]
+    end
+
+    subgraph DevelopHelpers["Develop Helpers"]
+        direction LR
+        P["Parallel"] --- X["Debug"]
+    end
+
+    subgraph ReviewHelpers["Review Helper"]
+        direction LR
+        K["Verify"]
+    end
+
+    S --> B
+    G --> B
+    L --> B
+    P --> C
+    X --> C
+    K --> D
+```
+
+Default path:
+
+```text
+brainstorm -> plan -> develop -> review
+```
+
+Helpers come in only when the task really needs them.
+
+## Domain Packs
+
+`oh-my-cursor` is not a generic “works on everything equally” prompt pack.
+It is opinionated about real app-team surfaces:
 
 - `omc-frontend`
 - `omc-java-backend`
@@ -62,7 +119,129 @@ Current domain packs:
 - `omc-flutter`
 - `omc-react-native`
 
-## Repository structure
+Each pack brings:
+
+- stack-aware rules
+- specialist agents
+- repo heuristics
+- better verification prompts
+
+## Specialist Subagents
+
+Subagents are not the main user surface.
+They are the internal specialist system that strengthens each workflow.
+
+- **Planning**: `pm-planner`, `question-asker`
+- **Research**: `repo-researcher`, `debug-investigator`
+- **Implementation**: `frontend-engineer`, `java-backend-engineer`, `ios-engineer`, `android-engineer`, `flutter-engineer`, `react-native-engineer`
+- **Review**: `frontend-qa-reviewer`, `backend-qa-reviewer`, `mobile-qa-reviewer`, `architecture-reviewer`, `migration-reviewer`, `test-writer`
+- **Documentation**: `docs-maintainer`
+
+The design principle is simple:
+
+```text
+workflow = user-facing mode
+subagent = internal specialist role
+```
+
+Users choose workflows.
+The system brings in the right specialist context behind the scenes.
+
+## Workflow -> Subagents
+
+```mermaid
+flowchart TB
+    subgraph MainWorkflows["Main Workflows"]
+        direction LR
+        B["Brainstorm"]
+        P["Plan"]
+        D["Develop"]
+        R["Review"]
+    end
+
+    subgraph HelperWorkflows["Helper Workflows"]
+        direction LR
+        S["Spec"]
+        V["Verify"]
+        A["Architecture"]
+        X["Debug"]
+        L["Learn"]
+        M["Parallel"]
+    end
+
+    subgraph SpecialistRoles["Specialist Subagents"]
+        direction LR
+        P1["pm-planner"]
+        Q1["question-asker"]
+        R1["repo-researcher"]
+        T1["test-writer"]
+        AR["architecture-reviewer"]
+        DR["debug-investigator"]
+        DM["docs-maintainer"]
+        FE["implementation engineers"]
+        QA["QA reviewers"]
+    end
+
+    B --> P1
+    P --> P1
+    P --> Q1
+    P --> R1
+    P --> AR
+    D --> R1
+    D --> T1
+    D --> DM
+    D --> FE
+    R --> QA
+    R --> AR
+    R --> T1
+    V --> T1
+    V --> R1
+    A --> AR
+    A --> R1
+    X --> DR
+    X --> R1
+    X --> T1
+    L --> DR
+    L --> DM
+    L --> T1
+    M --> P1
+    M --> R1
+    M --> AR
+    M --> FE
+    M --> QA
+    M --> T1
+```
+
+## Why This Works
+
+### 1. It separates modes most AI setups blur together
+
+Planning is not implementation.
+Review is not debugging.
+Architecture is not a vague “think harder” instruction.
+
+That separation is the difference between AI that feels impressive in demos and AI that can actually support a team for weeks.
+
+### 2. It uses progressive disclosure instead of stuffing everything into one file
+
+Skills stay light.
+Companion references hold deeper guidance.
+
+That keeps routing sharp while still letting complex work pull in more detail when needed.
+
+### 3. It is built to survive drift
+
+This repo includes automated checks for:
+
+- plugin metadata integrity
+- workflow routing behavior
+- agent capability and profile consistency
+- output-contract consistency
+- skill frontmatter, structure, and reference-link validity
+
+This is a plugin you can evolve, not just admire once.
+
+## Repository Structure
 
 | Path | Purpose |
 | --- | --- |
@@ -72,8 +251,8 @@ Current domain packs:
 | `hooks/` | routing, persistence, and governance hooks |
 | `rules/` | durable stack-aware rules |
 | `config/` | workflow, pack, capability, and guidance metadata |
-| `references/` | on-demand checklists and support material for skills |
-| `docs/` | maintainer-facing product and orchestration guidance |
+| `references/` | companion checklists and support material |
+| `docs/` | maintainer-facing architecture and orchestration guidance |
 | `scripts/` | build and verification utilities |
 
 ## Install
@@ -83,7 +262,7 @@ Current domain packs:
 - [Cursor](https://cursor.com) with Skills, Subagents, and Hooks enabled
 - Node.js for the bundled hook scripts
 
-### One-command install
+### Quick Install
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/install.sh | bash
@@ -95,7 +274,7 @@ curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/instal
 curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/update.sh | bash
 ```
 
-The update script treats the remote branch as the source of truth. It resets the installed checkout to `origin/main`, so local commits and tracked edits inside the installed plugin checkout are discarded during update.
+The update script treats the remote branch as the source of truth and resets the installed checkout to `origin/main`.
 
 ### Uninstall
 
@@ -103,7 +282,7 @@ The update script treats the remote branch as the source of truth. It resets the
 curl -fsSL https://raw.githubusercontent.com/xiushaomin/oh-my-cursor/main/uninstall.sh | bash
 ```
 
-### Manual install
+### Manual Install
 
 ```bash
 git clone https://github.com/xiushaomin/oh-my-cursor.git
@@ -114,15 +293,7 @@ rsync -a --delete --exclude '.git' ./ ~/.cursor/plugins/local/oh-my-cursor/
 
 Restart Cursor, or run `Developer: Reload Window`.
 
-## How to use it well
-
-- Ask naturally when you want Cursor to route toward the right workflow.
-- Use explicit skills when you want a specific execution mode or stronger control.
-- Let rules carry stable coding expectations instead of restating them in every task.
-- Keep domain packs narrow and stack-aware.
-- Treat specialist agents as bounded helpers, not as a replacement for thinking.
-
-## Maintainer notes
+## Quality Gates
 
 After editing workflow, pack, capability, or subagent metadata, run:
 
@@ -130,11 +301,18 @@ After editing workflow, pack, capability, or subagent metadata, run:
 node scripts/build-guidance-index.mjs
 node scripts/verify-guidance-index.mjs
 node scripts/verify-plugin.mjs
+node scripts/verify-skill-evals.mjs
+node scripts/verify-agents.mjs
+node scripts/verify-output-contracts.mjs
+node scripts/verify-skills.mjs
 node --test tests/*.test.mjs
 ```
 
-Additional design guidance lives in [ARCHITECTURE.md](/Users/smxiu/Desktop/oh-my-cursor/ARCHITECTURE.md) and [docs/orchestration-patterns.md](/Users/smxiu/Desktop/oh-my-cursor/docs/orchestration-patterns.md).
+## Status
 
-## License
+The repo already ships with real validation and a coherent operating model, so it is much closer to a working engineering product than a prompt experiment.
 
-MIT
+## Learn More
+
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [docs/orchestration-patterns.md](docs/orchestration-patterns.md)
